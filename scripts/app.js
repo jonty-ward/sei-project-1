@@ -43,6 +43,7 @@ function init(){
       const cell = document.createElement('div') //creating the divs for the grid 
       cell.textContent = i //creating text withing the grid with the value of its index
       //creating the player grid 
+      cell.className += 'playerCell'
       playerGrid.appendChild(cell)
       playerCells.push(cell)
     }
@@ -84,15 +85,30 @@ function init(){
   
 
 
-//* consts for event listener 
+
+
+
+  //* player choosing a computer square 
+
+  //* consts for event listener 
   const targetComputerCell = document.querySelectorAll('.computerCell')
+  const targetPlayerCell = document.querySelectorAll('.playerCell')
+  
 
-
-  //*choosing a computer square 
   function shootAtComputer(event){
     console.log('function working' )
     event.target.classList.add('shot-miss')
     //need to be able to dissable the click on this square when clicked on
+    
+  }
+//*computer randomly shoots at player after every click 
+  function shootAtPlayer(){
+    const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
+    console.log('player shot at ')
+    targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss')
+    
+
+
   }
 
 
@@ -102,6 +118,11 @@ function init(){
   targetComputerCell.forEach(button =>{
     button.addEventListener('click',shootAtComputer)
   })
+
+  targetComputerCell.forEach(button =>{
+    button.addEventListener('click',shootAtPlayer)
+  })
+  
   
 
  
