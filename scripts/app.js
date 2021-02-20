@@ -88,35 +88,46 @@ function init(){
 
 
 
-  //* player choosing a computer square 
+ 
 
   //* consts for shooting 
   const targetComputerCell = document.querySelectorAll('.computerCell')
   const targetPlayerCell = document.querySelectorAll('.playerCell')
 
-  const playersShotAtID = [] //stores the squares that the computer has shot at- used in the logic
+  const computerShotAtID = [] //stores the squares that the computer has shot at randomly
+  const playerShotAtID = []
+  
 
+
+ //* player choosing a computer square 
+  
   function shootAtComputer(event){
-    console.log('function working' )
-    event.target.classList.add('shot-miss')
+    const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
+    // console.log(chosenAlready)
+    if(!chosenAlready){
+      event.target.classList.add('shot-miss') 
+      playerShotAtID.push(parseFloat(event.target.innerHTML))
+    } else {
+      console.log('you have already selected this square')
+      return shootAtComputer() //this restarts the function 
+    }
+    shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
     //need to be able to dissable the click on this square when clicked on
-    
+    // console.log(event.target.innerHTML)
   }
 //*computer randomly shoots at player after every click 
-  function shootAtPlayer(){
 
+//****** this will need a lot more logic with regards to hitting a ship  */
+  function shootAtPlayer(){
     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
-    const chosenAlready = playersShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
-    if (!chosenAlready){
+    const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
+    if (!chosenAlready){ //If statement runs function again if random number has been chocen before
       targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
-      playersShotAtID.push(targetRandomPlayerCell)
+      computerShotAtID.push(targetRandomPlayerCell)
     } else {
-      console.log('already taken')
+      // console.log('already taken')
       return shootAtPlayer()
-      
     }
-    
-    
   }
 
 
@@ -127,9 +138,9 @@ function init(){
     button.addEventListener('click',shootAtComputer)
   })
 
-  targetComputerCell.forEach(button =>{
-    button.addEventListener('click',shootAtPlayer)
-  })
+  // targetComputerCell.forEach(button =>{
+  //   button.addEventListener('click',shootAtPlayer)
+  // })
   
   
 
