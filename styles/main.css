@@ -1,4 +1,36 @@
+
+/* styling the player grid  */
 .player-grid {
+  padding: 20px;
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 600px;
+  width: 600px;
+}
+/* styling the divs in theplayers grid */
+.player-grid div {
+  border: 1px solid rgb(8, 8, 8);
+  flex-grow: 1;
+  height: 9%;
+  width: 9%;
+}
+/* styling the layout of both grids */
+.both-grids {
+padding: 30px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* styling the computer grids  */
+.computer-grid {
+  padding: 20px;
   align-items: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
@@ -9,16 +41,9 @@
   width: 600px;
 }
 
-.player-grid div {
+.computer-grid div {
   border: 1px solid rgb(8, 8, 8);
   flex-grow: 1;
-  height: 10%;
-  width: 10%;
-}
-
-.both-grids {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 9%;
+  width: 9%;
 }
