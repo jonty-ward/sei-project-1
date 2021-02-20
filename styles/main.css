@@ -1,6 +1,14 @@
 
+/* this is to help me remoember which is the computer grid whislt working */
+.label-computer-grid{
+  background-color: red;
+  width: 100px;
+  margin-left:50px;
+  margin-bottom: -50px;
+}
 /* styling the player grid  */
 .player-grid {
+  margin-left: 10px;
   padding: 20px;
   align-items: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
@@ -8,8 +16,8 @@
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 600px;
-  width: 600px;
+  height: 500px;
+  width: 500px;
 }
 /* styling the divs in theplayers grid */
 .player-grid div {
@@ -18,10 +26,11 @@
   height: 9%;
   width: 9%;
 }
+
 /* styling the layout of both grids */
 .both-grids {
 padding: 30px;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,8 +46,8 @@ padding: 30px;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 600px;
-  width: 600px;
+  height: 500px;
+  width: 500px;
 }
 
 .computer-grid div {
@@ -47,3 +56,6 @@ padding: 30px;
   height: 9%;
   width: 9%;
 }
+
+
+/* Creating the ship classes */

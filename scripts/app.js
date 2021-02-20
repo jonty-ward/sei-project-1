@@ -22,7 +22,7 @@ function init(){
   }
 
 
-  function createPlayingGrid(){ //could pass in a variable in the brackets 
+  function createPlayerGrid(){ //could pass in a variable in the brackets 
     for (let i = 0; i < gridCellCount; i++){
       const cell = document.createElement('div') //creating the divs for the grid 
       cell.textContent = i //creating text withing the grid with the value of its index
@@ -33,18 +33,28 @@ function init(){
     //this is where charlotte added the cat. 
   }
 
-  createPlayingGrid()
-  createComputerGrid()
+  createPlayerGrid() //calling the function to make the player grid 
+  createComputerGrid() //calling the function to make the computergrid 
  
   console.log('player cells',playerGrid)
   
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
-
-
-
 
 
 window.addEventListener('DOMContentLoaded', init )
