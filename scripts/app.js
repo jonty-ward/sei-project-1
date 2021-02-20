@@ -93,8 +93,8 @@ function init(){
   //* consts for shooting 
   const targetComputerCell = document.querySelectorAll('.computerCell')
   const targetPlayerCell = document.querySelectorAll('.playerCell')
-  const storeShotAtID = [] //stores the squares that the computer has shot at- used in the logic
-  
+
+  const playersShotAtID = [] //stores the squares that the computer has shot at- used in the logic
 
   function shootAtComputer(event){
     console.log('function working' )
@@ -104,11 +104,18 @@ function init(){
   }
 //*computer randomly shoots at player after every click 
   function shootAtPlayer(){
-    
+
     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
-    console.log('player shot at ')
-    targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') //add some conditional logic for hit/miss here 
-    storeShotAtID.push(targetRandomPlayerCell)
+    const chosenAlready = playersShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
+    if (!chosenAlready){
+      targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
+      playersShotAtID.push(targetRandomPlayerCell)
+    } else {
+      console.log('already taken')
+      return shootAtPlayer()
+      
+    }
+    
     
   }
 
