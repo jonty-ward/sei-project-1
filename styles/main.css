@@ -30,7 +30,7 @@
 /* styling the layout of both grids */
 .both-grids {
 padding: 30px;
-  height: 70vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,3 +59,17 @@ padding: 30px;
 
 
 /* Creating the ship classes */
+
+.battleship{
+  display: flex;
+  border: 1px solid red;
+  justify-content: space-between;
+  width: 200px;
+  height: 50px;
+}
+
+.battleship div{
+  border: rgb(8, 8, 8) solid 1px;
+  flex-grow: 1;
+
+}
