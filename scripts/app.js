@@ -70,19 +70,18 @@ function init(){
     const arrayStarrtingPoint = []
     // event.target.classList.add('place-ship') 
     arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-    playerBattleship.array.push([parseFloat(arrayStarrtingPoint), parseFloat(arrayStarrtingPoint) + 1, parseFloat(arrayStarrtingPoint) + 2,parseFloat(arrayStarrtingPoint) + 3]) // this needs to be a for loop to make it reusable! 
 
-    // console.log('player battlehsip array ',playerBattleship.array)
-    // console.log('array starting point  ',arrayStarrtingPoint)
-    // console.log(typeof arrayStarrtingPoint)
-
+    for ( i = 0; i < playerBattleship.length; i++){
+      playerBattleship.array.push([parseFloat(arrayStarrtingPoint) + i] )
+    }
 
     playerBattleship.array.forEach( array => {
       console.log('current array', array)
-      for (let i = 0; i < array.length; i++)
-      addingPlayerPieces[array[i]].classList.add('place-ship')
+      for (let i = 0; i < array.length; i++){
+        addingPlayerPieces[array[i]].classList.add('place-ship')
+      }
       
-
+    
     })
 
 
