@@ -89,30 +89,21 @@ function init(){
 //*Adding the players ships 
   function insertingPlayerBattleship (event){ //function to place the ships 
     const arrayStarrtingPoint = []
+    let vertOrHoriz = 0
     if (shipClassToAdd.direction === 'right'  ){ 
-      arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-      for ( i = 0; i < shipClassToAdd.length; i ++){
-        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i ] ) 
-      }
-      shipClassToAdd.array.forEach( array => {       
-        for (let i = 0; i < array.length; i++){
-          addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
-        }
-      })
+      vertOrHoriz = 1     
     } else if (shipClassToAdd.direction === 'vert'){ //*** function to add ships on y
-      arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-      for ( i = 0; i < shipClassToAdd.length; i ++){        
-        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * gridWidth ] )         
-      }
-      shipClassToAdd.array.forEach( array => {       
-        for (let i = 0; i < array.length; i++){
-          addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
-        }
-      })
-
-
+      vertOrHoriz = gridWidth
     }
-    
+    arrayStarrtingPoint.push(parseFloat(event.target.innerText))
+    for ( i = 0; i < shipClassToAdd.length; i ++){
+      shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
+    }
+    shipClassToAdd.array.forEach( array => {       
+      for (let i = 0; i < array.length; i++){
+        addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+      }
+    })
     addComputerShips()
     shipClassToAdd = null
     
