@@ -57,16 +57,23 @@ function init(){
   }
 
   //******* players pieces 
+  const playerCarriership = new Ship('carriership', 5, 'right', [], 'player')
   const playerBattleship = new Ship('battleship', 4, 'right', [], 'player')
+  const playerDestroyer = new Ship('deatroyer', 3, 'right', [], 'player')
   const playerSubmarine = new Ship('submarine', 3, 'right', [], 'player')
+  const playerPatrol = new Ship('patrol', 2, 'right', [], 'player')
+  
 
 
   //*inserting the piece 
   let shipClassToAdd = playerSubmarine // this can be changed based on the button clicked
 
   console.log('ship class to add',shipClassToAdd)
+  const addCarrierShip = document.querySelector('.add-carriership')
   const addBattleship = document.querySelector('.add-battleship')
+  const addDestroyer = document.querySelector('.add-destroyer')
   const addSubmarine = document.querySelector('.add-submarine')
+  const addPatrol = document.querySelector('.add-patrol')
   const addingPlayerPieces = document.querySelectorAll('.playerCell')
 
   function insertingPlayerBattleship (event){
@@ -74,10 +81,10 @@ function init(){
     arrayStarrtingPoint.push(parseFloat(event.target.innerText))
     for ( i = 0; i < shipClassToAdd.length; i ++){
       shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i] )
-      console.log('i', i)
+      
     }
     shipClassToAdd.array.forEach( array => { //instead of having playerBattleship here, need something that can push the desired information into here when the ship is selected by the button 
-      console.log('current array', array)
+      
       for (let i = 0; i < array.length; i++){
         addingPlayerPieces[array[i]].classList.add('place-ship')
       }
@@ -85,29 +92,38 @@ function init(){
   }
 
 
+  function handleAddCarriership(){    
+    shipClassToAdd = playerCarriership
+  }
   function handleAddBattleship(){
+    shipClassToAdd = playerBattleship
+  } 
+  function handleAddDestroyer(){    
+    shipClassToAdd = playerDestroyer
+  }
   
-     shipClassToAdd = playerBattleship
-    
-  } // function to add ships based on the butto pressed
-  //can pass information into the fuciton above based on the ship button pressed 
-
-  function handleAddSumbarine(){
-    
-     shipClassToAdd = playerSubmarine
-    
+  function handleAddSumbarine(){    
+    shipClassToAdd = playerSubmarine
+  }
+  function handleAddPatrol(){    
+    shipClassToAdd = playerPatrol
   }
 
-  addingPlayerPieces.forEach(click =>{
-    
+
+
+
+  addingPlayerPieces.forEach(click =>{    
     click.addEventListener('click', insertingPlayerBattleship) 
   })
 
 
 
+  addCarrierShip.addEventListener('click', handleAddCarriership) //event listener to add battleship
   addBattleship.addEventListener('click', handleAddBattleship) //event listener to add battleship
+  addDestroyer.addEventListener('click', handleAddDestroyer) //event listener to add submarine
   addSubmarine.addEventListener('click', handleAddSumbarine) //event listener to add submarine
-
+  addPatrol.addEventListener('click', handleAddPatrol) //event listener to add submarine
+  
 
 
 
