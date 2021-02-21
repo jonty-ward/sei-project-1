@@ -60,7 +60,7 @@ function init(){
   const playerCarriership = new Ship('carriership', 5, 'right', [], 'player')
   const playerBattleship = new Ship('battleship', 4, 'right', [], 'player')
   const playerDestroyer = new Ship('deatroyer', 3, 'right', [], 'player')
-  const playerSubmarine = new Ship('submarine', 3, 'right', [], 'player')
+  const playerSubmarine = new Ship('submarine', 3, 'vert', [], 'player')
   const playerPatrol = new Ship('patrol', 2, 'right', [], 'player')
   
 
@@ -77,18 +77,43 @@ function init(){
   const addPatrol = document.querySelector('.add-patrol')
   const addingPlayerPieces = document.querySelectorAll('.playerCell')
 
-  function insertingPlayerBattleship (event){
+  function insertingPlayerBattleship (event){ //function to place the ships 
     const arrayStarrtingPoint = []
-    arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-    for ( i = 0; i < shipClassToAdd.length; i ++){
-      shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i] )
-      
-    }
-    shipClassToAdd.array.forEach( array => {       
-      for (let i = 0; i < array.length; i++){
-        addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+    if (shipClassToAdd.direction === 'right'){ //***** if statement to set the direction of right- change to button press eventually */
+      arrayStarrtingPoint.push(parseFloat(event.target.innerText))
+      for ( i = 0; i < shipClassToAdd.length; i ++){
+        
+        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i ] ) 
+        
       }
-    })
+      shipClassToAdd.array.forEach( array => {       
+        for (let i = 0; i < array.length; i++){
+          addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+        }
+      })
+    } else if (shipClassToAdd.direction === 'vert'){ //*** make this so it works on button press. 
+      arrayStarrtingPoint.push(parseFloat(event.target.innerText))
+      for ( i = 0; i < shipClassToAdd.length; i ++){
+        
+        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i*gridWidth ] ) //**********ADD i*10 TO MAKE VERTICAL! */
+        
+      }
+      shipClassToAdd.array.forEach( array => {       
+        for (let i = 0; i < array.length; i++){
+          addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+        }
+      })
+    
+     
+
+
+
+
+
+
+
+    }
+    
   }
 
 
