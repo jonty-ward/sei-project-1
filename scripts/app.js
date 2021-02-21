@@ -124,19 +124,16 @@ function init(){
     // const arrayStarrtingPoint = []
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
 
-    // for ( i = 0; i < shipClassToAdd.length; i ++){        
-    //   shipClassToAdd.array.push([randomShipStart + i  ] )         
-    // }
+    for ( i=0; i< shipClassToAdd.length; i ++){        
+      shipClassToAdd.array.push([randomShipStart + i ] )         
+    }
 
     shipClassToAdd.array.forEach(array =>{
-      for(let i=0; i<array.length; i++){
-        addingComputerPieces[randomShipStart].classList.add(shipStylingToAdd)
+      for (let i=0; i<array.length; i++){
+        addingComputerPieces[array].classList.add(shipStylingToAdd)
       }
     })
-    addingComputerPieces[randomShipStart].classList.add('place-carriership') //this places the ship on a random square 
-    
-
-
+    // addingComputerPieces[array[i]].classList.add('place-carriership') //this places the ship on a random square 
   }
   
 
