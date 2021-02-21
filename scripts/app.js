@@ -68,13 +68,14 @@ function init(){
   //*inserting the piece 
   let shipClassToAdd = null // this can be changed based on the button clicked
   let shipStylingToAdd = ''
+
   // let shipStylingToHover = '' // used this to try and get the styling to work on hover- populated the whole grid! 
   
   const yAxis = document.querySelector('.y-axis')
   const xAxis = document.querySelector('.x-axis')
  
 
-  console.log('ship class to add',shipClassToAdd)
+  
   const addCarrierShip = document.querySelector('.add-carriership')
   const addBattleship = document.querySelector('.add-battleship')
   const addDestroyer = document.querySelector('.add-destroyer')
@@ -84,7 +85,7 @@ function init(){
   const addingComputerPieces = document.querySelectorAll('.computerCell')
 
 
-
+//*Adding the players ships 
   function insertingPlayerBattleship (event){ //function to place the ships 
     const arrayStarrtingPoint = []
     if (shipClassToAdd.direction === 'right'  ){ 
@@ -109,27 +110,37 @@ function init(){
       })
 
 
-
-
-      for ( i = 0; i < shipClassToAdd.length; i ++){
-        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i ] ) 
-      }
-      shipClassToAdd.array.forEach( array => {       
-        for (let i = 0; i < array.length; i++){
-          addingComputerPieces[array[i]].classList.add(shipStylingToAdd)
-        }
-      })
-
-
-
-
-
-
-
     }
+    addComputerShips()
     shipClassToAdd = null
+    
+  }
+
+
+  //* adding the computers ships 
+  
+  function addComputerShips(){
+    // console.log('function add computers ships is working ')
+    // const arrayStarrtingPoint = []
+    const randomShipStart = Math.floor(Math.random() * gridCellCount)
+
+    // for ( i = 0; i < shipClassToAdd.length; i ++){        
+    //   shipClassToAdd.array.push([randomShipStart + i  ] )         
+    // }
+
+    shipClassToAdd.array.forEach(array =>{
+      for(let i=0; i<array.length; i++){
+        addingComputerPieces[randomShipStart].classList.add(shipStylingToAdd)
+      }
+    })
+    addingComputerPieces[randomShipStart].classList.add('place-carriership') //this places the ship on a random square 
+    
+
 
   }
+  
+
+
 
 
 
