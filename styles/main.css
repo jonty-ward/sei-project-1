@@ -91,7 +91,6 @@ padding: 30px;
   background-color: orange;
 }
 
-
 /* styling for hovering over square  */
 .hover-ship:hover{
   background-color: red;
@@ -109,6 +108,19 @@ padding: 30px;
 }
 
 
+/* these are the computers ships- can add color of none */
 
-
-
+.place-comp-carriership{
+  background-color: rgba(122, 45, 45, 0.678);
+}
+.place-comp-battleship{
+  background-color: rgb(132, 245, 161);
+}
+.place-comp-destroyer{
+  background-color: rgba(87, 6, 240, 0.788);
+}.place-comp-submarine{
+  background-color: rgb(248, 188, 188);
+}
+.place-comp-patrol{
+  background-color: rgba(32, 104, 3, 0.705);
+}

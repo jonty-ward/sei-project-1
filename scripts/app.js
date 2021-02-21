@@ -68,6 +68,7 @@ function init(){
   //*inserting the piece 
   let shipClassToAdd = null // this can be changed based on the button clicked
   let shipStylingToAdd = ''
+  let compShipStylingToAdd = ''
 
   // let shipStylingToHover = '' // used this to try and get the styling to work on hover- populated the whole grid! 
   
@@ -125,54 +126,73 @@ function init(){
     // const arrayStarrtingPoint = []
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
     shipClassToAdd.array = []
+    const randomAxis = Math.floor(Math.random()*10)
+    console.log('random axis',randomAxis)
+  
 
-    for ( i=0; i< shipClassToAdd.length; i ++){        
-      shipClassToAdd.array.push([randomShipStart + i ] )         
-    }
-    console.log('ship class to add ', shipClassToAdd.array)
 
-    shipClassToAdd.array.forEach(array =>{
-      for (let i=0; i<array.length; i++){
-        addingComputerPieces[array].classList.add(shipStylingToAdd)
+    if (randomAxis % 2 === 0){
+      for ( i=0; i< shipClassToAdd.length; i ++){        
+        shipClassToAdd.array.push([randomShipStart + i  ] )         
       }
-    })
-    // addingComputerPieces[randomShipStart].classList.add('place-carriership') //this places the ship on a random square 
-  }
+      console.log('ship class to add ', shipClassToAdd.array)
   
+      shipClassToAdd.array.forEach(array =>{
+        for (let i=0; i<array.length; i++){
+          addingComputerPieces[array].classList.add(compShipStylingToAdd)
+        }
+      })
+
+    } else {
+      for ( i=0; i< shipClassToAdd.length; i ++){        
+        shipClassToAdd.array.push([randomShipStart + i * gridWidth  ] )         
+      }
+      console.log('ship class to add ', shipClassToAdd.array)
   
+      shipClassToAdd.array.forEach(array =>{
+        for (let i=0; i<array.length; i++){
+          addingComputerPieces[array].classList.add(compShipStylingToAdd)
+        }
+      })
+    
+    }
 
 
-
-
-
-
+    }
+ 
+  
 
   //* could add individual styling in the same way here- give each ship a style class in css and add in in same way here
   function handleAddCarriership(){    //refactor this code- very messy 
     shipClassToAdd = playerCarriership
     shipStylingToAdd = 'place-carriership'
+    compShipStylingToAdd = 'place-comp-carriership'
     addCarrierShip.classList.add('hidden')
     
   }
   function handleAddBattleship(){
     shipClassToAdd = playerBattleship
     shipStylingToAdd = 'place-battleship'
+    compShipStylingToAdd = 'place-comp-battleship'
     addBattleship.classList.add('hidden')
     
   } 
   function handleAddDestroyer(){    
     shipClassToAdd = playerDestroyer
     shipStylingToAdd = 'place-destroyer'
+    compShipStylingToAdd = 'place-comp-destroyer'
     addDestroyer.classList.add('hidden')
   }
   function handleAddSumbarine(){    
     shipClassToAdd = playerSubmarine
     shipStylingToAdd = 'place-submarine'
+    compShipStylingToAdd = 'place-comp-submarine'
     addSubmarine.classList.add('hidden')
   }
   function handleAddPatrol(){    
     shipClassToAdd = playerPatrol
     shipStylingToAdd = 'place-patrol'
+    compShipStylingToAdd = 'place-comp-patrol'
     addPatrol.classList.add('hidden')
     
   }
