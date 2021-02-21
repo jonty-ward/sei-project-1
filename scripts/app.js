@@ -122,40 +122,30 @@ function init(){
   //* adding the computers ships 
   
   function addComputerShips(){
-    console.log('function add computers ships is working ')
     // const arrayStarrtingPoint = []
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
     shipClassToAdd.array = []
     const randomAxis = Math.floor(Math.random()*10)
-    console.log('random axis',randomAxis)
-  
-
-
-    if (randomAxis % 2 === 0){
-      for ( i=0; i< shipClassToAdd.length; i ++){        
-        shipClassToAdd.array.push([randomShipStart + i  ] )         
-      }
-      console.log('ship class to add ', shipClassToAdd.array)
-  
-      shipClassToAdd.array.forEach(array =>{
-        for (let i=0; i<array.length; i++){
-          addingComputerPieces[array].classList.add(compShipStylingToAdd)
-        }
-      })
+    let shipToVert = 0
+    
+    if (randomAxis % 2 ===0){
+      shipToVert = gridWidth
 
     } else {
-      for ( i=0; i< shipClassToAdd.length; i ++){        
-        shipClassToAdd.array.push([randomShipStart + i * gridWidth  ] )         
-      }
-      console.log('ship class to add ', shipClassToAdd.array)
-  
-      shipClassToAdd.array.forEach(array =>{
-        for (let i=0; i<array.length; i++){
-          addingComputerPieces[array].classList.add(compShipStylingToAdd)
-        }
-      })
-    
+      shipToVert = 1
     }
+    for ( i=0; i< shipClassToAdd.length; i ++){        
+      shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )         
+    }
+    console.log('ship class to add ', shipClassToAdd.array)
+  
+    shipClassToAdd.array.forEach(array =>{
+      for (let i=0; i<array.length; i++){
+        addingComputerPieces[array].classList.add(compShipStylingToAdd)
+      }
+    })
+    
+    
 
 
     }
