@@ -13,18 +13,54 @@ function init(){
   const gridWidth = 10 // if want 15 the width is 6%
   const gridCellCount =  gridWidth * gridWidth
 
-  //*consts to create the ships 
+  // //*consts to create the ships 
 
-  const battleship = document.querySelector('.battleship') //creating the battleship class
+  // const battleship = document.querySelector('.battleship') //creating the battleship class
   // const battleshipWidth = 4
-  // // const battleshipCellCount =
+  
   // const battleshipCells = []
   // // console.log('battship', battleship)
   // console.log(battleshipCells)
 
-  
+  // //*creating the ships
+  class Ship {
+    constructor(name, length, direction, board){
+      this.name = name
+      this.length = length
+      this.direction = direction
+      this.board = board //this relates to player or computer board
+    }
+    //can add functions to the ship class here 
+  }
 
+  //players pieces 
+  const playerBattleship = new Ship('battleship', 4, 'right', 'player')
+  console.log(playerBattleship)
+
+  //inserting the piece 
+
+  function insertingPlayerBattleship (){//could pass in the name of the batleship to prevent wet code 
+
+
+  }
+
+
+
+
+
+
+  // function createBattleship(){
+  //   for (let i = 0; i < battleshipWidth; i++){
+  //     const cell = document.createElement('div')
+  //     cell.textContent = i
   
+  //     battleship.appendChild(cell)
+  //     battleshipCells.push(cell)
+  //   }
+  // }
+  // createBattleship()
+
+ 
 
   //creating the computers playing grid 
   function createComputerGrid(){  //could pass in a variable in the brackets 
@@ -54,18 +90,9 @@ function init(){
   createComputerGrid() //calling the function to make the computergrid 
   
 
-  //*creating the ships
-
-  // function createBattleship(){
-  //   for (let i = 0; i < battleshipWidth; i++){
-  //     const cell = document.createElement('div')
-  //     cell.textContent = i
   
-  //     battleship.appendChild(cell)
-  //     battleshipCells.push(cell)
-  //   }
-  // }
-  // createBattleship()
+  
+
 
 
 
@@ -97,8 +124,6 @@ function init(){
   const computerShotAtID = [] //stores the squares that the computer has shot at randomly
   const playerShotAtID = []
   
-
-
  //* player choosing a computer square 
   
   function shootAtComputer(event){
@@ -114,6 +139,7 @@ function init(){
     shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
     //need to be able to dissable the click on this square when clicked on
     // console.log(event.target.innerHTML)
+    
   }
 //*computer randomly shoots at player after every click 
 
@@ -129,11 +155,6 @@ function init(){
       return shootAtPlayer()
     }
   }
-
-
-
-
-
   targetComputerCell.forEach(button =>{
     button.addEventListener('click',shootAtComputer)
   })
