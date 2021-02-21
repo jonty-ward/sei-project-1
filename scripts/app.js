@@ -66,7 +66,8 @@ function init(){
 
 
   //*inserting the piece 
-  let shipClassToAdd = playerSubmarine // this can be changed based on the button clicked
+  let shipClassToAdd = playerPatrol // this can be changed based on the button clicked
+  let shipStylingToAdd = ''
 
   console.log('ship class to add',shipClassToAdd)
   const addCarrierShip = document.querySelector('.add-carriership')
@@ -83,40 +84,41 @@ function init(){
       shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i] )
       
     }
-    shipClassToAdd.array.forEach( array => { //instead of having playerBattleship here, need something that can push the desired information into here when the ship is selected by the button 
-      
+    shipClassToAdd.array.forEach( array => {       
       for (let i = 0; i < array.length; i++){
-        addingPlayerPieces[array[i]].classList.add('place-ship')
+        addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
       }
     })
   }
 
 
+  //* could add individual styling in the same way here- give each ship a style class in css and add in in same way here
   function handleAddCarriership(){    
     shipClassToAdd = playerCarriership
+    shipStylingToAdd = 'place-carriership'
   }
   function handleAddBattleship(){
     shipClassToAdd = playerBattleship
+    shipStylingToAdd = 'place-battleship'
   } 
   function handleAddDestroyer(){    
     shipClassToAdd = playerDestroyer
+    shipStylingToAdd = 'place-destroyer'
   }
-  
   function handleAddSumbarine(){    
+    console.log('handle submarine')
     shipClassToAdd = playerSubmarine
+    shipStylingToAdd = 'place-submarine'
   }
   function handleAddPatrol(){    
     shipClassToAdd = playerPatrol
+    shipStylingToAdd = 'place-patrol'
+    
   }
-
-
-
 
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('click', insertingPlayerBattleship) 
   })
-
-
 
   addCarrierShip.addEventListener('click', handleAddCarriership) //event listener to add battleship
   addBattleship.addEventListener('click', handleAddBattleship) //event listener to add battleship

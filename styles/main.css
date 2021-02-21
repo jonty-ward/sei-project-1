@@ -75,8 +75,21 @@ padding: 30px;
   flex-grow: 1;
 
 } */
-.place-ship{
-  background-color: blue;
+.place-carriership{
+  background-color: red;
+}
+.place-battleship{
+  background-color: green;
+}
+.place-destroyer{
+  background-color: greenyellow;
+}
+.place-submarine{
+  background-color: grey;
+}
+
+.place-patrol{
+  background-color: orange;
 }
 
 
