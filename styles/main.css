@@ -75,6 +75,9 @@ padding: 30px;
   flex-grow: 1;
 
 } */
+.place-ship{
+  background-color: blue;
+}
 
 
 /* shooting at computer  */
@@ -82,6 +85,8 @@ padding: 30px;
 .shot-miss{
   background-color: red;
 }
+
+
 
 
 

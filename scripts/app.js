@@ -13,55 +13,6 @@ function init(){
   const gridWidth = 10 // if want 15 the width is 6%
   const gridCellCount =  gridWidth * gridWidth
 
-  // //*consts to create the ships 
-
-  // const battleship = document.querySelector('.battleship') //creating the battleship class
-  // const battleshipWidth = 4
-  
-  // const battleshipCells = []
-  // // console.log('battship', battleship)
-  // console.log(battleshipCells)
-
-  // //*creating the ships
-  class Ship {
-    constructor(name, length, direction, board){
-      this.name = name
-      this.length = length
-      this.direction = direction
-      this.board = board //this relates to player or computer board
-    }
-    //can add functions to the ship class here 
-  }
-
-  //players pieces 
-  const playerBattleship = new Ship('battleship', 4, 'right', 'player')
-  console.log(playerBattleship)
-
-  //inserting the piece 
-
-  function insertingPlayerBattleship (){//could pass in the name of the batleship to prevent wet code 
-
-
-  }
-
-
-
-
-
-
-  // function createBattleship(){
-  //   for (let i = 0; i < battleshipWidth; i++){
-  //     const cell = document.createElement('div')
-  //     cell.textContent = i
-  
-  //     battleship.appendChild(cell)
-  //     battleshipCells.push(cell)
-  //   }
-  // }
-  // createBattleship()
-
- 
-
   //creating the computers playing grid 
   function createComputerGrid(){  //could pass in a variable in the brackets 
     for (let i = 0; i < gridCellCount; i++){
@@ -88,6 +39,74 @@ function init(){
   }
   createPlayerGrid() //calling the function to make the player grid 
   createComputerGrid() //calling the function to make the computergrid 
+
+ 
+
+
+
+  // //*creating the ships
+  class Ship {
+    constructor(name, length, direction, array, board){
+      this.name = name
+      this.length = length
+      this.direction = direction
+      this.array = array
+      this.board = board //this relates to player or computer board
+    }
+    //can add functions to the ship class here 
+  }
+
+  //******* players pieces 
+  const playerBattleship = new Ship('battleship', 4, 'right', [], 'player')
+  console.log(playerBattleship)
+
+  //*inserting the piece 
+
+  const addingPlayerPieces = document.querySelectorAll('.playerCell')
+
+  function insertingPlayerBattleship (event){//could pass in the name of the batleship to prevent wet code 
+
+    // event.target.classList.add('place-ship')
+    const arrayStarrtingPoint = []
+    // event.target.classList.add('place-ship') 
+    arrayStarrtingPoint.push(parseFloat(event.target.innerText))
+    playerBattleship.array.push([parseFloat(arrayStarrtingPoint), parseFloat(arrayStarrtingPoint) + 1, parseFloat(arrayStarrtingPoint) + 2,parseFloat(arrayStarrtingPoint) + 3]) // this needs to be a for loop to make it reusable! 
+
+    // console.log('player battlehsip array ',playerBattleship.array)
+    // console.log('array starting point  ',arrayStarrtingPoint)
+    // console.log(typeof arrayStarrtingPoint)
+
+
+    playerBattleship.array.forEach( array => {
+      console.log('current array', array)
+      for (let i = 0; i < array.length; i++)
+      addingPlayerPieces[array[i]].classList.add('place-ship')
+      
+
+    })
+
+
+    
+    
+  }
+
+  addingPlayerPieces.forEach(click =>{
+    click.addEventListener('click', insertingPlayerBattleship)
+  })
+
+
+
+  
+
+
+ 
+
+
+
+
+
+
+  
   
 
   
@@ -126,42 +145,39 @@ function init(){
   
  //* player choosing a computer square 
   
-  function shootAtComputer(event){
-    const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
-    // console.log(chosenAlready)
-    if(!chosenAlready){
-      event.target.classList.add('shot-miss') 
-      playerShotAtID.push(parseFloat(event.target.innerHTML))
-    } else {
-      console.log('you have already selected this square')
-      return shootAtComputer() //this restarts the function 
-    }
-    shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
-    //need to be able to dissable the click on this square when clicked on
-    // console.log(event.target.innerHTML)
+//   function shootAtComputer(event){
+//     const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
+//     // console.log(chosenAlready)
+//     if(!chosenAlready){
+//       event.target.classList.add('shot-miss') 
+//       playerShotAtID.push(parseFloat(event.target.innerHTML))
+//     } else {
+//       console.log('you have already selected this square')
+//       return shootAtComputer() //this restarts the function 
+//     }
+//     shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
+//     //need to be able to dissable the click on this square when clicked on
+//     // console.log(event.target.innerHTML)
     
-  }
-//*computer randomly shoots at player after every click 
+//   }
+// //*computer randomly shoots at player after every click 
 
-//****** this will need a lot more logic with regards to hitting a ship  */
-  function shootAtPlayer(){
-    const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
-    const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
-    if (!chosenAlready){ //If statement runs function again if random number has been chocen before
-      targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
-      computerShotAtID.push(targetRandomPlayerCell)
-    } else {
-      // console.log('already taken')
-      return shootAtPlayer()
-    }
-  }
-  targetComputerCell.forEach(button =>{
-    button.addEventListener('click',shootAtComputer)
-  })
-
+// //****** this will need a lot more logic with regards to hitting a ship  */
+//   function shootAtPlayer(){
+//     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
+//     const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
+//     if (!chosenAlready){ //If statement runs function again if random number has been chocen before
+//       targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
+//       computerShotAtID.push(targetRandomPlayerCell)
+//     } else {
+//       // console.log('already taken')
+//       return shootAtPlayer()
+//     }
+//   }
   // targetComputerCell.forEach(button =>{
-  //   button.addEventListener('click',shootAtPlayer)
+  //   button.addEventListener('click',shootAtComputer)  //****************reactivate shooting here  */
   // })
+
   
   
 
