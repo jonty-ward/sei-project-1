@@ -81,6 +81,7 @@ function init(){
   const addSubmarine = document.querySelector('.add-submarine')
   const addPatrol = document.querySelector('.add-patrol')
   const addingPlayerPieces = document.querySelectorAll('.playerCell')
+  const addingComputerPieces = document.querySelectorAll('.computerCell')
 
 
 
@@ -89,9 +90,7 @@ function init(){
     if (shipClassToAdd.direction === 'right'  ){ 
       arrayStarrtingPoint.push(parseFloat(event.target.innerText))
       for ( i = 0; i < shipClassToAdd.length; i ++){
-        
         shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i ] ) 
-        
       }
       shipClassToAdd.array.forEach( array => {       
         for (let i = 0; i < array.length; i++){
@@ -100,16 +99,33 @@ function init(){
       })
     } else if (shipClassToAdd.direction === 'vert'){ //*** function to add ships on y
       arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-      for ( i = 0; i < shipClassToAdd.length; i ++){
-        
-        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * gridWidth ] ) 
-        
+      for ( i = 0; i < shipClassToAdd.length; i ++){        
+        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * gridWidth ] )         
       }
       shipClassToAdd.array.forEach( array => {       
         for (let i = 0; i < array.length; i++){
           addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
         }
       })
+
+
+
+
+      for ( i = 0; i < shipClassToAdd.length; i ++){
+        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i ] ) 
+      }
+      shipClassToAdd.array.forEach( array => {       
+        for (let i = 0; i < array.length; i++){
+          addingComputerPieces[array[i]].classList.add(shipStylingToAdd)
+        }
+      })
+
+
+
+
+
+
+
     }
     shipClassToAdd = null
 
@@ -120,7 +136,7 @@ function init(){
 
 
   //* could add individual styling in the same way here- give each ship a style class in css and add in in same way here
-  function handleAddCarriership(){    
+  function handleAddCarriership(){    //refactor this code- very messy 
     shipClassToAdd = playerCarriership
     shipStylingToAdd = 'place-carriership'
     addCarrierShip.classList.add('hidden')
@@ -263,9 +279,9 @@ function init(){
 //       return shootAtPlayer()
 //     }
 //   }
-  // targetComputerCell.forEach(button =>{
-  //   button.addEventListener('click',shootAtComputer)  //****************reactivate shooting here  */
-  // })
+//   targetComputerCell.forEach(button =>{
+//     button.addEventListener('click',shootAtComputer)  //****************reactivate shooting here  */
+//   })
 
   
   
