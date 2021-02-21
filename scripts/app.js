@@ -58,40 +58,56 @@ function init(){
 
   //******* players pieces 
   const playerBattleship = new Ship('battleship', 4, 'right', [], 'player')
-  console.log(playerBattleship)
+  const playerSubmarine = new Ship('submarine', 3, 'right', [], 'player')
+
 
   //*inserting the piece 
+  let shipClassToAdd = playerSubmarine // this can be changed based on the button clicked
 
+  console.log('ship class to add',shipClassToAdd)
+  const addBattleship = document.querySelector('.add-battleship')
+  const addSubmarine = document.querySelector('.add-submarine')
   const addingPlayerPieces = document.querySelectorAll('.playerCell')
 
-  function insertingPlayerBattleship (event){//could pass in the name of the batleship to prevent wet code 
-
-    // event.target.classList.add('place-ship')
+  function insertingPlayerBattleship (event){
     const arrayStarrtingPoint = []
-    // event.target.classList.add('place-ship') 
     arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-
-    for ( i = 0; i < playerBattleship.length; i++){
-      playerBattleship.array.push([parseFloat(arrayStarrtingPoint) + i] )
+    for ( i = 0; i < shipClassToAdd.length; i ++){
+      shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i] )
+      console.log('i', i)
     }
-
-    playerBattleship.array.forEach( array => {
+    shipClassToAdd.array.forEach( array => { //instead of having playerBattleship here, need something that can push the desired information into here when the ship is selected by the button 
       console.log('current array', array)
       for (let i = 0; i < array.length; i++){
         addingPlayerPieces[array[i]].classList.add('place-ship')
       }
-      
-    
     })
+  }
 
 
+  function handleAddBattleship(){
+  
+     shipClassToAdd = playerBattleship
     
+  } // function to add ships based on the butto pressed
+  //can pass information into the fuciton above based on the ship button pressed 
+
+  function handleAddSumbarine(){
+    
+     shipClassToAdd = playerSubmarine
     
   }
 
   addingPlayerPieces.forEach(click =>{
-    click.addEventListener('click', insertingPlayerBattleship)
+    
+    click.addEventListener('click', insertingPlayerBattleship) 
   })
+
+
+
+  addBattleship.addEventListener('click', handleAddBattleship) //event listener to add battleship
+  addSubmarine.addEventListener('click', handleAddSumbarine) //event listener to add submarine
+
 
 
 
