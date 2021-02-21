@@ -66,9 +66,9 @@ function init(){
 
 
   //*inserting the piece 
-  let shipClassToAdd = playerPatrol // this can be changed based on the button clicked
+  let shipClassToAdd = null // this can be changed based on the button clicked
   let shipStylingToAdd = ''
-  let shipStylingToHover = ''
+  // let shipStylingToHover = '' // used this to try and get the styling to work on hover- populated the whole grid! 
   
   const yAxis = document.querySelector('.y-axis')
   const xAxis = document.querySelector('.x-axis')
@@ -111,6 +111,8 @@ function init(){
         }
       })
     }
+    shipClassToAdd = null
+
   }
 
 
@@ -121,23 +123,29 @@ function init(){
   function handleAddCarriership(){    
     shipClassToAdd = playerCarriership
     shipStylingToAdd = 'place-carriership'
+    addCarrierShip.classList.add('hidden')
     
   }
   function handleAddBattleship(){
     shipClassToAdd = playerBattleship
     shipStylingToAdd = 'place-battleship'
+    addBattleship.classList.add('hidden')
+    
   } 
   function handleAddDestroyer(){    
     shipClassToAdd = playerDestroyer
     shipStylingToAdd = 'place-destroyer'
+    addDestroyer.classList.add('hidden')
   }
   function handleAddSumbarine(){    
     shipClassToAdd = playerSubmarine
     shipStylingToAdd = 'place-submarine'
+    addSubmarine.classList.add('hidden')
   }
   function handleAddPatrol(){    
     shipClassToAdd = playerPatrol
     shipStylingToAdd = 'place-patrol'
+    addPatrol.classList.add('hidden')
     
   }
   //event listener to insert ships on click of a grid square 
@@ -145,13 +153,10 @@ function init(){
     click.addEventListener('click', insertingPlayerBattleship) 
   })
 
-
+//this is the function for hovering over the board- dont know how to add the ship to this wihtout blocking up the whole grid! 
   function displayingPlayerBattleship(event){
     console.log('this is working')
-    
   }
-
-
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('mouseenter', displayingPlayerBattleship) 
   })
