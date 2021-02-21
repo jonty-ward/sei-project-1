@@ -2,8 +2,8 @@
 function init(){
 
   //consts for the game
-
-  //consts for creating the grids
+                               //**** creating the grids  */
+  // consts for creating the grids
   const playerGrid = document.querySelector('.player-grid')
   const computerGrid = document.querySelector('.computer-grid')
   // const playerGrid = document.querySelector('.computer-grid')
@@ -41,7 +41,7 @@ function init(){
   createComputerGrid() //calling the function to make the computergrid 
 
  
-
+                         //*** creating the ships  */
 
 
   // //*creating the ships
@@ -60,7 +60,7 @@ function init(){
   const playerCarriership = new Ship('carriership', 5, 'right', [], 'player')
   const playerBattleship = new Ship('battleship', 4, 'right', [], 'player')
   const playerDestroyer = new Ship('deatroyer', 3, 'right', [], 'player')
-  const playerSubmarine = new Ship('submarine', 3, 'vert', [], 'player')
+  const playerSubmarine = new Ship('submarine', 3, 'right', [], 'player')
   const playerPatrol = new Ship('patrol', 2, 'right', [], 'player')
   
 
@@ -68,6 +68,11 @@ function init(){
   //*inserting the piece 
   let shipClassToAdd = playerPatrol // this can be changed based on the button clicked
   let shipStylingToAdd = ''
+  let shipStylingToHover = ''
+  
+  const yAxis = document.querySelector('.y-axis')
+  const xAxis = document.querySelector('.x-axis')
+ 
 
   console.log('ship class to add',shipClassToAdd)
   const addCarrierShip = document.querySelector('.add-carriership')
@@ -77,9 +82,11 @@ function init(){
   const addPatrol = document.querySelector('.add-patrol')
   const addingPlayerPieces = document.querySelectorAll('.playerCell')
 
+
+
   function insertingPlayerBattleship (event){ //function to place the ships 
     const arrayStarrtingPoint = []
-    if (shipClassToAdd.direction === 'right'){ //***** if statement to set the direction of right- change to button press eventually */
+    if (shipClassToAdd.direction === 'right'  ){ 
       arrayStarrtingPoint.push(parseFloat(event.target.innerText))
       for ( i = 0; i < shipClassToAdd.length; i ++){
         
@@ -91,11 +98,11 @@ function init(){
           addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
         }
       })
-    } else if (shipClassToAdd.direction === 'vert'){ //*** make this so it works on button press. 
+    } else if (shipClassToAdd.direction === 'vert'){ //*** function to add ships on y
       arrayStarrtingPoint.push(parseFloat(event.target.innerText))
       for ( i = 0; i < shipClassToAdd.length; i ++){
         
-        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i*gridWidth ] ) //**********ADD i*10 TO MAKE VERTICAL! */
+        shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * gridWidth ] ) 
         
       }
       shipClassToAdd.array.forEach( array => {       
@@ -103,24 +110,18 @@ function init(){
           addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
         }
       })
-    
-     
-
-
-
-
-
-
-
     }
-    
   }
+
+
+
 
 
   //* could add individual styling in the same way here- give each ship a style class in css and add in in same way here
   function handleAddCarriership(){    
     shipClassToAdd = playerCarriership
     shipStylingToAdd = 'place-carriership'
+    
   }
   function handleAddBattleship(){
     shipClassToAdd = playerBattleship
@@ -131,7 +132,6 @@ function init(){
     shipStylingToAdd = 'place-destroyer'
   }
   function handleAddSumbarine(){    
-    console.log('handle submarine')
     shipClassToAdd = playerSubmarine
     shipStylingToAdd = 'place-submarine'
   }
@@ -140,16 +140,42 @@ function init(){
     shipStylingToAdd = 'place-patrol'
     
   }
-
+  //event listener to insert ships on click of a grid square 
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('click', insertingPlayerBattleship) 
   })
 
+
+  function displayingPlayerBattleship(event){
+    console.log('this is working')
+    
+  }
+
+
+  addingPlayerPieces.forEach(click =>{    
+    click.addEventListener('mouseenter', displayingPlayerBattleship) 
+  })
+  
+
+
+  //event listeners to insert the correct ship depending on button clicked 
   addCarrierShip.addEventListener('click', handleAddCarriership) //event listener to add battleship
   addBattleship.addEventListener('click', handleAddBattleship) //event listener to add battleship
   addDestroyer.addEventListener('click', handleAddDestroyer) //event listener to add submarine
   addSubmarine.addEventListener('click', handleAddSumbarine) //event listener to add submarine
   addPatrol.addEventListener('click', handleAddPatrol) //event listener to add submarine
+
+
+  // functions to flip the axis
+  function handleYAxis(){
+    shipClassToAdd.direction = 'vert'
+  }
+  function handleXAxis(){
+    shipClassToAdd.direction = 'right'
+  }
+  //Event Listener for flipping the axis 
+  yAxis.addEventListener('click', handleYAxis)
+  xAxis.addEventListener('click', handleXAxis)
   
 
 

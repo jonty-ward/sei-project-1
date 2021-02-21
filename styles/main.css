@@ -87,12 +87,15 @@ padding: 30px;
 .place-submarine{
   background-color: grey;
 }
-
 .place-patrol{
   background-color: orange;
 }
 
 
+/* styling for hovering over square  */
+.hover-ship:hover{
+  background-color: red;
+}
 /* shooting at computer  */
 
 .shot-miss{
