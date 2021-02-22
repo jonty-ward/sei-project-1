@@ -156,11 +156,19 @@ function init(){
       } else {
         shipToVert = 1
       }
-      for ( i = 0; i < shipClassToAdd.length; i ++){        
-        shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )                 
-        shipsprojectedPosition.push(randomShipStart + i * shipToVert   )  
-        computerShipPosition.push(randomShipStart + i * shipToVert   ) 
-        // console.log('computer ship position ', computerShipPosition)
+      for ( i = 0; i < shipClassToAdd.length; i ++){    
+        if(computerShipPosition.includes(randomShipStart + (i * shipToVert))){
+          console.log('ships are intersecting')
+          return addComputerShips ()
+        } else {
+          shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )                 
+          shipsprojectedPosition.push(randomShipStart + i * shipToVert   )  
+          computerShipPosition.push(randomShipStart + i * shipToVert   ) 
+          // console.log('computer ship position ', computerShipPosition)
+
+        }
+        
+
       }
       
       const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
@@ -333,8 +341,9 @@ function init(){
       return shootAtComputer() //this restarts the function 
     }
     shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
-    //need to be able to dissable the click on this square when clicked on
-    // console.log(event.target.innerHTML)
+
+
+
     
   }
   //*computer randomly shoots at player after every click 
