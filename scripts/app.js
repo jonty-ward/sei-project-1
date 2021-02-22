@@ -92,6 +92,7 @@ function init(){
   function insertingPlayerBattleship (event){ //function to place the ships 
     const arrayStarrtingPoint = []
     let vertOrHoriz = 0
+    const playerProjectedPosition = []
     if (shipClassToAdd.direction === 'right'  ){ 
       vertOrHoriz = 1     
     } else if (shipClassToAdd.direction === 'vert'){ //*** function to add ships on y
@@ -100,19 +101,30 @@ function init(){
     arrayStarrtingPoint.push(parseFloat(event.target.innerText))
     for ( i = 0; i < shipClassToAdd.length; i ++){
       shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
+      playerProjectedPosition.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
     }
-    shipClassToAdd.array.forEach( array => {       
-      for (let i = 0; i < array.length; i++){
-        addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
-      }
-    })
-    addComputerShips()
-    shipClassToAdd = null
+//****************************************** LOGIC TO STOP SHIPSS ADDING OVER BOTTOM EDGE - NOT WORKING  */
+    const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
+    if (lastItemInArray > 99){    // stops the ships from going over the bottom edge
+      console.log('gone over the edge, try again! ')
+      // addCarrierShip.classList.remove('hidden')
+
+    } else {
+      shipClassToAdd.array.forEach( array => {       
+        for (let i = 0; i < array.length; i++){
+          addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+        }
+      })
+      
+
+
+      addComputerShips()
+    }
 
     
+    shipClassToAdd = null
+
   }
-
-
   //* adding the computers ships 
   let computerShipPosition = [] //keeps track of the computers ships positions 
   console.log('all ships positions', computerShipPosition)
@@ -120,30 +132,15 @@ function init(){
   function addComputerShips(){
     //     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
 //     const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random 
-
-
-
     //consts for the function to work 
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
     shipClassToAdd.array = []
     const shipsprojectedPosition = []
-    
-    
-    
-   
-   
-    
     const randomAxis = Math.floor(Math.random()*10)
     let shipToVert = 0
     const placedAlready = computerShipPosition.includes(randomShipStart) //finds if contains random start position
-   
-
     //ship placement logic
-
-    
-
-
-    if(!placedAlready){
+    if(!placedAlready){ //*if statement start for spotting ships being placed at the start 
       
       if (randomAxis % 2 ===0){
         shipToVert = gridWidth
@@ -154,13 +151,11 @@ function init(){
         shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )                 
         shipsprojectedPosition.push(randomShipStart + i * shipToVert   )  
         // const computerShipsPlaced = shipsprojectedPosition.some(r => computerShipPosition.includes(r))
-        // console.log('computerShipsPlaced', computerShipsPlaced)  //*logic to try and prevent ships being paced ontop of eachother
+        // console.log('computerShipsPlaced', computerShipsPlaced)  //*logic to try and prevent ships being paced ontop of eachother - DOES NOT WORK YET
         computerShipPosition.push(randomShipStart + i * shipToVert   ) 
       }
-      const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array 
-      console.log('last item in array', lastItemInArray)
-
-      if (lastItemInArray > 99){                        //* stops the ships from going over the bottom 
+      const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
+      if (lastItemInArray > 99){    // stops the ships from going over the bottom edge
         console.log('gone over the edge, try again! ')
         return addComputerShips()
       } else {
@@ -170,14 +165,9 @@ function init(){
           }
         })        
       }
-      
-    
-      
-      
     } else {
-      console.log('starting on square with ship')
+      console.log('starting on square with ship') //*end of if statement stopping ships starting on a square containing another ship
       return addComputerShips()
-
     }
 
 
