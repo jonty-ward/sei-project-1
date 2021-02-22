@@ -155,7 +155,27 @@ function init(){
         computerShipPosition.push(randomShipStart + i * shipToVert   ) 
       }
       const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
-      if (lastItemInArray > 99){    // stops the ships from going over the bottom edge
+      const seccondLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 2)])
+      const thirdLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 3)])
+      const fourthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 4)])
+      const fifthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 5)])
+
+
+      if (seccondLastItemInArray % gridWidth === 9){
+        console.log('seccond last number in on the edge')
+      }
+      if (thirdLastItemInArray % gridWidth === 9){
+        console.log('third last number in on the edge')
+      }
+      if (fourthLastItemInArray % gridWidth === 9){
+        console.log('fourth last number in on the edge')
+      }
+      if (fifthLastItemInArray % gridWidth === 9){
+        console.log('fifth last number in on the edge')
+      }
+
+
+      if (lastItemInArray > 99 || seccondLastItemInArray % gridWidth === 9 ||thirdLastItemInArray % gridWidth === 9  || fourthLastItemInArray % gridWidth === 9 || fifthLastItemInArray % gridWidth === 9){    // stops the ships from going over the bottom edge
         console.log('gone over the edge, try again! ')
         return addComputerShips()
       } else {
