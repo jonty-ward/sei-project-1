@@ -87,6 +87,8 @@ function init(){
 
 
 //*Adding the players ships 
+
+
   function insertingPlayerBattleship (event){ //function to place the ships 
     const arrayStarrtingPoint = []
     let vertOrHoriz = 0
@@ -106,16 +108,19 @@ function init(){
     })
     addComputerShips()
     shipClassToAdd = null
+
     
   }
 
 
   //* adding the computers ships 
-  
+  const computerShipPosition = []
+
   function addComputerShips(){
     // const arrayStarrtingPoint = []
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
     shipClassToAdd.array = []
+    
     const randomAxis = Math.floor(Math.random()*10)
     let shipToVert = 0
     
@@ -126,9 +131,11 @@ function init(){
       shipToVert = 1
     }
     for ( i=0; i< shipClassToAdd.length; i ++){        
-      shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )         
+      shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )                 
+      computerShipPosition.push(randomShipStart + i * shipToVert   )                 
     }
-    console.log('ship class to add ', shipClassToAdd.array)
+    
+    console.log('ship class to add ', computerShipPosition)
   
     shipClassToAdd.array.forEach(array =>{
       for (let i=0; i<array.length; i++){
