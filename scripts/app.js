@@ -239,11 +239,25 @@ function init(){
     // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]
     if(shipClassToAdd.length > 0){
       // console.log('event.target',event.target)
+
+      // const lastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 1
+      const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -1))  )
+      // console.log(lastItemVert)
       const secondLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 2
+      const thirdLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 3
+      const fourthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 4
+      const fifthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 5
       // console.log('last tiem ',secondLastItem)
-      if (secondLastItem % gridWidth === 9){
-        console.log('array is going over the edge')
+      if(shipClassToAdd.direction === 'right'){
+        if (secondLastItem % gridWidth === 9 || thirdLastItem % gridWidth === 9 || fourthLastItem % gridWidth === 9 || fifthLastItem % gridWidth === 9){
+          console.log('array is going over the edge')
+        }
+      } else if (shipClassToAdd.direction === 'vert'){
+        if(lastItemVert >= 99){
+          console.log('gone over the bottom ')
+        }
       }
+
     }
     // console.log('SHIP CLASS TO ADD', shipClassToAdd)
 
