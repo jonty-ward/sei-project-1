@@ -108,8 +108,6 @@ function init(){
 
     console.log('player projected position', playerProjectedPosition)
     
-    //****************************************** LOGIC TO STOP SHIPSS ADDING OVER BOTTOM EDGE - NOT WORKING  */
-    // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge   
       
     shipClassToAdd.array.forEach( array => {       
       for (let i = 0; i < array.length; i++){
@@ -254,23 +252,31 @@ function init(){
       if(shipClassToAdd.direction === 'right'){
         if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
           console.log('array is going over the edge')
-         
+          event.target.classList.add('mouse-hover-invalid')
+        } else {
+          event.target.classList.add('mouse-hover')
         }
       } else if (shipClassToAdd.direction === 'vert'){
         if (lastItemVert >= 99){
           console.log('gone over the bottom ')
+          event.target.classList.add('mouse-hover-invalid')
+        } else{
+          event.target.classList.add('mouse-hover')
         }
       }
-
     }
     // console.log('SHIP CLASS TO ADD', shipClassToAdd)
 
     // console.log('event click =>',eventCLick)
-    event.target.classList.add('mouse-hover')
+    
+    
+  
+        
   }
   function removingPlayerBattleship(event){
     // console.log('this is working')
     event.target.classList.remove('mouse-hover')
+    event.target.classList.remove('mouse-hover-invalid')
   }
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('mouseenter', displayingPlayerBattleship) 
