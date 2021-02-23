@@ -176,7 +176,8 @@ function init(){
       } else {
         shipClassToAdd.array.forEach(array =>{
           for (let i = 0; i < array.length; i++){
-            addingComputerPieces[array].classList.add(compShipStylingToAdd)
+            addingComputerPieces[array].classList.add(addClassOfShip) 
+            addingComputerPieces[array].classList.add(compShipStylingToAdd) 
             
           }
         })        
@@ -246,7 +247,7 @@ function init(){
     if(shipClassToAdd.length > 0){
       // console.log('event.target',event.target)
 
-      
+      // ** consts needed to make sure that player can only add ships if sdhering to certain conditions 
       const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -1))  )
       const secondLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -2))  )
       const thirdLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -3))  )
@@ -260,7 +261,7 @@ function init(){
       const fifthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 5
 
     
-      if(shipClassToAdd.direction === 'right'){
+      if(shipClassToAdd.direction === 'right'){ //*conditions for player placing the ships horizontally 
 
         if (addingPlayerPieces[lastItem].classList.contains('ship') && lastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[secondLastItem].classList.contains('ship') && secondLastItem >= parseFloat(event.target.innerText)  || addingPlayerPieces[thirdLastItem].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItem].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItem].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           event.target.classList.add('mouse-hover-invalid')
@@ -270,15 +271,12 @@ function init(){
         } else {
           event.target.classList.add('mouse-hover')
         }
-      } else if (shipClassToAdd.direction === 'vert'){           //*************** start my work from here!!!!! */
+      } else if (shipClassToAdd.direction === 'vert'){           //* conditions for playe placing ship verically 
 
         if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItemVert].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItemVert].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           console.log('vertical ship category selector ')
           event.target.classList.add('mouse-hover-invalid')
-          
-        }
-
-        if (lastItemVert >= 99){
+        } else if (lastItemVert >= 99){
           console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
         } else{
@@ -286,14 +284,8 @@ function init(){
         }
       }
     }
-    // console.log('SHIP CLASS TO ADD', shipClassToAdd)
-
-    // console.log('event click =>',eventCLick)
-    
-    event.target.classList.add('mouse-hover')
-  
-        
   }
+  //*event listeners for adding and removing players ships
   function removingPlayerBattleship(event){
     // console.log('this is working')
     event.target.classList.remove('mouse-hover')
@@ -306,22 +298,17 @@ function init(){
     click.addEventListener('mouseleave', removingPlayerBattleship) 
   })
 
-
-
-
   //event listener to insert ships on click of a grid square 
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('click', insertingPlayerBattleship) 
   })
 
-  
   //event listeners to insert the correct ship depending on button clicked 
   addCarrierShip.addEventListener('click', handleAddCarriership) //event listener to add battleship
   addBattleship.addEventListener('click', handleAddBattleship) //event listener to add battleship
   addDestroyer.addEventListener('click', handleAddDestroyer) //event listener to add submarine
   addSubmarine.addEventListener('click', handleAddSumbarine) //event listener to add submarine
   addPatrol.addEventListener('click', handleAddPatrol) //event listener to add submarine
-
 
   // functions to flip the axis
   function handleYAxis(){
@@ -333,7 +320,8 @@ function init(){
   //Event Listener for flipping the axis 
   yAxis.addEventListener('click', handleYAxis)
   xAxis.addEventListener('click', handleXAxis)
-  
+
+
 
 
 
@@ -346,19 +334,19 @@ function init(){
   const computerShotAtID = [] //stores the squares that the computer has shot at randomly
   const playerShotAtID = [] //array of squares player has targeted
   // console.log('player shot at id',playerShotAtID)
-  
+
   //* player choosing a computer square 
   
   function shootAtComputer(event){
 
-    const hitShip = null
 
 
     const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
+
     // console.log(chosenAlready)
     if (!chosenAlready){
 
-      if (event.target.classList.contains('place-comp-carriership' ) || event.target.classList.contains('place-comp-battleship' ) || event.target.classList.contains('place-comp-destroyer' ) || event.target.classList.contains('place-comp-submarine' ) || event.target.classList.contains('place-comp-patrol' )){
+      if (event.target.classList.contains('ship' ) ){
         console.log('hit a ship')
         event.target.classList.add('shot-hit')
         playerShotAtID.push(parseFloat(event.target.innerHTML))
