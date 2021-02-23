@@ -68,6 +68,7 @@ function init(){
   //*inserting the piece 
   let shipClassToAdd = [] // this can be changed based on the button clicked
   let shipStylingToAdd = ''
+  let addClassOfShip = ''
   let compShipStylingToAdd = ''
   
   
@@ -118,11 +119,12 @@ function init(){
       
     shipClassToAdd.array.forEach( array => {       
       for (let i = 0; i < array.length; i++){
+        addingPlayerPieces[array[i]].classList.add(addClassOfShip)
         addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
       }
     })
     addComputerShips()
-    shipClassToAdd = null
+    shipClassToAdd = 0
   }
   //* ADDING COMPUTER SHIPS
   let computerShipPosition = [] //keeps track of the computers ships positions 
@@ -191,6 +193,7 @@ function init(){
   function handleAddCarriership(){    //refactor this code- very messy 
     shipClassToAdd = playerCarriership
     shipStylingToAdd = 'place-carriership'
+    addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-carriership'
     addCarrierShip.classList.add('hidden')
     
@@ -198,6 +201,7 @@ function init(){
   function handleAddBattleship(){
     shipClassToAdd = playerBattleship
     shipStylingToAdd = 'place-battleship'
+    addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-battleship'
     addBattleship.classList.add('hidden')
     
@@ -205,18 +209,21 @@ function init(){
   function handleAddDestroyer(){    
     shipClassToAdd = playerDestroyer
     shipStylingToAdd = 'place-destroyer'
+    addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-destroyer'
     addDestroyer.classList.add('hidden')
   }
   function handleAddSumbarine(){    
     shipClassToAdd = playerSubmarine
     shipStylingToAdd = 'place-submarine'
+    addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-submarine'
     addSubmarine.classList.add('hidden')
   }
   function handleAddPatrol(){    
     shipClassToAdd = playerPatrol
     shipStylingToAdd = 'place-patrol'
+    addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-patrol'
     addPatrol.classList.add('hidden')
     
@@ -233,6 +240,7 @@ function init(){
   
 
   function displayingPlayerBattleship(event){ //***** this contains the logic to prevent the players ships going over the bottom/side borders */ 
+    event.target.classList.add('mouse-hover')
     // console.log('this is working')
     // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]
     if(shipClassToAdd.length > 0){
@@ -240,26 +248,36 @@ function init(){
 
       
       const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -1))  )
+      const secondLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -2))  )
+      const thirdLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -3))  )
+      const fourthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -4))  )
+      const fifthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -5))  )
       // console.log(lastItemVert)
+      const lastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 1
       const secondLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 2
       const thirdLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 3
       const fourthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 4
       const fifthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 5
 
-
-
+    
       if(shipClassToAdd.direction === 'right'){
 
-      console.log('player location',addingPlayerPieces[secondLastItem]) //*************** start my work from here!!!!! */
-
-
-        if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
+        if (addingPlayerPieces[lastItem].classList.contains('ship') && lastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[secondLastItem].classList.contains('ship') && secondLastItem >= parseFloat(event.target.innerText)  || addingPlayerPieces[thirdLastItem].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItem].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItem].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
+          event.target.classList.add('mouse-hover-invalid')
+        } else if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
           console.log('array is going over the edge')
           event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
         }
-      } else if (shipClassToAdd.direction === 'vert'){
+      } else if (shipClassToAdd.direction === 'vert'){           //*************** start my work from here!!!!! */
+
+        if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship')|| addingPlayerPieces[fourthLastItemVert].classList.contains('ship') || addingPlayerPieces[fifthLastItemVert].classList.contains('ship')){
+          console.log('vertical ship category selector ')
+          event.target.classList.add('mouse-hover-invalid')
+          
+        }
+
         if (lastItemVert >= 99){
           console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
