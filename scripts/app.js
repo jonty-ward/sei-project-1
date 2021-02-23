@@ -90,7 +90,14 @@ function init(){
   //*Adding the players ships 
 
 
+
   function insertingPlayerBattleship (event){ //function to place the ships 
+
+    if(event.target.classList.contains('mouse-hover-invalid')) //*logic to prevent the ship being added if it is in the wrong place!
+    {
+      // console.log('CANT PUT A SHIP HERE!! ')
+      return insertingPlayerBattleship()
+    }
     const arrayStarrtingPoint = []
     let vertOrHoriz = 0
     const playerProjectedPosition = []
@@ -114,13 +121,8 @@ function init(){
         addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
       }
     })
-      
-     
-
-    
     addComputerShips()
     shipClassToAdd = null
-    
   }
   //* ADDING COMPUTER SHIPS
   let computerShipPosition = [] //keeps track of the computers ships positions 
