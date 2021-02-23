@@ -417,9 +417,11 @@ function init(){
     if (!chosenAlready){ //If statement runs function again if random number has been chocen before
       targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
       computerShotAtID.push(targetRandomPlayerCell)
-      if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){
+      if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
         targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
         console.log('computer has hit a players ship')
+
+        //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
           playerCarriershipLives--
           if (playerCarriershipLives === 0){
