@@ -422,71 +422,67 @@ function init(){
 
 
 
-
-
   function shootAtPlayer(){
-
-
-    if (possibleArrayPositions !== null){
-      if (possibleArrayPositions.length === 4){
+    if (possibleArrayPositions !== null){ //* logic that prevents the random aspec of the function running if possible array positions contains a value (which it will do when the computer has hit a ship)
+      if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         console.log('the seccond step of the computers logic is selected!') 
-        //this logic needs to be in the main function so that when the function runs, it is checking to see if we have a hit before randomly choosing 
 
-      }
-
-    }
-
-
-
-
-    const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
-    targetRandomPlayerCellGlobal = targetRandomPlayerCell
-    const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
-    if (!chosenAlready){ //If statement runs function again if random number has been chocen before
-      targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
-      computerShotAtID.push(targetRandomPlayerCell)
-      if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
-        targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
-        console.log('computer has hit a players ship')
-
-        //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
-        if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
-          playerCarriershipLives-- // decrease lives of this ship
-          if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
-            createFirstChoiceArray()
-          } 
-
-          if (playerCarriershipLives === 0){
-            console.log('players carrier ship has been destroyed ')
-          }
-        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-battleship')){
-          playerBattleshipLives--
-          if (playerBattleshipLives === 0){
-            console.log('players battleship has been destroyed ')
-          }
-        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-destroyer')){
-          playerDestroyerLives--
-          if (playerDestroyerLives === 0){
-            console.log('players destroyer has been destroyed ')
-            
-          }
-        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
-          playerSubmarineLives--
-          if (playerSubmarineLives === 0){
-            console.log('players submarine has been destroyed ')
-          }
-        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-patrol')){
-          playerPatrolLives--
-          if (playerPatrolLives === 0){
-            console.log('players patrol ship has been destroyed ')
-          }
-        }
+        //randomly choose an item from the created array
       }
     } else {
-      // console.log('already taken')
-      return shootAtPlayer()
+      const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
+      targetRandomPlayerCellGlobal = targetRandomPlayerCell
+      const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
+      if (!chosenAlready){ //If statement runs function again if random number has been chocen before
+        targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
+        computerShotAtID.push(targetRandomPlayerCell)
+        if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
+          targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
+          console.log('computer has hit a players ship')
+  
+          //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
+          if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
+            playerCarriershipLives-- // decrease lives of this ship
+            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+              createFirstChoiceArray()
+            } 
+  
+            if (playerCarriershipLives === 0){
+              console.log('players carrier ship has been destroyed ')
+            }
+          } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-battleship')){
+            playerBattleshipLives--
+            if (playerBattleshipLives === 0){
+              console.log('players battleship has been destroyed ')
+            }
+          } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-destroyer')){
+            playerDestroyerLives--
+            if (playerDestroyerLives === 0){
+              console.log('players destroyer has been destroyed ')
+              
+            }
+          } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
+            playerSubmarineLives--
+            if (playerSubmarineLives === 0){
+              console.log('players submarine has been destroyed ')
+            }
+          } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-patrol')){
+            playerPatrolLives--
+            if (playerPatrolLives === 0){
+              console.log('players patrol ship has been destroyed ')
+            }
+          }
+        }
+      } else {
+        // console.log('already taken')
+        return shootAtPlayer()
+      }
+
     }
-  }
+
+
+    
+  } //this is the badger!
   targetComputerCell.forEach(button =>{
     button.addEventListener('click',shootAtComputer)  //****************reactivate shooting here  */
   })
