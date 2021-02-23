@@ -363,38 +363,27 @@ function init(){
           if (compCarriership === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('carrier ship dead ')
           }
-        
         } else if (event.target.classList.contains('place-comp-battleship')){
           compBattleship--
           if (compBattleship === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('BATTLESHIP dead ')
           }
-        
-
         } else if (event.target.classList.contains('place-comp-destroyer')){
           compDestroyer--
           if (compDestroyer === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('destroyer dead ')
           }
-        
-
         } else if (event.target.classList.contains('place-comp-submarine')){
           compSubmarine--
           if (compSubmarine === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('carrier ship dead ')
           }
-        
-
         } else if (event.target.classList.contains('place-comp-patrol')){
           compPatrol--
           if (compPatrol === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('partol ship dead ')
           }
-        
-
         }
-
-
       } else {
         event.target.classList.add('shot-miss') 
         playerShotAtID.push(parseFloat(event.target.innerHTML))
@@ -412,13 +401,52 @@ function init(){
   }
   //*computer randomly shoots at player after every click 
 
-  //****** this will need a lot more logic with regards to hitting a ship  */
+  //* the consts for the players ships lives 
+  let playerCarriershipLives = 5 
+  let playerBattleshipLives = 4
+  let playerDestroyerLives = 3
+  let playerSubmarineLives = 3
+  let playerPatrolLives = 2
+
+
+
+
   function shootAtPlayer(){
     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
     const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
     if (!chosenAlready){ //If statement runs function again if random number has been chocen before
       targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
       computerShotAtID.push(targetRandomPlayerCell)
+      if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){
+        targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
+        console.log('computer has hit a players ship')
+        if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
+          playerCarriershipLives--
+          if (playerCarriershipLives === 0){
+            console.log('players carrier ship has been destroyed ')
+          }
+        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-battleship')){
+          playerBattleshipLives--
+          if (playerBattleshipLives === 0){
+            console.log('players battleship has been destroyed ')
+          }
+        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-destroyer')){
+          playerDestroyerLives--
+          if (playerDestroyerLives === 0){
+            console.log('players destroyer has been destroyed ')
+          }
+        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
+          playerSubmarineLives--
+          if (playerSubmarineLives === 0){
+            console.log('players submarine has been destroyed ')
+          }
+        } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-patrol')){
+          playerPatrolLives--
+          if (playerPatrolLives === 0){
+            console.log('players patrol ship has been destroyed ')
+          }
+        }
+      }
     } else {
       // console.log('already taken')
       return shootAtPlayer()
