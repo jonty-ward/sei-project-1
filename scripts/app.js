@@ -438,8 +438,11 @@ function init(){
         //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
           playerCarriershipLives-- // decrease lives of this ship
-          if(possibleArrayPositions === null){
+          if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
             createFirstChoiceArray()
+          } else if (targetRandomPlayerCellGlobal.length = 4){
+            console.log('the seccond step of the computers logic is selected!')
+
           }
 
           if (playerCarriershipLives === 0){
