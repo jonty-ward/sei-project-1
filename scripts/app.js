@@ -66,9 +66,11 @@ function init(){
 
 
   //*inserting the piece 
-  let shipClassToAdd = null // this can be changed based on the button clicked
+  let shipClassToAdd = [] // this can be changed based on the button clicked
   let shipStylingToAdd = ''
   let compShipStylingToAdd = ''
+  
+  
 
   // let shipStylingToHover = '' // used this to try and get the styling to work on hover- populated the whole grid! 
   
@@ -106,32 +108,21 @@ function init(){
 
     console.log('player projected position', playerProjectedPosition)
     
-
-
     //****************************************** LOGIC TO STOP SHIPSS ADDING OVER BOTTOM EDGE - NOT WORKING  */
-    const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
-    if (lastItemInArray > 99){    // stops the ships from going over the bottom edge
-      console.log('gone over the edge, try again! ')
-      return vertOrHoriz = 1
+    // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge   
+      
+    shipClassToAdd.array.forEach( array => {       
+      for (let i = 0; i < array.length; i++){
+        addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+      }
+    })
       
      
-      
-
-    } else {
-      shipClassToAdd.array.forEach( array => {       
-        for (let i = 0; i < array.length; i++){
-          addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
-        }
-      })
-      
-
-
-      addComputerShips()
-    }
 
     
+    addComputerShips()
     shipClassToAdd = null
-
+    
   }
   //* ADDING COMPUTER SHIPS
   let computerShipPosition = [] //keeps track of the computers ships positions 
@@ -157,7 +148,7 @@ function init(){
         shipToVert = 1
       }
       for ( i = 0; i < shipClassToAdd.length; i ++){    
-        if(computerShipPosition.includes(randomShipStart + (i * shipToVert))){
+        if(computerShipPosition.includes(randomShipStart + (i * shipToVert))){ //*code to prevent ships from stacking on computer grid
           console.log('ships are intersecting')
           return addComputerShips ()
         } else {
@@ -168,10 +159,9 @@ function init(){
 
         }
         
-
       }
       
-      const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
+      const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge //this could be a lot cleaner with a loop
       const seccondLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 2)])
       const thirdLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 3)])
       const fourthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 4)])
@@ -236,12 +226,38 @@ function init(){
     click.addEventListener('click', insertingPlayerBattleship) 
   })
 
-  //this is the function for hovering over the board- dont know how to add the ship to this wihtout blocking up the whole grid! 
-  function displayingPlayerBattleship(){
-    console.log('this is working')
+  //this is the function for hovering over the board- //****need to be able to add the whole ship ************* WORKING HERE ******
+
+  // const lastItemInArray =  shipClassToAdd.array[ (shipClassToAdd.array.length - 1) ]
+
+  
+  
+  
+
+  function displayingPlayerBattleship(event){
+    // console.log('this is working')
+    // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]
+    if(shipClassToAdd.length > 0){
+      // console.log('event.target',event.target)
+      const secondLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 2
+      // console.log('last tiem ',secondLastItem)
+      if (secondLastItem % gridWidth === 9){
+        console.log('array is going over the edge')
+      }
+    }
+    // console.log('SHIP CLASS TO ADD', shipClassToAdd)
+
+    event.target.classList.add('mouse-hover')
+  }
+  function removingPlayerBattleship(event){
+    // console.log('this is working')
+    event.target.classList.remove('mouse-hover')
   }
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('mouseenter', displayingPlayerBattleship) 
+  })
+  addingPlayerPieces.forEach(click =>{    
+    click.addEventListener('mouseleave', removingPlayerBattleship) 
   })
   
   //event listeners to insert the correct ship depending on button clicked 
@@ -266,45 +282,7 @@ function init(){
 
 
 
-  
 
-
- 
-
-
-
-
-
-
-  
-  
-
-  
-  
-
-
-
-
-
-
-  //*adding ths ship to the player grid 
-
-  // make sure this is dry code
-
-  // function addShip(){ //*potential to add an input so this, and loop through the different ships eg addShip(ship), and pass in the ship vairable in a loop? 
-
-  //   playerCells[5].classList.add(battleship)
-    
-  // }
-
-
-  
-
-
-
-
-
- 
 
   //* consts for shooting 
   const targetComputerCell = document.querySelectorAll('.computerCell')
@@ -319,8 +297,6 @@ function init(){
   function shootAtComputer(event){
 
     const hitShip = null
-
-
 
 
     const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
