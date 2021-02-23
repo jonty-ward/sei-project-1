@@ -425,6 +425,20 @@ function init(){
 
 
   function shootAtPlayer(){
+
+
+    if (possibleArrayPositions !== null){
+      if (possibleArrayPositions.length === 4){
+        console.log('the seccond step of the computers logic is selected!') 
+        //this logic needs to be in the main function so that when the function runs, it is checking to see if we have a hit before randomly choosing 
+
+      }
+
+    }
+
+
+
+
     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
     targetRandomPlayerCellGlobal = targetRandomPlayerCell
     const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
@@ -440,10 +454,7 @@ function init(){
           playerCarriershipLives-- // decrease lives of this ship
           if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
             createFirstChoiceArray()
-          } else if (targetRandomPlayerCellGlobal.length = 4){
-            console.log('the seccond step of the computers logic is selected!')
-
-          }
+          } 
 
           if (playerCarriershipLives === 0){
             console.log('players carrier ship has been destroyed ')
