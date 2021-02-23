@@ -221,39 +221,43 @@ function init(){
     addPatrol.classList.add('hidden')
     
   }
-  //event listener to insert ships on click of a grid square 
-  addingPlayerPieces.forEach(click =>{    
-    click.addEventListener('click', insertingPlayerBattleship) 
-  })
+
 
   //this is the function for hovering over the board- //****need to be able to add the whole ship ************* WORKING HERE ******
 
   // const lastItemInArray =  shipClassToAdd.array[ (shipClassToAdd.array.length - 1) ]
 
   
+
   
   
 
-  function displayingPlayerBattleship(event){
+  function displayingPlayerBattleship(event){ //***** this contains the logic to prevent the players ships going over the bottom/side borders */ 
     // console.log('this is working')
     // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]
     if(shipClassToAdd.length > 0){
       // console.log('event.target',event.target)
 
-      // const lastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 1
+      
       const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -1))  )
       // console.log(lastItemVert)
       const secondLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 2
       const thirdLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 3
       const fourthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 4
       const fifthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 5
+
+      // if( event.target.classList.contains('place-carriership')){
+      //   console.log('contains carriership')
+      // }
+
       // console.log('last tiem ',secondLastItem)
       if(shipClassToAdd.direction === 'right'){
-        if (secondLastItem % gridWidth === 9 || thirdLastItem % gridWidth === 9 || fourthLastItem % gridWidth === 9 || fifthLastItem % gridWidth === 9){
+        if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
           console.log('array is going over the edge')
+         
         }
       } else if (shipClassToAdd.direction === 'vert'){
-        if(lastItemVert >= 99){
+        if (lastItemVert >= 99){
           console.log('gone over the bottom ')
         }
       }
@@ -261,6 +265,7 @@ function init(){
     }
     // console.log('SHIP CLASS TO ADD', shipClassToAdd)
 
+    // console.log('event click =>',eventCLick)
     event.target.classList.add('mouse-hover')
   }
   function removingPlayerBattleship(event){
@@ -273,6 +278,15 @@ function init(){
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('mouseleave', removingPlayerBattleship) 
   })
+
+
+
+
+  //event listener to insert ships on click of a grid square 
+  addingPlayerPieces.forEach(click =>{    
+    click.addEventListener('click', insertingPlayerBattleship) 
+  })
+
   
   //event listeners to insert the correct ship depending on button clicked 
   addCarrierShip.addEventListener('click', handleAddCarriership) //event listener to add battleship
