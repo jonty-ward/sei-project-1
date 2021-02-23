@@ -447,6 +447,12 @@ function init(){
           //*********************************** checking for a vertical match works!  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10){
             // console.log('this is a vertical match') 
+
+
+
+            //******************************CONTINUE FROM HERE WITH THE LOGIC **********************/
+            //**********Adding conditions to check which direction to create the new array (is it +10 and -20 or is is +20 and -10) */
+
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
               console.log('this is the positive match === +10 ')
 
