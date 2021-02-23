@@ -409,7 +409,9 @@ function init(){
   let playerPatrolLives = 2
 
   //* arrays for non-random shooting from computer 
+  let originalArrayPosition = null
   let possibleArrayPositions = null
+  
   let targetRandomPlayerCellGlobal = null
   
 
@@ -417,8 +419,9 @@ function init(){
   //*functions for non-rnadom computer shooting 
 
   function createFirstChoiceArray (){
+    originalArrayPosition = targetRandomPlayerCellGlobal
     possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ]  //Logic to create an array of possible options 
-    console.log('possible array postions', possibleArrayPositions)
+    // console.log('possible array postions', possibleArrayPositions)
   }
 
 
@@ -437,18 +440,40 @@ function init(){
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
-          possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
+          // possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
+
+           
+
+          //*********************************** checking for a vertical match works!  */
+          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10){
+            console.log('this is a vertical match') 
+
+          }
+
+          //* it its a hit:
+          //* need to check the direction of the ship that it has hit- this will dictate the logic
+          //if original array -current array ===10 || original array - current array === -10; else ... 
+          //if original array -current array === 10 do this 
+          //else if original array -current array === -10 do that
+          //similar logic for the horizontal 
+          
+          // need a const for the original hit from the sequence 
+
+          //*if ship is vertical: new array of the position that has just been hit 
+          //*if the ship is vertical: new array of the randomly selected position 
+
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
         }
         //randomly choose an item from the created array
+        // console.log('original array position', originalArrayPosition)
       }
     } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
       targetRandomPlayerCellGlobal = targetRandomPlayerCell
       const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
-      if (!chosenAlready){ //If statement runs function again if random number has been chocen before
+      if (!chosenAlready){ //If statement runs function again if random number has been chosen before
         targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
         computerShotAtID.push(targetRandomPlayerCell)
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
@@ -460,6 +485,7 @@ function init(){
             playerCarriershipLives-- // decrease lives of this ship
             if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
+              
             } 
   
             if (playerCarriershipLives === 0){
