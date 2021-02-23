@@ -272,7 +272,7 @@ function init(){
         }
       } else if (shipClassToAdd.direction === 'vert'){           //*************** start my work from here!!!!! */
 
-        if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship')|| addingPlayerPieces[fourthLastItemVert].classList.contains('ship') || addingPlayerPieces[fifthLastItemVert].classList.contains('ship')){
+        if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItemVert].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItemVert].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           console.log('vertical ship category selector ')
           event.target.classList.add('mouse-hover-invalid')
           
