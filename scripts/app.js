@@ -346,10 +346,29 @@ function init(){
     // console.log(chosenAlready)
     if (!chosenAlready){
 
-      if (event.target.classList.contains('ship' ) ){
+      if (event.target.classList.contains('ship' ) ){   //if statement for if player hits hip to change colour 
         console.log('hit a ship')
         event.target.classList.add('shot-hit')
         playerShotAtID.push(parseFloat(event.target.innerHTML))
+        
+        if (event.target.classList.contains('place-comp-carriership')){
+          console.log('hit the carrier ship ')
+          
+        } else if (event.target.classList.contains('place-comp-battleship')){
+          console.log('hit the battle ship ')
+
+        } else if (event.target.classList.contains('place-comp-destroyer')){
+          console.log('hit the destroyer ')
+
+        } else if (event.target.classList.contains('place-comp-submarine')){
+          console.log('hit the submarine')
+
+        } else if (event.target.classList.contains('place-comp-patrol')){
+          console.log('hit the patrol ')
+
+        }
+
+
       } else {
         event.target.classList.add('shot-miss') 
         playerShotAtID.push(parseFloat(event.target.innerHTML))

@@ -95,11 +95,6 @@ padding: 30px;
 .hover-ship:hover{
   background-color: red;
 }
-/* shooting at computer  */
-
-.shot-miss{
-  background-color: red;
-}
 
 
 
@@ -126,15 +121,21 @@ padding: 30px;
 }
 
 
-.shot-hit{
-  background-color: black;
-}
-
 .mouse-hover{
   background-color:rgb(12, 202, 12);
 }
 .mouse-hover-invalid{
-  background-color: red;
+  background-color: rgb(12, 1, 1);
 }
 
 
+/* shooting at computer  */
+
+.shot-miss{
+  background-color: rgb(27, 43, 136);
+}
+
+
+.shot-hit{
+  background-color: black;
+}
