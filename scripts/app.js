@@ -446,7 +446,14 @@ function init(){
 
           //*********************************** checking for a vertical match works!  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10){
-            console.log('this is a vertical match') 
+            // console.log('this is a vertical match') 
+            if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
+              console.log('this is the positive match === +10 ')
+
+            } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
+              console.log('this is the negative match === -10 ')
+
+            }
 
           }
 
@@ -467,7 +474,7 @@ function init(){
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
         }
         //randomly choose an item from the created array
-        // console.log('original array position', originalArrayPosition)
+        console.log('original array position', originalArrayPosition)
       }
     } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
