@@ -409,13 +409,24 @@ function init(){
   let playerPatrolLives = 2
 
   //* arrays for non-random shooting from computer 
-  let possibleArrayPositions = []
+  let possibleArrayPositions = null
+  let targetRandomPlayerCellGlobal = null
+
+
+  //*functions for non-rnadom computer shooting 
+
+  function createFirstChoiceArray (){
+    possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ]  //Logic to create an array of possible options 
+    console.log('possible array postions', possibleArrayPositions)
+  }
+
 
 
 
 
   function shootAtPlayer(){
     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
+    targetRandomPlayerCellGlobal = targetRandomPlayerCell
     const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
     if (!chosenAlready){ //If statement runs function again if random number has been chocen before
       targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
@@ -426,9 +437,11 @@ function init(){
 
         //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
-          playerCarriershipLives--
-          possibleArrayPositions = [(targetRandomPlayerCell + 1), (targetRandomPlayerCell - 1), (targetRandomPlayerCell + gridWidth), (targetRandomPlayerCell - gridWidth) ]
-          console.log('possible array postions', possibleArrayPositions)
+          playerCarriershipLives-- // decrease lives of this ship
+          if(possibleArrayPositions === null){
+            createFirstChoiceArray()
+          }
+
           if (playerCarriershipLives === 0){
             console.log('players carrier ship has been destroyed ')
           }
