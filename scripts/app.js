@@ -405,8 +405,11 @@ function init(){
   let playerCarriershipLives = 5 
   let playerBattleshipLives = 4
   let playerDestroyerLives = 3
-  let playerSubmarineLives = 3
+  let playerSubmarineLives = 3      
   let playerPatrolLives = 2
+
+  //* arrays for non-random shooting from computer 
+  let possibleArrayPositions = []
 
 
 
@@ -424,6 +427,8 @@ function init(){
         //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
           playerCarriershipLives--
+          possibleArrayPositions = [(targetRandomPlayerCell + 1), (targetRandomPlayerCell - 1), (targetRandomPlayerCell + gridWidth), (targetRandomPlayerCell - gridWidth) ]
+          console.log('possible array postions', possibleArrayPositions)
           if (playerCarriershipLives === 0){
             console.log('players carrier ship has been destroyed ')
           }
@@ -436,6 +441,7 @@ function init(){
           playerDestroyerLives--
           if (playerDestroyerLives === 0){
             console.log('players destroyer has been destroyed ')
+            
           }
         } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
           playerSubmarineLives--
