@@ -246,12 +246,13 @@ function init(){
       const fourthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 4
       const fifthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 5
 
-      // if( event.target.classList.contains('place-carriership')){
-      //   console.log('contains carriership')
-      // }
 
-      // console.log('last tiem ',secondLastItem)
+
       if(shipClassToAdd.direction === 'right'){
+
+      console.log('player location',addingPlayerPieces[secondLastItem]) //*************** start my work from here!!!!! */
+
+
         if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
           console.log('array is going over the edge')
           event.target.classList.add('mouse-hover-invalid')
@@ -271,7 +272,7 @@ function init(){
 
     // console.log('event click =>',eventCLick)
     
-    
+    event.target.classList.add('mouse-hover')
   
         
   }
