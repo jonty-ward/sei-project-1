@@ -335,11 +335,17 @@ function init(){
   const playerShotAtID = [] //array of squares player has targeted
   // console.log('player shot at id',playerShotAtID)
 
+  //* consts for computer ships lives 
+
+  let compCarriership = 5 
+  let compBattleship = 4
+  let compDestroyer = 3
+  let compSubmarine = 3
+  let compPatrol = 2
+
   //* player choosing a computer square 
   
   function shootAtComputer(event){
-
-
 
     const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
 
@@ -351,20 +357,40 @@ function init(){
         event.target.classList.add('shot-hit')
         playerShotAtID.push(parseFloat(event.target.innerHTML))
         
-        if (event.target.classList.contains('place-comp-carriership')){
-          console.log('hit the carrier ship ')
-          
+        if (event.target.classList.contains('place-comp-carriership')){  //*series of if statements to determine what ship has been hit 
+          compCarriership--
+          //can add messags in here - you have hit the enemyss battleship etc. 
+          if (compCarriership === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
+            console.log('carrier ship dead ')
+          }
+        
         } else if (event.target.classList.contains('place-comp-battleship')){
-          console.log('hit the battle ship ')
+          compBattleship--
+          if (compBattleship === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
+            console.log('BATTLESHIP dead ')
+          }
+        
 
         } else if (event.target.classList.contains('place-comp-destroyer')){
-          console.log('hit the destroyer ')
+          compDestroyer--
+          if (compDestroyer === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
+            console.log('destroyer dead ')
+          }
+        
 
         } else if (event.target.classList.contains('place-comp-submarine')){
-          console.log('hit the submarine')
+          compSubmarine--
+          if (compSubmarine === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
+            console.log('carrier ship dead ')
+          }
+        
 
         } else if (event.target.classList.contains('place-comp-patrol')){
-          console.log('hit the patrol ')
+          compPatrol--
+          if (compPatrol === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
+            console.log('partol ship dead ')
+          }
+        
 
         }
 
