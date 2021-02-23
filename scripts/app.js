@@ -411,6 +411,7 @@ function init(){
   //* arrays for non-random shooting from computer 
   let possibleArrayPositions = null
   let targetRandomPlayerCellGlobal = null
+  
 
 
   //*functions for non-rnadom computer shooting 
@@ -425,11 +426,29 @@ function init(){
   function shootAtPlayer(){
     if (possibleArrayPositions !== null){ //* logic that prevents the random aspec of the function running if possible array positions contains a value (which it will do when the computer has hit a ship)
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
+        const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
         console.log('the seccond step of the computers logic is selected!') 
+
+
+        if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
+          console.log('youve hit the seccond square on my ship!')
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
+        } else {
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
+          
+        }
+        
+        
+        
+
+
+        // ***randomly select one of the possible arrays  
+        //***** THEN: */
+        //**** TWO if statements depending on the result. 
 
         //randomly choose an item from the created array
       }
-    } else {
+    } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
       targetRandomPlayerCellGlobal = targetRandomPlayerCell
       const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
