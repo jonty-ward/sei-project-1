@@ -413,6 +413,11 @@ function init(){
   let possibleArrayPositions = null
   
   let targetRandomPlayerCellGlobal = null
+
+
+  //* storing the randomly shot at div
+  let thisIsWhatINeedToTest = null
+  
   
 
 
@@ -441,10 +446,31 @@ function init(){
 
 
 
+  
+  
+
   function shootAtPlayer(){
+    // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
+
+    
     if (possibleArrayPositions !== null){ 
 
-
+      if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
+        playerCarriershipLives--
+        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
+      }  else if ( thisIsWhatINeedToTest.classList.contains('place-battleship')){
+        playerBattleshipLives--
+        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerBattleshipLives)
+      }  else if ( thisIsWhatINeedToTest.classList.contains('place-destroyer')){
+        playerDestroyerLives--
+        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerDestroyerLives)
+      }  else if ( thisIsWhatINeedToTest.classList.contains('place-submarine')){
+        playerSubmarineLives--
+        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerSubmarineLives)
+      }  else if ( thisIsWhatINeedToTest.classList.contains('place-patrol')){
+        playerPatrolLives--
+        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
+      }  
 
 
       //need togic to check if any of the adjacent squares already contain the SHOT-MISS class, and update the array accordingly 
@@ -455,8 +481,12 @@ function init(){
       
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
-        console.log('the seccond step of the computers logic is selected!') 
-        console.log('target likely random player cell',targetLikelyRandomPlayerCell)
+        // console.log('the seccond step of the computers logic is selected!') 
+        // console.log('target likely random player cell',targetLikelyRandomPlayerCell)
+        
+
+        thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
+        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
 
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
@@ -467,28 +497,29 @@ function init(){
           //*********************************** checking for a vertical match works!  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
 
-            playerCarriershipLives--
-            console.log('playercarrier ship lives =====>>>>>', playerCarriershipLives)
-
-
-            //* creting a new array if the next smart shot is a hit (vertical ) THIS DOENTS WORK! NEEDS TO BE IF HIT...
+            
+            //**************** create a function that i can add to this location in all the arguments that tracks lives *************/
+            
+            
+            //* creting a new array if the next smart shot is a hit (vertical ) 
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
-              console.log('this is the positive match === +10 ')
+              // console.log('this is the positive match === +10 ')
               possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
-              console.log('new array positions (2 options)', possibleArrayPositions)
+              // console.log('new array positions (2 options)', possibleArrayPositions)
             } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
-              console.log('this is the negative match === -10 ')
+              // console.log('this is the negative match === -10 ')
               possibleArrayPositions = [originalArrayPosition + 20 ,  originalArrayPosition - 10]
-              console.log('new array positions (2 options)', possibleArrayPositions)
+              // console.log('new array positions (2 options)', possibleArrayPositions)
             }
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')) {
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
-              console.log('the adjacent square is to the left')
+              // console.log('the adjacent square is to the left')
               possibleArrayPositions = [originalArrayPosition - 2 ,  originalArrayPosition + 1]
             } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === -1){
-              console.log('the adjacent square is to the right')
+              // console.log('the adjacent square is to the right')
               possibleArrayPositions = [originalArrayPosition + 2 ,  originalArrayPosition - 1]
             } 
+
           }
         } else {
           //logic here is flawed- it doesn not work for miss left or miss bottom 
@@ -499,88 +530,98 @@ function init(){
         }
         //randomly choose an item from the created array
         
-        console.log('original array position', originalArrayPosition)
-        console.log('new array positions ', possibleArrayPositions)
+        // console.log('original array position', originalArrayPosition)
+        // console.log('new array positions ', possibleArrayPositions)
         
       } else if (possibleArrayPositions.length === 3 ){ // logic for if the array contains three numbers 
 
-        const targetLikelyRandomPlayerCell3 = Math.floor(Math.random() * 3)
+        const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 3)
         // console.log('the seccond step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell3)
+
+        thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
+        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
-        if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship')){
-          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.add('shot-hit')
+        if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
           // possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
 
-          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship')){
+          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
             
-            if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML)  === 10){
+            if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
               console.log('this is the positive match === +10 ')
               possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
-              console.log('new array positions (2 options)', possibleArrayPositions)
-            } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML)  === -10){
+              // console.log('new array positions (2 options)', possibleArrayPositions)
+            } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
               console.log('this is the negative match === -10 ')
               possibleArrayPositions = [originalArrayPosition + 20 ,  originalArrayPosition - 10]
-              console.log('new array positions (2 options)', possibleArrayPositions)
+              // console.log('new array positions (2 options)', possibleArrayPositions)
             }
 
-          } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML) - originalArrayPosition === 1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML) - originalArrayPosition === -1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship')) {
+          } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')) {
 
-            if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML) === 1){
-              console.log('the adjacent square is to the left')
+            if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
+              // console.log('the adjacent square is to the left')
               possibleArrayPositions = [originalArrayPosition - 2 ,  originalArrayPosition + 1]
-            } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].innerHTML) === -1){
-              console.log('the adjacent square is to the right')
+            } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === -1){
+              // console.log('the adjacent square is to the right')
               possibleArrayPositions = [originalArrayPosition + 2 ,  originalArrayPosition - 1]
             } 
           }
         } else {
-          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.add('shot-miss')
-          possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
-          console.log('possible array positions hit miss miss', possibleArrayPositions)
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
+          possibleArrayPositions.splice(targetLikelyRandomPlayerCell, 1 )
+          // console.log('possible array positions hit miss miss', possibleArrayPositions)
         }
 
         //***********************logic for is the array has a length of two */
       } else if ( possibleArrayPositions.length === 2){ //logic for array of length 2
-        const targetLikelyRandomPlayerCell2 = Math.floor(Math.random() * 2)
+        const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 2)
         // console.log('the 2.LENGTH step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell2)
+        thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
+        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
-        if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
-          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.add('shot-hit')
+        if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
  
           //******this checks if the ship is vertical or horizontal  */
-          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
+          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
 
-            if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 10) {
-              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
+            if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  >= 10) {
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) + 10))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
-            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10){
-              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 10))
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  < 10){
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - 10))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
-          } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')) {
+          } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')) {
 
-            if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10 ) {
-              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 1))
+            if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  < 10 ) {
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) + 1))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
 
-            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= -9 ){
-              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 1))
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  >= -9 ){
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - 1))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
           }
         } else {
-          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.add('shot-miss')
-          possibleArrayPositions.splice(targetLikelyRandomPlayerCell2, 1 )
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
+          possibleArrayPositions.splice(targetLikelyRandomPlayerCell, 1 )
           console.log('possible array positions after length of 2', possibleArrayPositions)
         }
+        //**************final part of the logic  */
       } else if (possibleArrayPositions.length === 1){
+
+        thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions]
+        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
         if (targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions].classList.add('shot-hit')
           if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
-            // console.log('this is a vertical ship!!')
+            
+            
 
             if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 10){
               possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 10]
@@ -599,14 +640,18 @@ function init(){
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER -1 ', possibleArrayPositions)
             }
           }
+            
         } else {
           targetPlayerCell[possibleArrayPositions].classList.add('shot-miss')
           possibleArrayPositions = null
+
           console.log('possible array positions after length of 2', possibleArrayPositions)
         }
       }
 
     }  else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
+
+      
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
       targetRandomPlayerCellGlobal = targetRandomPlayerCell
       const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
@@ -616,14 +661,19 @@ function init(){
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
           targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
           console.log('computer has hit a players ship')
+
+          thisIsWhatINeedToTest = targetPlayerCell[targetRandomPlayerCell]
+        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
+
+          
+          
   
           //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
 
-        
-          
+
           if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
             playerCarriershipLives-- // decrease lives of this ship
-            // console.log('THIS IS SHOWING CARRIER SHIPS LIVES', playerCarriershipLives)
+            console.log('THIS IS SHOWING CARRIER SHIPS LIVES', playerCarriershipLives)
             if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
