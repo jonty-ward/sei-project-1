@@ -434,20 +434,17 @@ function init(){
     if (!targetPlayerCell[targetRandomPlayerCellGlobal - gridWidth].classList.contains('shot-miss')){
       possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
     }
-    
-    
-
-    
-    
-
-    //Logic to create an array of possible options 
-    // console.log('possible array postions', possibleArrayPositions)
+  
+    //Logic to create an array of possible options
+    console.log('possible array postions', possibleArrayPositions)
   }
 
 
 
   function shootAtPlayer(){
-    if (possibleArrayPositions !== null){ //* logic that prevents the random aspec of the function running if possible array positions contains a value (which it will do when the computer has hit a ship)
+    if (possibleArrayPositions !== null){ 
+
+
 
 
       //need togic to check if any of the adjacent squares already contain the SHOT-MISS class, and update the array accordingly 
@@ -464,11 +461,15 @@ function init(){
 
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
-          // possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
 
+          
+  
           //*********************************** checking for a vertical match works!  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
-            // console.log('this is a vertical match') 
+
+            playerCarriershipLives--
+            console.log('playercarrier ship lives =====>>>>>', playerCarriershipLives)
+
 
             //* creting a new array if the next smart shot is a hit (vertical ) THIS DOENTS WORK! NEEDS TO BE IF HIT...
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
@@ -502,8 +503,6 @@ function init(){
         console.log('new array positions ', possibleArrayPositions)
         
       } else if (possibleArrayPositions.length === 3 ){ // logic for if the array contains three numbers 
-
-        //*****************creation of an array of two i think is wrong here */
 
         const targetLikelyRandomPlayerCell3 = Math.floor(Math.random() * 3)
         // console.log('the seccond step of the computers logic is selected!') 
@@ -589,15 +588,15 @@ function init(){
             } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10){
               possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - 10]
               console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
-          } 
+            } 
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition < 10 || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= -9 ){
 
             if(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10 ){
               possibleArrayPositions = [(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 1)]
-              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER +1', possibleArrayPositions)
+              // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER +1', possibleArrayPositions)
             } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= -9 ){
               possibleArrayPositions =  [(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - 1)]
-              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER -1 ', possibleArrayPositions)
+              // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER -1 ', possibleArrayPositions)
             }
           }
         } else {
@@ -607,7 +606,7 @@ function init(){
         }
       }
 
-    } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
+    }  else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
       targetRandomPlayerCellGlobal = targetRandomPlayerCell
       const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
@@ -619,9 +618,13 @@ function init(){
           console.log('computer has hit a players ship')
   
           //* this is the logic that keeps track of which ships have been shot and their lives- not locations however shich may be needed later 
+
+        
+          
           if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
             playerCarriershipLives-- // decrease lives of this ship
-            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+            // console.log('THIS IS SHOWING CARRIER SHIPS LIVES', playerCarriershipLives)
+            if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
             if (playerCarriershipLives === 0){
@@ -629,7 +632,7 @@ function init(){
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-battleship')){
             playerBattleshipLives--
-            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+            if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
             if (playerBattleshipLives === 0){
@@ -637,16 +640,15 @@ function init(){
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-destroyer')){
             playerDestroyerLives--
-            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+            if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
             if (playerDestroyerLives === 0){
               console.log('players destroyer has been destroyed ')
-              
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
             playerSubmarineLives--
-            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+            if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
             if (playerSubmarineLives === 0){
@@ -654,7 +656,7 @@ function init(){
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-patrol')){
             playerPatrolLives--
-            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+            if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
             if (playerPatrolLives === 0){
