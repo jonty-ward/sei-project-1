@@ -479,9 +479,24 @@ function init(){
         console.log('original array position', originalArrayPosition)
         console.log('new array positions ', possibleArrayPositions)
         
-      } else if(possibleArrayPositions.length === 3 ){ // logic for if the array contains three numbers 
+      } else if (possibleArrayPositions.length === 3 ){ // logic for if the array contains three numbers 
+
+        const targetLikelyRandomPlayerCell3 = Math.floor(Math.random() * 3)
+        console.log('the seccond step of the computers logic is selected!') 
+        console.log('target likely random player cell',targetLikelyRandomPlayerCell3)
+        
+
+        if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship')){
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.add('shot-hit')
+          possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
+          console.log('possible array positions after length of 3', possibleArrayPositions)
 
 
+        } else {
+          targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.add('shot-miss')
+          possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
+          console.log('possible array positions after length of 3', possibleArrayPositions)
+        }
 
       }
 
