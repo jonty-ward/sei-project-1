@@ -434,7 +434,6 @@ function init(){
 
       console.log('the possible array positions ',possibleArrayPositions)
       
-
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
         console.log('the seccond step of the computers logic is selected!') 
@@ -480,7 +479,19 @@ function init(){
         console.log('original array position', originalArrayPosition)
         console.log('new array positions ', possibleArrayPositions)
         
+      } else if(possibleArrayPositions.length === 3 ){ // logic for if the array contains three numbers 
+
+
+
       }
+
+
+
+
+
+
+
+
     } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
       targetRandomPlayerCellGlobal = targetRandomPlayerCell
