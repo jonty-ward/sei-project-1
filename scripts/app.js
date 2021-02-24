@@ -483,12 +483,11 @@ function init(){
         
       } else if (possibleArrayPositions.length === 3 ){ // logic for if the array contains three numbers 
 
+        //*****************creation of an array of two i think is wrong here */
+
         const targetLikelyRandomPlayerCell3 = Math.floor(Math.random() * 3)
         // console.log('the seccond step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell3)
-
-
-        //*** logic here is flored, need to create a new array for the two possible options if its a hit  */
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.add('shot-hit')
@@ -521,17 +520,20 @@ function init(){
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
           console.log('possible array positions hit miss miss', possibleArrayPositions)
         }
-      } else if( possibleArrayPositions.length === 2){ //logic for array of length 2
+
+        //***********************logic for is the array has a length of two */
+      } else if ( possibleArrayPositions.length === 2){ //logic for array of length 2
         const targetLikelyRandomPlayerCell2 = Math.floor(Math.random() * 2)
-        console.log('the 2.LENGTH step of the computers logic is selected!') 
-        console.log('target likely random player cell',targetLikelyRandomPlayerCell2)
+        // console.log('the 2.LENGTH step of the computers logic is selected!') 
+        // console.log('target likely random player cell',targetLikelyRandomPlayerCell2)
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.add('shot-hit')
-
+ 
+          //******this checks if the ship is vertical or horizontal  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
 
-            if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 10) {
+            if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 10) {
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10){
@@ -539,37 +541,18 @@ function init(){
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
 
-          } 
-          else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')) {
+          } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')) {
 
             if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10 ) {
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 1))
-              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
-              
-            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= -9 ){
+              // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= -9 ){
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 1))
-              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+              // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
-            
-
-
 
           }
-          
-
-
-          //*** if its a hit, similar logic to to start function */
-          //* determine if horizontal of vertical 
-          //* if vertical  needs to determine if +10, -20/+1,-2 of vice versa // will increase past plus 20 as well. 
-              //* needs to then create the appropriate remaining options 
-
-          //*if miss, then remove from the array and start from the other end
-            //*need if this is not the last on, need to deep addin or minusin depending on direction 10 or 1
-           
-
-
-
-
 
           // possibleArrayPositions.splice(targetLikelyRandomPlayerCell2, 1 )
           // console.log('possible array positions after length of 2', possibleArrayPositions)
@@ -580,8 +563,38 @@ function init(){
           console.log('possible array positions after length of 2', possibleArrayPositions)
         }
 
+         
+
+      } else if (possibleArrayPositions.length === 1){
+
+        if (targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
+          targetPlayerCell[possibleArrayPositions].classList.add('shot-hit')
 
 
+          if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
+            // console.log('this is a vertical ship!!')
+
+        
+            if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 10){
+              // possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
+              possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 10]
+              // console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
+            }
+          } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10){
+            // possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
+            possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - 10]
+            console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
+          }
+
+
+
+          // else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10){
+          //   possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 10))
+          //   // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+          // }
+
+
+        } 
       }
 
 
