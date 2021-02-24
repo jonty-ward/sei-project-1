@@ -576,14 +576,16 @@ function init(){
 
         
             if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 10){
-              // possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
               possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 10]
               // console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
             } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10){
-              // possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
               possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - 10]
               console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
           } 
+          } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition < 10 || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= -9 ){
+
+            console.log('THIS IS THE FINAL FUNCTION - SHIP IS HORIZONTAL')
+
           }
 
         } 
