@@ -436,45 +436,31 @@ function init(){
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
         console.log('the seccond step of the computers logic is selected!') 
 
-
-        
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
           // possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
-
-           
 
           //*********************************** checking for a vertical match works!  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10){
             // console.log('this is a vertical match') 
 
-
-
-            //******************************CONTINUE FROM HERE WITH THE LOGIC **********************/
-            //**********Adding conditions to check which direction to create the new array (is it +10 and -20 or is is +20 and -10) */
-
+            //* creting a new array if the next smart shot is a hit (vertical )
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
               console.log('this is the positive match === +10 ')
-
+              possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
+              console.log('new array positions (2 options)', possibleArrayPositions)
             } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
               console.log('this is the negative match === -10 ')
-
+              possibleArrayPositions = [originalArrayPosition + 20 ,  originalArrayPosition - 10]
+              console.log('new array positions (2 options)', possibleArrayPositions)
             }
-
-          }
-
-          //* it its a hit:
-          //* need to check the direction of the ship that it has hit- this will dictate the logic
-          //if original array -current array ===10 || original array - current array === -10; else ... 
-          //if original array -current array === 10 do this 
-          //else if original array -current array === -10 do that
-          //similar logic for the horizontal 
-          
-          // need a const for the original hit from the sequence 
-
-          //*if ship is vertical: new array of the position that has just been hit 
-          //*if the ship is vertical: new array of the randomly selected position 
-
+          } else {
+              if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
+                console.log('the adjacent square is to the left')
+              } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === -1){
+                console.log('the adjacent square is to the right')
+              } 
+            }
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
