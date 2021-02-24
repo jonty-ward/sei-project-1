@@ -532,15 +532,27 @@ function init(){
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
 
             if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 10) {
-
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
-              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
-
-            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= 10){
-
+              // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10){
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 10))
+              // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+            }
+
+          } 
+          else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')) {
+
+            if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10 ) {
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 1))
+              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+              
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= -9 ){
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 1))
               console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
+            
+
+
 
           }
           
