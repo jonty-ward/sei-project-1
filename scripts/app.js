@@ -420,7 +420,27 @@ function init(){
 
   function createFirstChoiceArray (){
     originalArrayPosition = targetRandomPlayerCellGlobal
-    possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ]  //Logic to create an array of possible options 
+    // possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ] 
+
+    if (!targetPlayerCell[targetRandomPlayerCellGlobal + 1].classList.contains('shot-miss')){
+      possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1)]
+    }
+    if (!targetPlayerCell[targetRandomPlayerCellGlobal - 1 ].classList.contains('shot-miss')){
+      possibleArrayPositions.push((targetRandomPlayerCellGlobal - 1))
+    }
+    if (!targetPlayerCell[targetRandomPlayerCellGlobal + gridWidth].classList.contains('shot-miss')){
+      possibleArrayPositions.push((targetRandomPlayerCellGlobal + gridWidth))
+    }
+    if (!targetPlayerCell[targetRandomPlayerCellGlobal - gridWidth].classList.contains('shot-miss')){
+      possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
+    }
+    
+    
+
+    
+    
+
+    //Logic to create an array of possible options 
     // console.log('possible array postions', possibleArrayPositions)
   }
 
@@ -540,7 +560,6 @@ function init(){
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 10))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
-
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')) {
 
             if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  < 10 ) {
@@ -551,30 +570,19 @@ function init(){
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 1))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
             }
-
           }
-
-          // possibleArrayPositions.splice(targetLikelyRandomPlayerCell2, 1 )
-          // console.log('possible array positions after length of 2', possibleArrayPositions)
-          // console.log('hit with length of 2')
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell2, 1 )
           console.log('possible array positions after length of 2', possibleArrayPositions)
         }
-
-         
-
       } else if (possibleArrayPositions.length === 1){
 
         if (targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions].classList.add('shot-hit')
-
-
           if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
             // console.log('this is a vertical ship!!')
 
-        
             if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 10){
               possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 10]
               // console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
@@ -584,19 +592,20 @@ function init(){
           } 
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition < 10 || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= -9 ){
 
-            console.log('THIS IS THE FINAL FUNCTION - SHIP IS HORIZONTAL')
-
+            if(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10 ){
+              possibleArrayPositions = [(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 1)]
+              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER +1', possibleArrayPositions)
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= -9 ){
+              possibleArrayPositions =  [(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - 1)]
+              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER -1 ', possibleArrayPositions)
+            }
           }
-
-        } 
+        } else {
+          targetPlayerCell[possibleArrayPositions].classList.add('shot-miss')
+          possibleArrayPositions = null
+          console.log('possible array positions after length of 2', possibleArrayPositions)
+        }
       }
-
-
-
-
-
-
-
 
     } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
@@ -614,30 +623,40 @@ function init(){
             playerCarriershipLives-- // decrease lives of this ship
             if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
-              
             } 
-  
             if (playerCarriershipLives === 0){
               console.log('players carrier ship has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-battleship')){
             playerBattleshipLives--
+            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+              createFirstChoiceArray()
+            } 
             if (playerBattleshipLives === 0){
               console.log('players battleship has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-destroyer')){
             playerDestroyerLives--
+            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+              createFirstChoiceArray()
+            } 
             if (playerDestroyerLives === 0){
               console.log('players destroyer has been destroyed ')
               
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
             playerSubmarineLives--
+            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+              createFirstChoiceArray()
+            } 
             if (playerSubmarineLives === 0){
               console.log('players submarine has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-patrol')){
             playerPatrolLives--
+            if(possibleArrayPositions === null){ //logic to create the first array of possible outcomes
+              createFirstChoiceArray()
+            } 
             if (playerPatrolLives === 0){
               console.log('players patrol ship has been destroyed ')
             }
