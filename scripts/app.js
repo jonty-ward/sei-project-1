@@ -441,10 +441,10 @@ function init(){
           // possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
 
           //*********************************** checking for a vertical match works!  */
-          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10){
+          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')|| parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 &&targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
             // console.log('this is a vertical match') 
 
-            //* creting a new array if the next smart shot is a hit (vertical )
+            //* creting a new array if the next smart shot is a hit (vertical ) THIS DOENTS WORK! NEEDS TO BE IF HIT...
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
               console.log('this is the positive match === +10 ')
               possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
@@ -455,18 +455,19 @@ function init(){
               console.log('new array positions (2 options)', possibleArrayPositions)
             }
           } else {
-              if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
-                console.log('the adjacent square is to the left')
-              } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === -1){
-                console.log('the adjacent square is to the right')
-              } 
-            }
+            if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
+              console.log('the adjacent square is to the left')
+            } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === -1){
+              console.log('the adjacent square is to the right')
+            } 
+          }
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
         }
         //randomly choose an item from the created array
         console.log('original array position', originalArrayPosition)
+        console.log('new array after the array is changed by the logic ', possibleArrayPositions)
       }
     } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
