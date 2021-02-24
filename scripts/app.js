@@ -516,14 +516,11 @@ function init(){
               possibleArrayPositions = [originalArrayPosition + 2 ,  originalArrayPosition - 1]
             } 
           }
-
-
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell3]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
           console.log('possible array positions hit miss miss', possibleArrayPositions)
         }
-
       } else if( possibleArrayPositions.length === 2){ //logic for array of length 2
         const targetLikelyRandomPlayerCell2 = Math.floor(Math.random() * 2)
         console.log('the 2.LENGTH step of the computers logic is selected!') 
@@ -531,11 +528,19 @@ function init(){
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.add('shot-hit')
+
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].classList.contains('ship')){
 
-            // if(){
+            if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  >= 10) {
 
-            // }
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) + 10))
+              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+
+            } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - originalArrayPosition  <= 10){
+
+              possibleArrayPositions.splice(targetLikelyRandomPlayerCell2 , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell2]].innerHTML) - 10))
+              console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
+            }
 
           }
           
