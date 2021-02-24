@@ -441,33 +441,37 @@ function init(){
           // possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
 
           //*********************************** checking for a vertical match works!  */
-          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')|| parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 &&targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
+          if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
             // console.log('this is a vertical match') 
 
             //* creting a new array if the next smart shot is a hit (vertical ) THIS DOENTS WORK! NEEDS TO BE IF HIT...
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
-              console.log('this is the positive match === +10 ')
+              // console.log('this is the positive match === +10 ')
               possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
               console.log('new array positions (2 options)', possibleArrayPositions)
             } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
-              console.log('this is the negative match === -10 ')
+              // console.log('this is the negative match === -10 ')
               possibleArrayPositions = [originalArrayPosition + 20 ,  originalArrayPosition - 10]
               console.log('new array positions (2 options)', possibleArrayPositions)
             }
-          } else {
+          } else if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 1  || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -1 ) {
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
               console.log('the adjacent square is to the left')
+              possibleArrayPositions = [originalArrayPosition - 2 ,  originalArrayPosition + 1]
             } else if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === -1){
               console.log('the adjacent square is to the right')
+              possibleArrayPositions = [originalArrayPosition + 2 ,  originalArrayPosition - 1]
             } 
           }
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
+          // console.log('new array positions ', possibleArrayPositions)
         }
         //randomly choose an item from the created array
         console.log('original array position', originalArrayPosition)
-        console.log('new array after the array is changed by the logic ', possibleArrayPositions)
+        console.log('new array positions ', possibleArrayPositions)
+        
       }
     } else { //this else prevents the rest of the function randomly choosing squares when there is a hit, but before the ship is destroyed 
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
