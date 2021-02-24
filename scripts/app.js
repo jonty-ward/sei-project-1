@@ -114,7 +114,7 @@ function init(){
       playerProjectedPosition.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
     }
 
-    console.log('player projected position', playerProjectedPosition)
+    // console.log('player projected position', playerProjectedPosition)
     
       
     shipClassToAdd.array.forEach( array => {       
@@ -128,7 +128,7 @@ function init(){
   }
   //* ADDING COMPUTER SHIPS
   let computerShipPosition = [] //keeps track of the computers ships positions 
-  console.log('all ships positions', computerShipPosition)
+  // console.log('all ships positions', computerShipPosition)
 
   function addComputerShips(){
     //     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
@@ -151,7 +151,7 @@ function init(){
       }
       for ( i = 0; i < shipClassToAdd.length; i ++){    
         if(computerShipPosition.includes(randomShipStart + (i * shipToVert))){ //*code to prevent ships from stacking on computer grid
-          console.log('ships are intersecting')
+          // console.log('ships are intersecting')
           return addComputerShips ()
         } else {
           shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )                 
@@ -170,7 +170,7 @@ function init(){
       const fifthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 5)])
 
       if (lastItemInArray > 99 || seccondLastItemInArray % gridWidth === 9 || thirdLastItemInArray % gridWidth === 9  || fourthLastItemInArray % gridWidth === 9 || fifthLastItemInArray % gridWidth === 9){    // stops the ships from going over the bottom edge
-        console.log('gone over the edge, try again! ')
+        // console.log('gone over the edge, try again! ')
        
         return addComputerShips()
       } else {
@@ -183,7 +183,7 @@ function init(){
         })        
       }
     } else {
-      console.log('starting on square with ship') //*end of if statement stopping ships starting on a square containing another ship
+      // console.log('starting on square with ship') //*end of if statement stopping ships starting on a square containing another ship
       return addComputerShips()
     }
   }
@@ -266,7 +266,7 @@ function init(){
         if (addingPlayerPieces[lastItem].classList.contains('ship') && lastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[secondLastItem].classList.contains('ship') && secondLastItem >= parseFloat(event.target.innerText)  || addingPlayerPieces[thirdLastItem].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItem].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItem].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           event.target.classList.add('mouse-hover-invalid')
         } else if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
-          console.log('array is going over the edge')
+          // console.log('array is going over the edge')
           event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
@@ -274,10 +274,10 @@ function init(){
       } else if (shipClassToAdd.direction === 'vert'){           //* conditions for playe placing ship verically 
 
         if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItemVert].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItemVert].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
-          console.log('vertical ship category selector ')
+          // console.log('vertical ship category selector ')
           event.target.classList.add('mouse-hover-invalid')
         } else if (lastItemVert >= 99){
-          console.log('gone over the bottom ')
+          // console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
         } else{
           event.target.classList.add('mouse-hover')
@@ -332,6 +332,7 @@ function init(){
   const targetPlayerCell = document.querySelectorAll('.playerCell')
 
   const computerShotAtID = [] //stores the squares that the computer has shot at randomly
+  console.log('COMPUTER SHOT AT ID',computerShotAtID)
   const playerShotAtID = [] //array of squares player has targeted
   // console.log('player shot at id',playerShotAtID)
 
@@ -390,7 +391,7 @@ function init(){
       }
 
     } else {
-      console.log('you have already selected this square')
+      // console.log('you have already selected this square')
       return shootAtComputer() //this restarts the function 
     }
     shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
@@ -441,7 +442,7 @@ function init(){
     }
   
     //Logic to create an array of possible options
-    console.log('possible array postions', possibleArrayPositions)
+    // console.log('possible array postions', possibleArrayPositions)
   }
 
 
@@ -451,6 +452,8 @@ function init(){
 
   function shootAtPlayer(){
     // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
+
+    
 
     
     if (possibleArrayPositions !== null){ 
@@ -477,14 +480,13 @@ function init(){
 
       //need to make sure it cannot randomly target the line above or bellow if ship is on the edge
 
-      console.log('the possible array positions ',possibleArrayPositions)
+      // console.log('the possible array positions ',possibleArrayPositions)
       
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
         // console.log('the seccond step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell)
-        
-
+      
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
@@ -521,9 +523,7 @@ function init(){
             } 
 
           }
-        } else {
-          //logic here is flawed- it doesn not work for miss left or miss bottom 
-          console.log('this is the splice and slicer ')
+        } else {         
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, 1 )
           // console.log('new array positions ', possibleArrayPositions)
@@ -549,11 +549,9 @@ function init(){
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
             
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
-              console.log('this is the positive match === +10 ')
               possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
               // console.log('new array positions (2 options)', possibleArrayPositions)
             } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
-              console.log('this is the negative match === -10 ')
               possibleArrayPositions = [originalArrayPosition + 20 ,  originalArrayPosition - 10]
               // console.log('new array positions (2 options)', possibleArrayPositions)
             }
@@ -609,7 +607,6 @@ function init(){
         } else {
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
           possibleArrayPositions.splice(targetLikelyRandomPlayerCell, 1 )
-          console.log('possible array positions after length of 2', possibleArrayPositions)
         }
         //**************final part of the logic  */
       } else if (possibleArrayPositions.length === 1){
@@ -628,7 +625,6 @@ function init(){
               // console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
             } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10){
               possibleArrayPositions = [parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - 10]
-              console.log('NEW ARRAY FOR VERTICAL SHIP', possibleArrayPositions)
             } 
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition < 10 || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= -9 ){
 
@@ -645,7 +641,6 @@ function init(){
           targetPlayerCell[possibleArrayPositions].classList.add('shot-miss')
           possibleArrayPositions = null
 
-          console.log('possible array positions after length of 2', possibleArrayPositions)
         }
       }
 
@@ -655,16 +650,23 @@ function init(){
       const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
       targetRandomPlayerCellGlobal = targetRandomPlayerCell
       const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random number has already been chosen 
-      if (!chosenAlready){ //If statement runs function again if random number has been chosen before
+      // const chosenAlreadyContainsShotHit = 
+      // targetPlayerCell[targetRandomPlayerCell]
+
+      const  chosenAlreadyContainsShotHit = targetPlayerCell[targetRandomPlayerCell].classList.contains('shot-hit')
+
+      
+
+      if (!chosenAlready && !chosenAlreadyContainsShotHit ){ //If statement runs function again if random number has been chosen before
         targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
         computerShotAtID.push(targetRandomPlayerCell)
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
           targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
-          console.log('computer has hit a players ship')
 
           thisIsWhatINeedToTest = targetPlayerCell[targetRandomPlayerCell]
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
+        
           
           
   
@@ -672,8 +674,7 @@ function init(){
 
 
           if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-carriership')){
-            playerCarriershipLives-- // decrease lives of this ship
-            console.log('THIS IS SHOWING CARRIER SHIPS LIVES', playerCarriershipLives)
+            // playerCarriershipLives-- // decrease lives of this ship
             if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
@@ -681,7 +682,7 @@ function init(){
               console.log('players carrier ship has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-battleship')){
-            playerBattleshipLives--
+            // playerBattleshipLives--
             if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
@@ -689,7 +690,7 @@ function init(){
               console.log('players battleship has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-destroyer')){
-            playerDestroyerLives--
+            // playerDestroyerLives--
             if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
@@ -697,7 +698,7 @@ function init(){
               console.log('players destroyer has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-submarine')){
-            playerSubmarineLives--
+            // playerSubmarineLives--
             if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
@@ -705,7 +706,7 @@ function init(){
               console.log('players submarine has been destroyed ')
             }
           } else if (targetPlayerCell[targetRandomPlayerCell].classList.contains('place-patrol')){
-            playerPatrolLives--
+            // playerPatrolLives--
             if (possibleArrayPositions === null){ //logic to create the first array of possible outcomes
               createFirstChoiceArray()
             } 
@@ -714,6 +715,8 @@ function init(){
             }
           }
         }
+        
+  
       } else {
         // console.log('already taken')
         return shootAtPlayer()
@@ -721,6 +724,7 @@ function init(){
 
     }
 
+    
 
     
   } //this is the badger!
@@ -728,6 +732,8 @@ function init(){
     button.addEventListener('click',shootAtComputer)  //****************reactivate shooting here  */
   })
 
+
+  
   
   
 
