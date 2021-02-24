@@ -432,9 +432,14 @@ function init(){
 
       //need togic to check if any of the adjacent squares already contain the SHOT-MISS class, and update the array accordingly 
 
+      console.log('the possible array positions ',possibleArrayPositions)
+      
+
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
         console.log('the seccond step of the computers logic is selected!') 
+        console.log('target likely random player cell',targetLikelyRandomPlayerCell)
+        
 
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
@@ -446,15 +451,15 @@ function init(){
 
             //* creting a new array if the next smart shot is a hit (vertical ) THIS DOENTS WORK! NEEDS TO BE IF HIT...
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
-              // console.log('this is the positive match === +10 ')
+              console.log('this is the positive match === +10 ')
               possibleArrayPositions = [originalArrayPosition - 20 , originalArrayPosition + 10 ]
               console.log('new array positions (2 options)', possibleArrayPositions)
             } else if (originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === -10){
-              // console.log('this is the negative match === -10 ')
+              console.log('this is the negative match === -10 ')
               possibleArrayPositions = [originalArrayPosition + 20 ,  originalArrayPosition - 10]
               console.log('new array positions (2 options)', possibleArrayPositions)
             }
-          } else if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 1  || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -1 ) {
+          } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -1 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')) {
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) === 1){
               console.log('the adjacent square is to the left')
               possibleArrayPositions = [originalArrayPosition - 2 ,  originalArrayPosition + 1]
@@ -464,11 +469,14 @@ function init(){
             } 
           }
         } else {
+          //logic here is flawed- it doesn not work for miss left or miss bottom 
+          console.log('this is the splice and slicer ')
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-miss')
-          possibleArrayPositions.splice(targetLikelyRandomPlayerCell, targetLikelyRandomPlayerCell + 1)
+          possibleArrayPositions.splice(targetLikelyRandomPlayerCell, 1 )
           // console.log('new array positions ', possibleArrayPositions)
         }
         //randomly choose an item from the created array
+        
         console.log('original array position', originalArrayPosition)
         console.log('new array positions ', possibleArrayPositions)
         
