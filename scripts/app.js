@@ -275,6 +275,10 @@ function init(){
         } else if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
           // console.log('array is going over the edge')
           event.target.classList.add('mouse-hover-invalid')
+        } else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){
+          event.target.classList.add('mouse-hover-invalid')
+        } else if ( targetPlayerCell[lastItem + 1].classList.contains('ship') || targetPlayerCell[lastItem - 1].classList.contains('ship') || targetPlayerCell[lastItem + 10].classList.contains('ship') || targetPlayerCell[lastItem - 10].classList.contains('ship')){
+          event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
 
@@ -289,6 +293,10 @@ function init(){
           event.target.classList.add('mouse-hover-invalid')
         } else if (lastItemVert >= 99){
           // console.log('gone over the bottom ')
+          event.target.classList.add('mouse-hover-invalid')
+        } else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){
+          event.target.classList.add('mouse-hover-invalid')
+        }else if ( targetPlayerCell[lastItemVert + 1].classList.contains('ship') || targetPlayerCell[lastItemVert - 1].classList.contains('ship') || targetPlayerCell[lastItemVert + 10].classList.contains('ship') || targetPlayerCell[lastItemVert - 10].classList.contains('ship')){
           event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
