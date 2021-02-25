@@ -1,8 +1,43 @@
+
+/* *creating the overlay */
+body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+}
+.overlay-page1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
+}
+
+ .header-overlay img{
+  min-width: 500px;
+}
+ .header-overlay {
+  padding-bottom: 5vh;
+  padding-top: 5vh;
+}
+
+
+
+
+
+/* *styling for the main body */
+
 body{
   background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
 }
-header{
+header {
   text-align: center;
+}
+header .main{
+  color: aliceblue;
 }
 header img{
   max-width: 200px;
@@ -11,8 +46,21 @@ main{
   text-align: center;
 }
 
+/* Classes to hide the main screen/ hide the rules div class  */
+
+.y-axis, .x-axis {
+  background-color: thistle;
+}
+
+.ship-buttons{
+background-color: transparent;
+color: transparent;
+border: transparent;
+}
+
 .rules{
   color:rgb(218, 217, 217);
+  margin-top: 25px;
 }
 
 .banner-message{
@@ -30,13 +78,13 @@ main{
   margin-left: 10px;
   padding: 20px;
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
   height: 500px;
   width: 500px;
+  background-color: transparent;
 }
 /* styling the divs in theplayers grid */
 .player-grid div {
@@ -64,7 +112,6 @@ padding: 30px;
 .computer-grid {
   padding: 20px;
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -85,9 +132,15 @@ padding: 30px;
 
 
 .place-carriership{
-  background-color: red;
-  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0crADxMbmsPSyeWTxZnX90DsQFZmtxZoPvw&usqp=CAU"); */
-  /* background-size: cover; */
+  background-color: rgba(255, 0, 0, 1);
+  /* background-image: url("../assets/kisspng-ship-type-26-frigate-navy-type-997-artisan-radar-ships-5ad04ccc71a6c2.6790923015236005884655.png");
+
+   background-attachment:fixed;
+   background-size: 150px 100px;
+   background-position:center; */
+   
+  
+  
   
 }
 .place-battleship{
@@ -116,18 +169,18 @@ padding: 30px;
 /* these are the computers ships- can add color of none */
 
 .place-comp-carriership{
-  background-color: rgba(122, 45, 45, 0.89);
+  background-color: rgba(122, 45, 45, 0);
 }
 .place-comp-battleship{
-  background-color: rgb(132, 245, 161);
+  background-color: rgba(132, 245, 160, 0);
 }
 .place-comp-destroyer{
-  background-color: rgba(87, 6, 240, 0.788);
+  background-color: rgba(88, 6, 240, 0);
 }.place-comp-submarine{
-  background-color: rgb(248, 188, 188);
+  background-color: rgba(248, 188, 188, 0);
 }
 .place-comp-patrol{
-  background-color: rgba(32, 104, 3, 0.705);
+  background-color: rgba(32, 104, 3, 0);
 }
 
 .mouse-hover{
@@ -135,10 +188,10 @@ padding: 30px;
 }
 
 .ship-outline{
-  background-color: rgba(125, 183, 248, 0.514);
+  background-color: rgba(125, 183, 248, 0.185);
 }
 .mouse-hover-invalid{
-  background-color: red;
+  background-color: rgb(12, 1, 1);
 }
 
 
@@ -151,4 +204,29 @@ padding: 30px;
   background-color: black;
   background-image: url('https://media.giphy.com/media/g2YdApKEna2sg/giphy.gif');
   background-size: contain;
+  background-attachment:local;
 }
+
+
+
+
+
+
+
+/* ** can work on this tomorrow  */
+
+@media screen and (max-width: 1000px) { 
+  .both-grids{
+    flex-direction: column;
+  }
+
+  .computer-grid{
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .player-grid{
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+

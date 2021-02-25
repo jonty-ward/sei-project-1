@@ -1,19 +1,37 @@
 
 
 function init(){
-
-
   const startButton = document.querySelector('.start-game')
   const bannerMessage = document.querySelector('.banner-message')
+  const rules = document.querySelector('.rules')
+  const yAxis = document.querySelector('.y-axis')
+  const xAxis = document.querySelector('.x-axis')
+  const overlay = document.querySelector('.overlay-page1')
+  
 
   startButton.addEventListener('click', handleStartButton)
 
+  //**** creating the landing page  */
+
+  yAxis.classList.add('hidden')
+  xAxis.classList.add('hidden')
+  
+  
+  
+
   function handleStartButton(){
+    
+    bannerMessage.innerHTML = 'Place your pieces!'
 
+    rules.classList.add('hidden')
+    yAxis.classList.remove('hidden')
+    xAxis.classList.remove('hidden')
+    startButton.classList.add('hidden')
+    overlay.classList.add('hidden')
 
-    bannerMessage.innerHTML = 'Place your pieces!  '
 
   }
+  
   //consts for the game
   //**** creating the grids  */
   // consts for creating the grids
@@ -53,6 +71,8 @@ function init(){
   createPlayerGrid() //calling the function to make the player grid 
   createComputerGrid() //calling the function to make the computergrid 
 
+  
+
  
   //*** creating the ships  */
 
@@ -88,8 +108,7 @@ function init(){
 
   // let shipStylingToHover = '' // used this to try and get the styling to work on hover- populated the whole grid! 
   
-  const yAxis = document.querySelector('.y-axis')
-  const xAxis = document.querySelector('.x-axis')
+
  
 
   const addCarrierShip = document.querySelector('.add-carriership')
@@ -142,7 +161,7 @@ function init(){
     shipClassToAdd = 0
   }
   //* ADDING COMPUTER SHIPS
-  let computerShipPosition = [] //keeps track of the computers ships positions 
+  const computerShipPosition = [] //keeps track of the computers ships positions 
   // console.log('all ships positions', computerShipPosition)
 
   function addComputerShips(){
@@ -493,26 +512,26 @@ function init(){
   //* storing the randomly shot at div
   let thisIsWhatINeedToTest = null
 
-function keepinfTrackOfPlayerLives(){
+  function keepinfTrackOfPlayerLives(){
 
 
-  if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
-    playerCarriershipLives--
-    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
-  }  else if ( thisIsWhatINeedToTest.classList.contains('place-battleship')){
-    playerBattleshipLives--
-    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerBattleshipLives)
-  }  else if ( thisIsWhatINeedToTest.classList.contains('place-destroyer')){
-    playerDestroyerLives--
-    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerDestroyerLives)
-  }  else if ( thisIsWhatINeedToTest.classList.contains('place-submarine')){
-    playerSubmarineLives--
-    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerSubmarineLives)
-  }  else if ( thisIsWhatINeedToTest.classList.contains('place-patrol')){
-    playerPatrolLives--
-    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
-  }  
-}
+    if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
+      playerCarriershipLives--
+      console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
+    }  else if ( thisIsWhatINeedToTest.classList.contains('place-battleship')){
+      playerBattleshipLives--
+      console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerBattleshipLives)
+    }  else if ( thisIsWhatINeedToTest.classList.contains('place-destroyer')){
+      playerDestroyerLives--
+      console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerDestroyerLives)
+    }  else if ( thisIsWhatINeedToTest.classList.contains('place-submarine')){
+      playerSubmarineLives--
+      console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerSubmarineLives)
+    }  else if ( thisIsWhatINeedToTest.classList.contains('place-patrol')){
+      playerPatrolLives--
+      console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
+    }  
+  }
   
   
   
@@ -551,15 +570,13 @@ function keepinfTrackOfPlayerLives(){
   function shootAtPlayer(){
     // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
 
+   
 
     if (possibleArrayPositions !== null){ 
 
-      // targetPlayerCell[possibleArrayPositions].forEach( position =>{
-      //   if (position.classList.contains('shot-miss')){
-      //     console.log('TESTING MY GOR-EACH LOOP ')
-      //   }
-  
-      // })
+      
+      
+      
       
 
       //*************this lags by 1 life, and needs more conditions  */
@@ -574,6 +591,8 @@ function keepinfTrackOfPlayerLives(){
       
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
+
+       
         // console.log('the seccond step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell)
       
@@ -821,10 +840,7 @@ function keepinfTrackOfPlayerLives(){
 
     }
 
-    
-
-    
-  } //this is the badger!
+  } 
   targetComputerCell.forEach(button =>{
     button.addEventListener('click',shootAtComputer)  //****************reactivate shooting here  */
   })
@@ -839,21 +855,8 @@ function keepinfTrackOfPlayerLives(){
 
 
 
-
-
-
-
-
-
-
-
-
-
   
-
-
-
-
+  
 
 }
 
