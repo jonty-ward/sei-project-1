@@ -1,8 +1,22 @@
+body{
+  background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
+}
 header{
   text-align: center;
 }
+header img{
+  max-width: 200px;
+}
 main{
   text-align: center;
+}
+
+.rules{
+  color:rgb(218, 217, 217);
+}
+
+.banner-message{
+  color: rgb(218, 217, 217);
 }
 /* this is to help me remoember which is the computer grid whislt working */
 .label-computer-grid{
@@ -26,10 +40,12 @@ main{
 }
 /* styling the divs in theplayers grid */
 .player-grid div {
-  border: 1px solid rgb(8, 8, 8);
+  border: 1px solid rgb(218, 217, 217);
   flex-grow: 1;
   height: 9.5%;
   width: 9%;
+  color:white;
+  
 }
 
 /* styling the layout of both grids */
@@ -39,6 +55,8 @@ padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  
+ 
 }
 
 
@@ -53,19 +71,24 @@ padding: 30px;
   justify-content: center;
   height: 500px;
   width: 500px;
+  
 }
 
 .computer-grid div {
-  border: 1px solid rgb(8, 8, 8);
+  border: 1px solid rgb(218, 217, 217);
   flex-grow: 1;
   height: 9.5%;
   width: 9%;
+  color: white;
 }
 /* Creating the ship classes */
 
 
 .place-carriership{
   background-color: red;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0crADxMbmsPSyeWTxZnX90DsQFZmtxZoPvw&usqp=CAU"); */
+  /* background-size: cover; */
+  
 }
 .place-battleship{
   background-color: green;
@@ -126,4 +149,6 @@ padding: 30px;
 }
 .shot-hit{
   background-color: black;
+  background-image: url('https://media.giphy.com/media/g2YdApKEna2sg/giphy.gif');
+  background-size: contain;
 }

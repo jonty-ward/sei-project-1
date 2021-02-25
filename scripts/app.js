@@ -2,6 +2,18 @@
 
 function init(){
 
+
+  const startButton = document.querySelector('.start-game')
+  const bannerMessage = document.querySelector('.banner-message')
+
+  startButton.addEventListener('click', handleStartButton)
+
+  function handleStartButton(){
+
+
+    bannerMessage.innerHTML = 'Place your pieces!  '
+
+  }
   //consts for the game
   //**** creating the grids  */
   // consts for creating the grids
@@ -95,8 +107,8 @@ function init(){
 
   function insertingPlayerBattleship (event){ //function to place the ships 
 
-    if(event.target.classList.contains('mouse-hover-invalid')) //*logic to prevent the ship being added if it is in the wrong place!
-    {
+    if (event.target.classList.contains('mouse-hover-invalid')){ //*logic to prevent the ship being added if it is in the wrong place!
+
       // console.log('CANT PUT A SHIP HERE!! ')
       return insertingPlayerBattleship()
     }
@@ -110,7 +122,7 @@ function init(){
     }
 
     arrayStarrtingPoint.push(parseFloat(event.target.innerText))
-    for ( i = 0; i < shipClassToAdd.length; i ++){
+    for ( let i = 0; i < shipClassToAdd.length; i ++){
       shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
       playerProjectedPosition.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
     }
@@ -152,8 +164,8 @@ function init(){
       } else {
         shipToVert = 1
       }
-      for ( i = 0; i < shipClassToAdd.length; i ++){    
-        if(computerShipPosition.includes(randomShipStart + (i * shipToVert))){ //*code to prevent ships from stacking on computer grid
+      for ( let i = 0; i < shipClassToAdd.length; i ++){    
+        if (computerShipPosition.includes(randomShipStart + (i * shipToVert))){ //*code to prevent ships from stacking on computer grid
           // console.log('ships are intersecting')
           return addComputerShips()
         } else {
@@ -165,7 +177,6 @@ function init(){
         }
         
       }
-      
       const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge //this could be a lot cleaner with a loop
       const seccondLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 2)])
       const thirdLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 3)])
@@ -179,13 +190,8 @@ function init(){
       } else {
         shipClassToAdd.array.forEach(array =>{
           for (let i = 0; i < array.length; i++){
-            
             addingComputerPieces[array].classList.add(addClassOfShip) 
             addingComputerPieces[array].classList.add(compShipStylingToAdd) 
-            
-            
-
-
           }
         })        
       }
@@ -249,17 +255,19 @@ function init(){
 
   function displayingPlayerBattleship(event){ //***** this contains the logic to prevent the players ships going over the bottom/side borders */ 
     event.target.classList.add('mouse-hover')
+    
     // console.log('this is working')
     // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]
-    if(shipClassToAdd.length > 0){
+    if (shipClassToAdd.length > 0){
       // console.log('event.target',event.target)
 
       // ** consts needed to make sure that player can only add ships if sdhering to certain conditions 
-      const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -1))  )
-      const secondLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -2))  )
-      const thirdLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -3))  )
-      const fourthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -4))  )
-      const fifthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length -5))  )
+      const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 1))  )
+      
+      const secondLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 2))  )
+      const thirdLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 3))  )
+      const fourthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 4))  )
+      const fifthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 5))  )
       // console.log(lastItemVert)
       const lastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 1
       const secondLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 2
@@ -268,8 +276,10 @@ function init(){
       const fifthLastItem = parseFloat(event.target.innerText) + shipClassToAdd.length - 5
 
     
-      if(shipClassToAdd.direction === 'right'){ //*conditions for player placing the ships horizontally 
-
+      if (shipClassToAdd.direction === 'right'){ //*conditions for player placing the ships horizontally 
+        for (let i = 0; i < shipClassToAdd.length; i++){
+          targetPlayerCell[parseFloat(event.target.innerText) + (i )].classList.add('ship-outline')
+        }
         if (addingPlayerPieces[lastItem].classList.contains('ship') && lastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[secondLastItem].classList.contains('ship') && secondLastItem >= parseFloat(event.target.innerText)  || addingPlayerPieces[thirdLastItem].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItem].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItem].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           event.target.classList.add('mouse-hover-invalid')
         } else if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
@@ -287,16 +297,17 @@ function init(){
           }
         }
       } else if (shipClassToAdd.direction === 'vert'){           //* conditions for playe placing ship verically 
-
+  
+        // console.log('last item vert',typeof(lastItemVert))
         if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItemVert].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItemVert].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           // console.log('vertical ship category selector ')
           event.target.classList.add('mouse-hover-invalid')
-        } else if (lastItemVert >= 99){
-          // console.log('gone over the bottom ')
+        } else if (lastItemVert > 99){
+          console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
         } else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){
           event.target.classList.add('mouse-hover-invalid')
-        }else if ( targetPlayerCell[lastItemVert + 1].classList.contains('ship') || targetPlayerCell[lastItemVert - 1].classList.contains('ship') || targetPlayerCell[lastItemVert + 10].classList.contains('ship') || targetPlayerCell[lastItemVert - 10].classList.contains('ship')){
+        } else if ( targetPlayerCell[lastItemVert + 1].classList.contains('ship') || targetPlayerCell[lastItemVert - 1].classList.contains('ship') || targetPlayerCell[lastItemVert + 10].classList.contains('ship') || targetPlayerCell[lastItemVert - 10].classList.contains('ship')){
           event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
@@ -450,7 +461,7 @@ function init(){
   
 
   function checkForWinner (){ //FUNCTION TO CEHCK FOR WINNER 
-    if (playerCarriershipLives === 0 && playerBattleshipLives === 0 && playerDestroyerLives === 0 && playerSubmarineLives === 0 &&  playerPatrolLives=== 0){
+    if (playerCarriershipLives === 0 && playerBattleshipLives === 0 && playerDestroyerLives === 0 && playerSubmarineLives === 0 &&  playerPatrolLives === 0){
       console.log('THE COMPUTER IS VICTORIOUS')
       alert('game over, the computer has won')
 
@@ -494,7 +505,7 @@ function init(){
       possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
     }
 
-    checkForWinner ()
+    checkForWinner()
 
 
 
@@ -662,7 +673,7 @@ function init(){
             }
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition < 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition >= -9 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')) {
 
-            if(parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  < 10 ) {
+            if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition  < 10 ) {
               possibleArrayPositions.splice(targetLikelyRandomPlayerCell , 1, (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) + 1))
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER + 10', possibleArrayPositions)
 
@@ -695,7 +706,7 @@ function init(){
             } 
           } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition < 10 || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= -9 ){
 
-            if(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10 ){
+            if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= 1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  < 10 ){
               possibleArrayPositions = [(parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) + 1)]
               // console.log('THIS IS CREATINA NEW ARRAY WITH TARGET NUMBER +1', possibleArrayPositions)
             } else if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  <= -1 && parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition  >= -9 ){
@@ -707,7 +718,7 @@ function init(){
         } else {
           targetPlayerCell[possibleArrayPositions].classList.add('shot-miss')
           possibleArrayPositions = null
-          checkForWinner ()
+          checkForWinner()
 
         }
       }
@@ -726,14 +737,14 @@ function init(){
       
 
       if (!chosenAlready && !chosenAlreadyContainsShotHit ){ //If statement runs function again if random number has been chosen before
-        checkForWinner ()
+        checkForWinner()
         targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
         computerShotAtID.push(targetRandomPlayerCell)
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
           targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
 
           thisIsWhatINeedToTest = targetPlayerCell[targetRandomPlayerCell]
-        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
+          // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
         
           
@@ -821,7 +832,7 @@ function init(){
 
 
 
-
+  
 
 
 
