@@ -7,15 +7,24 @@ function init(){
   const yAxis = document.querySelector('.y-axis')
   const xAxis = document.querySelector('.x-axis')
   const overlay = document.querySelector('.overlay-page1')
+  const reMatchButton = document.querySelector('.Reload-page')
+  const reMatchOverlay = document.querySelector('.overlay-win-screen')
   
 
   startButton.addEventListener('click', handleStartButton)
+  reMatchButton.addEventListener('click', handleNewGameButton)
 
   //**** creating the landing page  */
 
   yAxis.classList.add('hidden')
   xAxis.classList.add('hidden')
   
+
+  reMatchOverlay.classList.add('hidden') 
+
+  function handleNewGameButton(){
+    window.location.reload()
+  }
   
   
 
@@ -229,6 +238,7 @@ function init(){
     addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-carriership'
     addCarrierShip.classList.add('hidden')
+    bannerMessage.innerHTML = 'You are now placing your Carriership!'
     
   }
   function handleAddBattleship(){
@@ -237,6 +247,7 @@ function init(){
     addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-battleship'
     addBattleship.classList.add('hidden')
+    bannerMessage.innerHTML = 'You are now placing your Battleship!'
     
   } 
   function handleAddDestroyer(){    
@@ -245,6 +256,7 @@ function init(){
     addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-destroyer'
     addDestroyer.classList.add('hidden')
+    bannerMessage.innerHTML = 'You are now placing your Destroyer!'
   }
   function handleAddSumbarine(){    
     shipClassToAdd = playerSubmarine
@@ -252,6 +264,7 @@ function init(){
     addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-submarine'
     addSubmarine.classList.add('hidden')
+    bannerMessage.innerHTML = 'You are now placing your Submarine !'
   }
   function handleAddPatrol(){    
     shipClassToAdd = playerPatrol
@@ -259,6 +272,7 @@ function init(){
     addClassOfShip = 'ship'
     compShipStylingToAdd = 'place-comp-patrol'
     addPatrol.classList.add('hidden')
+    bannerMessage.innerHTML = 'You are now placing your Patrol Boat!'
     
   }
 
@@ -487,19 +501,19 @@ function init(){
 
   
 
-  
+  const winMessage = document.querySelector('.win-message')
 
   function checkForWinner (){ //FUNCTION TO CEHCK FOR WINNER 
     if (playerCarriershipLives === 0 && playerBattleshipLives === 0 && playerDestroyerLives === 0 && playerSubmarineLives === 0 &&  playerPatrolLives === 0){
       console.log('THE COMPUTER IS VICTORIOUS')
-      alert('game over, the computer has won')
-
-
+      reMatchOverlay.classList.remove('hidden')
+      winMessage.innerHTML = 'The computer is victorious! Do you want a rematch?'
     }
 
     if (compCarriership === 0 && compBattleship === 0 && compDestroyer === 0 && compSubmarine === 0 && compPatrol === 0){
       console.log('PLAYER IS VICTORIOUS ')
-      alert('game over, the player has won')
+      reMatchOverlay.classList.remove('hidden')
+      winMessage.innerHTML = 'You are victorious! Do you want to try your luck again?'
 
     }
   }

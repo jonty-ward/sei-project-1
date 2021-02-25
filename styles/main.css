@@ -13,6 +13,7 @@ body{
   height: 100%;
   width: 100%;
   z-index: 10;
+  
   background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
 }
 
@@ -28,6 +29,9 @@ body{
   height: 50px;
   border-radius: 10px;
   background-color: rgba(224, 0, 0, 0.911);
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Alegreya', serif;
 }
 
 h2{
@@ -36,11 +40,14 @@ h2{
   font-size: 40px;
   margin-bottom: 0px;
   padding-bottom: 0px;
+  font-family: 'Alegreya', serif;
 }
 
  ul{
   list-style-type: none;
   color: rgb(214, 22, 48);
+  font-size: 18px;
+  font-family: 'Alegreya', serif;
 }
 li{
   padding :3px
@@ -73,10 +80,12 @@ main{
 /* Classes to hide the main screen/ hide the rules div class  */
 
 .y-axis, .x-axis {
-  background-color: thistle;
   padding: 7px;
   margin: 0px 20px;
   background-color: rgba(224, 0, 0, 0.911);
+  color: rgb(218, 217, 217);
+  font-family: 'Alegreya', serif;
+  font-weight: bold;
 }
 
 .ship-buttons{
@@ -85,7 +94,14 @@ color: transparent;
 border: transparent;
 }
 .add-carriership, .add-battleship, .add-destroyer, .add-submarine, .add-patrol{
-  background-color: rgba(224, 0, 0, 0.911) ;
+  background-color: rgba(224, 0, 0, 0.911);
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 10px;
+  color: rgb(218, 217, 217);
+  font-family: 'Alegreya', serif;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 
@@ -96,8 +112,10 @@ border: transparent;
   padding: 10px;
   border-radius: 6px;
   box-shadow: 0px 0px 7px 1px #6d0404;
-
   color: rgb(218, 217, 217);
+  font-family: 'Alegreya', serif;
+  font-size: 17px;
+  font-weight: bold;
 }
 
 .rules{
@@ -127,8 +145,8 @@ border: transparent;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 500px;
-  width: 500px;
+  height: 450px;
+  width: 450px;
   background-color: transparent;
 }
 /* styling the divs in theplayers grid */
@@ -161,8 +179,8 @@ border: transparent;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 500px;
-  width: 500px;
+  height: 450px;
+  width: 450px;
   
 }
 
@@ -171,13 +189,13 @@ border: transparent;
   flex-grow: 1;
   height: 9.5%;
   width: 9%;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 /* Creating the ship classes */
 
 
 .place-carriership{
-  background-color: rgba(255, 0, 0, 1);
+  background-color: rgb(102, 107, 24);
   /* background-image: url("../assets/kisspng-ship-type-26-frigate-navy-type-997-artisan-radar-ships-5ad04ccc71a6c2.6790923015236005884655.png");
 
    background-attachment:fixed;
@@ -192,10 +210,10 @@ border: transparent;
   background-color: green;
 }
 .place-destroyer{
-  background-color: greenyellow;
+  background-color: rgb(133, 133, 133);
 }
 .place-submarine{
-  background-color: grey;
+  background-color: rgb(240, 120, 120);
 }
 .place-patrol{
   background-color: orange;
@@ -233,17 +251,17 @@ border: transparent;
 }
 
 .ship-outline{
-  background-color: rgba(125, 183, 248, 0.185);
+  background-color: rgba(125, 182, 248, 0.753);
 }
 .mouse-hover-invalid{
-  background-color: rgb(12, 1, 1);
+  background-color: rgb(255, 0, 0);
 }
 
 
 /* shooting at computer  */
 
 .shot-miss{
-  background-color: rgb(27, 43, 136);
+  background-color: rgb(82, 101, 207);
 }
 .shot-hit{
   background-color: black;
@@ -252,6 +270,40 @@ border: transparent;
   background-attachment:local;
 }
 
+
+.overlay-win-screen {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 30%;
+  width: 30%;
+  z-index: 9;
+  transform: translate(115%,100%);
+
+  background-color: rgba(255, 174, 212, 0.993);
+  border-radius: 50px 10px 50px 10px;
+
+}
+
+.overlay-win-screen h3{
+  font-size: 25px;
+  font-family: 'Alegreya', serif;
+}
+
+.overlay-win-screen p{
+  font-size: 20px;
+  font-family: 'Alegreya', serif;
+  
+}
+
+.Reload-page{
+background-color: rgba(224, 0, 0, 0.911);
+padding: 10px;
+font-size: 17px;
+font-weight: bold;
+color: rgb(218, 217, 217);
+font-family: 'Alegreya', serif;
+}
 
 
 
