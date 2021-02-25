@@ -1,4 +1,5 @@
 
+
 function init(){
 
   //consts for the game
@@ -270,6 +271,15 @@ function init(){
           event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
+
+          
+          for (let i = 0; i < shipClassToAdd.length; i++){
+            targetPlayerCell[parseFloat(event.target.innerText) + i].classList.add('mouse-hover')
+          }
+
+         
+          
+         
         }
       } else if (shipClassToAdd.direction === 'vert'){           //* conditions for playe placing ship verically 
 
@@ -279,17 +289,32 @@ function init(){
         } else if (lastItemVert >= 99){
           // console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
-        } else{
+        } else {
           event.target.classList.add('mouse-hover')
+          for (let i = 0; i < shipClassToAdd.length; i++){
+            targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.add('mouse-hover')
+          }
         }
       }
     }
   }
   //*event listeners for adding and removing players ships
   function removingPlayerBattleship(event){
+
+
     // console.log('this is working')
     event.target.classList.remove('mouse-hover')
     event.target.classList.remove('mouse-hover-invalid')
+    for (let i = 0; i < shipClassToAdd.length; i++){
+      targetPlayerCell[parseFloat(event.target.innerText) + i].classList.remove('mouse-hover')
+    }
+
+    for (let i = 0; i < shipClassToAdd.length; i++){
+      targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.remove('mouse-hover')
+    }
+
+ 
+   
   }
   addingPlayerPieces.forEach(click =>{    
     click.addEventListener('mouseenter', displayingPlayerBattleship) 
@@ -411,15 +436,15 @@ function init(){
   let playerSubmarineLives = 3      
   let playerPatrolLives = 2
 
-
-
-
+  
 
   
 
   function checkForWinner (){ //FUNCTION TO CEHCK FOR WINNER 
     if (playerCarriershipLives === 0 && playerBattleshipLives === 0 && playerDestroyerLives === 0 && playerSubmarineLives === 0 &&  playerPatrolLives=== 0){
       console.log('THE COMPUTER IS VICTORIOUS')
+      alert('game over, the computer has won')
+
 
     }
 
@@ -427,18 +452,13 @@ function init(){
       console.log('PLAYER IS VICTORIOUS ')
       alert('game over, the player has won')
 
-      
-
-
     }
   }
-
   //* arrays for non-random shooting from computer 
   let originalArrayPosition = null
   let possibleArrayPositions = null
   
   let targetRandomPlayerCellGlobal = null
-
 
   //* storing the randomly shot at div
   let thisIsWhatINeedToTest = null
