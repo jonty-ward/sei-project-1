@@ -348,6 +348,8 @@ function init(){
   
   function shootAtComputer(event){
 
+    
+
     const chosenAlready = playerShotAtID.includes(parseFloat(event.target.innerHTML))
 
     // console.log(chosenAlready)
@@ -409,6 +411,28 @@ function init(){
   let playerSubmarineLives = 3      
   let playerPatrolLives = 2
 
+
+
+
+
+  
+
+  function checkForWinner (){ //FUNCTION TO CEHCK FOR WINNER 
+    if (playerCarriershipLives === 0 && playerBattleshipLives === 0 && playerDestroyerLives === 0 && playerSubmarineLives === 0 &&  playerPatrolLives=== 0){
+      console.log('THE COMPUTER IS VICTORIOUS')
+
+    }
+
+    if (compCarriership === 0 && compBattleship === 0 && compDestroyer === 0 && compSubmarine === 0 && compPatrol === 0){
+      console.log('PLAYER IS VICTORIOUS ')
+      alert('game over, the player has won')
+
+      
+
+
+    }
+  }
+
   //* arrays for non-random shooting from computer 
   let originalArrayPosition = null
   let possibleArrayPositions = null
@@ -440,6 +464,11 @@ function init(){
     if (!targetPlayerCell[targetRandomPlayerCellGlobal - gridWidth].classList.contains('shot-miss')){
       possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
     }
+
+    checkForWinner ()
+
+
+
   
     //Logic to create an array of possible options
     // console.log('possible array postions', possibleArrayPositions)
@@ -453,11 +482,20 @@ function init(){
   function shootAtPlayer(){
     // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
 
-    
+   
 
     
     if (possibleArrayPositions !== null){ 
 
+      // targetPlayerCell[possibleArrayPositions].forEach( position =>{
+      //   if (position.classList.contains('shot-miss')){
+      //     console.log('TESTING MY GOR-EACH LOOP ')
+      //   }
+  
+      // })
+      
+
+      //*************this lags by 1 life, and needs more conditions  */
       if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
         playerCarriershipLives--
         console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
@@ -640,6 +678,7 @@ function init(){
         } else {
           targetPlayerCell[possibleArrayPositions].classList.add('shot-miss')
           possibleArrayPositions = null
+          checkForWinner ()
 
         }
       }
@@ -658,6 +697,7 @@ function init(){
       
 
       if (!chosenAlready && !chosenAlreadyContainsShotHit ){ //If statement runs function again if random number has been chosen before
+        checkForWinner ()
         targetPlayerCell[targetRandomPlayerCell].classList.add('shot-miss') 
         computerShotAtID.push(targetRandomPlayerCell)
         if (targetPlayerCell[targetRandomPlayerCell].classList.contains('ship')){ // ii* if computer hits any ship, styling is added 
