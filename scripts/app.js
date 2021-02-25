@@ -277,9 +277,11 @@ function init(){
 
     
       if (shipClassToAdd.direction === 'right'){ //*conditions for player placing the ships horizontally 
+
         for (let i = 0; i < shipClassToAdd.length; i++){
           targetPlayerCell[parseFloat(event.target.innerText) + (i )].classList.add('ship-outline')
         }
+        
         if (addingPlayerPieces[lastItem].classList.contains('ship') && lastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[secondLastItem].classList.contains('ship') && secondLastItem >= parseFloat(event.target.innerText)  || addingPlayerPieces[thirdLastItem].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItem].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItem].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           event.target.classList.add('mouse-hover-invalid')
         } else if (secondLastItem % gridWidth === 9 || thirdLastItem >= parseFloat(event.target.innerText) && thirdLastItem % gridWidth === 9 || fourthLastItem >= parseFloat(event.target.innerText) && fourthLastItem % gridWidth === 9 || fifthLastItem >= parseFloat(event.target.innerText) && fifthLastItem % gridWidth === 9){
@@ -298,11 +300,16 @@ function init(){
         }
       } else if (shipClassToAdd.direction === 'vert'){           //* conditions for playe placing ship verically 
   
+        for (let i = 0; i < shipClassToAdd.length; i++){
+          targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.add('ship-outline')
+        }
+
+       
         // console.log('last item vert',typeof(lastItemVert))
         if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItemVert].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItemVert].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           // console.log('vertical ship category selector ')
           event.target.classList.add('mouse-hover-invalid')
-        } else if (lastItemVert > 99){
+        } else if (lastItemVert >= 99){
           console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
         } else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){

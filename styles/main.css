@@ -135,10 +135,10 @@ padding: 30px;
 }
 
 .ship-outline{
-  background-color: rgba(0, 0, 255, 0.185);
+  background-color: rgba(125, 183, 248, 0.514);
 }
 .mouse-hover-invalid{
-  background-color: rgb(12, 1, 1);
+  background-color: red;
 }
 
 
