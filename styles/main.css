@@ -110,6 +110,10 @@ padding: 30px;
 .mouse-hover{
   background-color:rgb(12, 202, 12);
 }
+
+.ship-outline{
+  background-color: rgba(0, 0, 255, 0.185);
+}
 .mouse-hover-invalid{
   background-color: rgb(12, 1, 1);
 }

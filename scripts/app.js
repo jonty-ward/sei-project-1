@@ -122,6 +122,8 @@ function init(){
       for (let i = 0; i < array.length; i++){
         addingPlayerPieces[array[i]].classList.add(addClassOfShip)
         addingPlayerPieces[array[i]].classList.add(shipStylingToAdd)
+        addingPlayerPieces[array[i]].classList.remove('ship-outline')
+        
       }
     })
     addComputerShips()
@@ -153,7 +155,7 @@ function init(){
       for ( i = 0; i < shipClassToAdd.length; i ++){    
         if(computerShipPosition.includes(randomShipStart + (i * shipToVert))){ //*code to prevent ships from stacking on computer grid
           // console.log('ships are intersecting')
-          return addComputerShips ()
+          return addComputerShips()
         } else {
           shipClassToAdd.array.push([randomShipStart + i * shipToVert  ] )                 
           shipsprojectedPosition.push(randomShipStart + i * shipToVert   )  
@@ -177,9 +179,13 @@ function init(){
       } else {
         shipClassToAdd.array.forEach(array =>{
           for (let i = 0; i < array.length; i++){
+            
             addingComputerPieces[array].classList.add(addClassOfShip) 
             addingComputerPieces[array].classList.add(compShipStylingToAdd) 
             
+            
+
+
           }
         })        
       }
@@ -272,14 +278,9 @@ function init(){
         } else {
           event.target.classList.add('mouse-hover')
 
-          
           for (let i = 0; i < shipClassToAdd.length; i++){
-            targetPlayerCell[parseFloat(event.target.innerText) + i].classList.add('mouse-hover')
+            targetPlayerCell[parseFloat(event.target.innerText) + i].classList.add('ship-outline')
           }
-
-         
-          
-         
         }
       } else if (shipClassToAdd.direction === 'vert'){           //* conditions for playe placing ship verically 
 
@@ -292,7 +293,7 @@ function init(){
         } else {
           event.target.classList.add('mouse-hover')
           for (let i = 0; i < shipClassToAdd.length; i++){
-            targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.add('mouse-hover')
+            targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.add('ship-outline')
           }
         }
       }
@@ -306,11 +307,11 @@ function init(){
     event.target.classList.remove('mouse-hover')
     event.target.classList.remove('mouse-hover-invalid')
     for (let i = 0; i < shipClassToAdd.length; i++){
-      targetPlayerCell[parseFloat(event.target.innerText) + i].classList.remove('mouse-hover')
+      targetPlayerCell[parseFloat(event.target.innerText) + i].classList.remove('ship-outline')
     }
 
     for (let i = 0; i < shipClassToAdd.length; i++){
-      targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.remove('mouse-hover')
+      targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.remove('ship-outline')
     }
 
  
