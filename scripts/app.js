@@ -304,7 +304,10 @@ function init(){
           targetPlayerCell[parseFloat(event.target.innerText) + (i * gridWidth)].classList.add('ship-outline')
         }
 
-       
+        if (lastItemVert >= 99){
+          console.log('gone over the bottom ')
+          event.target.classList.add('mouse-hover-invalid')
+        } 
         // console.log('last item vert',typeof(lastItemVert))
         if (addingPlayerPieces[lastItemVert].classList.contains('ship') || addingPlayerPieces[secondLastItemVert].classList.contains('ship') || addingPlayerPieces[thirdLastItemVert].classList.contains('ship') && thirdLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fourthLastItemVert].classList.contains('ship') && fourthLastItem >= parseFloat(event.target.innerText) || addingPlayerPieces[fifthLastItemVert].classList.contains('ship') && fifthLastItem >= parseFloat(event.target.innerText) ){
           // console.log('vertical ship category selector ')
@@ -489,49 +492,66 @@ function init(){
 
   //* storing the randomly shot at div
   let thisIsWhatINeedToTest = null
+
+function keepinfTrackOfPlayerLives(){
+
+
+  if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
+    playerCarriershipLives--
+    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
+  }  else if ( thisIsWhatINeedToTest.classList.contains('place-battleship')){
+    playerBattleshipLives--
+    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerBattleshipLives)
+  }  else if ( thisIsWhatINeedToTest.classList.contains('place-destroyer')){
+    playerDestroyerLives--
+    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerDestroyerLives)
+  }  else if ( thisIsWhatINeedToTest.classList.contains('place-submarine')){
+    playerSubmarineLives--
+    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerSubmarineLives)
+  }  else if ( thisIsWhatINeedToTest.classList.contains('place-patrol')){
+    playerPatrolLives--
+    console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
+  }  
+}
   
   
+  
+
+
+
 
 
   //*functions for non-rnadom computer shooting 
 
   function createFirstChoiceArray (){
     originalArrayPosition = targetRandomPlayerCellGlobal
-    // possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ] 
 
-    if (!targetPlayerCell[targetRandomPlayerCellGlobal + 1].classList.contains('shot-miss')){
-      possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1)]
-    }
-    if (!targetPlayerCell[targetRandomPlayerCellGlobal - 1 ].classList.contains('shot-miss')){
-      possibleArrayPositions.push((targetRandomPlayerCellGlobal - 1))
-    }
-    if (!targetPlayerCell[targetRandomPlayerCellGlobal + gridWidth].classList.contains('shot-miss')){
-      possibleArrayPositions.push((targetRandomPlayerCellGlobal + gridWidth))
-    }
-    if (!targetPlayerCell[targetRandomPlayerCellGlobal - gridWidth].classList.contains('shot-miss')){
-      possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
-    }
+    possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ] 
+
+    // if (!targetPlayerCell[targetRandomPlayerCellGlobal + 1].classList.contains('shot-miss')){
+    //   possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1)]
+    // }
+    // if (!targetPlayerCell[targetRandomPlayerCellGlobal - 1 ].classList.contains('shot-miss')){
+    //   possibleArrayPositions.push((targetRandomPlayerCellGlobal - 1))
+    // }
+    // if (!targetPlayerCell[targetRandomPlayerCellGlobal + gridWidth].classList.contains('shot-miss')){
+    //   possibleArrayPositions.push((targetRandomPlayerCellGlobal + gridWidth))
+    // }
+    // if (!targetPlayerCell[targetRandomPlayerCellGlobal - gridWidth].classList.contains('shot-miss')){
+    //   possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
+    // }
 
     checkForWinner()
-
-
 
   
     //Logic to create an array of possible options
     // console.log('possible array postions', possibleArrayPositions)
   }
 
-
-
-  
-  
-
   function shootAtPlayer(){
     // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
 
-   
 
-    
     if (possibleArrayPositions !== null){ 
 
       // targetPlayerCell[possibleArrayPositions].forEach( position =>{
@@ -543,22 +563,7 @@ function init(){
       
 
       //*************this lags by 1 life, and needs more conditions  */
-      if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
-        playerCarriershipLives--
-        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
-      }  else if ( thisIsWhatINeedToTest.classList.contains('place-battleship')){
-        playerBattleshipLives--
-        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerBattleshipLives)
-      }  else if ( thisIsWhatINeedToTest.classList.contains('place-destroyer')){
-        playerDestroyerLives--
-        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerDestroyerLives)
-      }  else if ( thisIsWhatINeedToTest.classList.contains('place-submarine')){
-        playerSubmarineLives--
-        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerSubmarineLives)
-      }  else if ( thisIsWhatINeedToTest.classList.contains('place-patrol')){
-        playerPatrolLives--
-        console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
-      }  
+      
 
 
       //need togic to check if any of the adjacent squares already contain the SHOT-MISS class, and update the array accordingly 
@@ -573,6 +578,7 @@ function init(){
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell)
       
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
+        keepinfTrackOfPlayerLives()
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
 
@@ -625,6 +631,7 @@ function init(){
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell3)
 
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
+        keepinfTrackOfPlayerLives()
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
@@ -663,6 +670,7 @@ function init(){
         // console.log('the 2.LENGTH step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell2)
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
+        keepinfTrackOfPlayerLives()
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
@@ -697,6 +705,7 @@ function init(){
       } else if (possibleArrayPositions.length === 1){
 
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions]
+        keepinfTrackOfPlayerLives()
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
         if (targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
@@ -751,6 +760,7 @@ function init(){
           targetPlayerCell[targetRandomPlayerCell].classList.add('shot-hit')
 
           thisIsWhatINeedToTest = targetPlayerCell[targetRandomPlayerCell]
+          keepinfTrackOfPlayerLives()
           // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
         
