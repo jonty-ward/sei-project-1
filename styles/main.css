@@ -394,7 +394,7 @@ font-family: 'Alegreya', serif;
     width: 80px;
     height: 30px;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: bold;
   }
   .add-carriership, .add-battleship, .add-destroyer, .add-submarine, .add-patrol{
@@ -481,7 +481,7 @@ font-family: 'Alegreya', serif;
     width: 80px;
     height: 30px;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: bold;
     
   }
