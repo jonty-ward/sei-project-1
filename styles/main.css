@@ -391,8 +391,8 @@ font-family: 'Alegreya', serif;
     max-width: 150px;
   }
   .start-game{
-    width: 80px;
-    height: 30px;
+    width: 100px;
+    height: 40px;
     border-radius: 10px;
     font-size: 9px;
     font-weight: bold;
