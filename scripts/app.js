@@ -179,8 +179,10 @@ function init(){
     //consts for the function to work 
     
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
+    console.log('Random Ship Start',randomShipStart)
     shipClassToAdd.array = []
     const shipsprojectedPosition = []
+    console.log('ships projected position', shipsprojectedPosition)
     const randomAxis = Math.floor(Math.random() * 10)
     let shipToVert = 0
     const placedAlready = computerShipPosition.includes(randomShipStart) //finds if contains random start position
@@ -201,9 +203,7 @@ function init(){
           shipsprojectedPosition.push(randomShipStart + i * shipToVert   )  
           computerShipPosition.push(randomShipStart + i * shipToVert   ) 
           // console.log('computer ship position ', computerShipPosition)
-
         }
-        
       }
       const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge //this could be a lot cleaner with a loop
       const seccondLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 2)])
@@ -212,10 +212,28 @@ function init(){
       const fifthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 5)])
 
       if (lastItemInArray > 99 || seccondLastItemInArray % gridWidth === 9 || thirdLastItemInArray % gridWidth === 9  || fourthLastItemInArray % gridWidth === 9 || fifthLastItemInArray % gridWidth === 9){    // stops the ships from going over the bottom edge
-        // console.log('gone over the edge, try again! ')
-       
         return addComputerShips()
-      } else {
+      } 
+      else if (targetComputerCell[randomShipStart] < 99 && targetComputerCell[randomShipStart + 1].classList.contains('ship') || targetComputerCell[randomShipStart] > 0 && targetComputerCell[randomShipStart - 1].classList.contains('ship') || targetComputerCell[randomShipStart] < 90 && targetComputerCell[randomShipStart + 10].classList.contains('ship') ||  targetComputerCell[randomShipStart] > 9 && targetComputerCell[randomShipStart - 10].classList.contains('ship')){
+        console.log('the FIRST item is next to a ship')
+        return addComputerShips()
+      } else if (targetComputerCell[lastItemInArray] < 99 && targetComputerCell[lastItemInArray + 1].classList.contains('ship') || targetComputerCell[lastItemInArray] > 0 && targetComputerCell[lastItemInArray - 1].classList.contains('ship') || targetComputerCell[lastItemInArray] < 90 && targetComputerCell[lastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[lastItemInArray] > 9 && targetComputerCell[lastItemInArray - 10].classList.contains('ship')){
+        console.log('the FIRST item is next to a ship')
+        return addComputerShips()
+      } else if (targetComputerCell[seccondLastItemInArray] < 99 && targetComputerCell[seccondLastItemInArray + 1].classList.contains('ship') || targetComputerCell[seccondLastItemInArray] > 0 && targetComputerCell[seccondLastItemInArray - 1].classList.contains('ship') || targetComputerCell[seccondLastItemInArray] < 90 && targetComputerCell[seccondLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[seccondLastItemInArray] > 9 && targetComputerCell[seccondLastItemInArray - 10].classList.contains('ship')){
+        console.log('the FIRST item is next to a ship')
+        return addComputerShips()
+      } else if (targetComputerCell[thirdLastItemInArray] < 99 && targetComputerCell[thirdLastItemInArray + 1].classList.contains('ship') || targetComputerCell[thirdLastItemInArray] > 0 && targetComputerCell[thirdLastItemInArray - 1].classList.contains('ship') || targetComputerCell[thirdLastItemInArray] < 90 && targetComputerCell[thirdLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[thirdLastItemInArray] > 9 && targetComputerCell[thirdLastItemInArray - 10].classList.contains('ship')){
+        console.log('the FIRST item is next to a ship')
+        return addComputerShips()
+      } else if (targetComputerCell[fourthLastItemInArray] < 99 && targetComputerCell[fourthLastItemInArray + 1].classList.contains('ship') || targetComputerCell[fourthLastItemInArray] > 0 && targetComputerCell[fourthLastItemInArray - 1].classList.contains('ship') || targetComputerCell[fourthLastItemInArray] < 90 && targetComputerCell[fourthLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[fourthLastItemInArray] > 9 && targetComputerCell[fourthLastItemInArray - 10].classList.contains('ship')){
+        console.log('the FIRST item is next to a ship')
+        return addComputerShips()
+      } else if (targetComputerCell[fifthLastItemInArray] < 99 && targetComputerCell[fifthLastItemInArray + 1].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] > 0 && targetComputerCell[fifthLastItemInArray - 1].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] < 90 && targetComputerCell[fifthLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[fifthLastItemInArray] > 9 && targetComputerCell[fifthLastItemInArray - 10].classList.contains('ship')){
+        console.log('the FIRST item is next to a ship')
+        return addComputerShips()
+      } 
+       else {   //*** put the conditions in hers as an else-if */
         shipClassToAdd.array.forEach(array =>{
           for (let i = 0; i < array.length; i++){
             addingComputerPieces[array].classList.add(addClassOfShip) 
@@ -223,6 +241,15 @@ function init(){
           }
         })        
       }
+
+      
+
+      // else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){
+      //   event.target.classList.add('mouse-hover-invalid')
+      // } else if ( targetPlayerCell[lastItem + 1].classList.contains('ship') || targetPlayerCell[lastItem - 1].classList.contains('ship') || targetPlayerCell[lastItem + 10].classList.contains('ship') || targetPlayerCell[lastItem - 10].classList.contains('ship')){
+      //   event.target.classList.add('mouse-hover-invalid')
+      // }
+
     } else {
       // console.log('starting on square with ship') //*end of if statement stopping ships starting on a square containing another ship
       return addComputerShips()
@@ -296,7 +323,6 @@ function init(){
 
       // ** consts needed to make sure that player can only add ships if sdhering to certain conditions 
       const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 1))  )
-      console.log('last vertical item',lastItemVert)
       const secondLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 2))  )
       const thirdLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 3))  )
       const fourthLastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 4))  )
@@ -334,9 +360,6 @@ function init(){
 
   
         if (lastItemVert >= 99){
-          console.log('VERTICAL IS WORKING')
-
-          console.log('gone over the bottom ')
           event.target.classList.add('mouse-hover-invalid')
         } 
 
