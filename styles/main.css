@@ -173,6 +173,7 @@ border: transparent;
 /* styling the layout of both grids */
 .both-grids {
   padding: 30px;
+  padding-bottom: 15px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -319,15 +320,21 @@ font-family: 'Alegreya', serif;
 
 
 
-
-
-
 /* ** can work on this tomorrow  */
 
 
-@media screen and (max-width: 300px) { 
+@media screen and (min-width: 300px) and (max-width: 350px) { 
   .both-grids{
     flex-direction: column;
+  }
+  .banner-message{
+    max-width: 50px;
+    padding: 5px;
+    font-size: 12px;
+  }
+  .x-axis, .y-axis{
+    font-size: 10px;
+    padding:5px;
   }
 
   .computer-grid{
@@ -344,6 +351,10 @@ font-family: 'Alegreya', serif;
 
   .header-overlay img{
     min-width: 200px;
+  }
+
+  .main img{
+    max-width: 150px;
   }
 
   .start-game{
@@ -392,7 +403,92 @@ font-family: 'Alegreya', serif;
   
 }
 
-@media screen and (max-width: 600px) { 
+@media screen and (min-width: 351px) and (max-width: 599px) { 
+
+  .banner-message{
+    max-width: 50px;
+    padding: 5px;
+    font-size: 12px;
+  }
+  .x-axis, .y-axis{
+    font-size: 10px;
+    padding:5px;
+  }
+  .both-grids{
+    flex-direction: column;
+  }
+  
+  .both-grids{
+
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .computer-grid{
+    max-width: 270px;
+    max-height: 270px;
+    padding: 5px;
+  }
+  .player-grid{
+    max-width: 270px;
+    max-height: 270px;
+    padding: 5px;
+  }
+
+  .header-overlay img{
+    min-width: 200px;
+  }
+
+  .main img{
+    max-width: 150px;
+  }
+
+  .start-game{
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    
+  }
+
+  .add-carriership, .add-battleship, .add-destroyer, .add-submarine, .add-patrol{
+    font-size: 10px;
+    max-width: 15vh;
+    min-width: 15vh;
+    padding: 5px 0px;
+    margin-bottom: 8px;
+  }
+
+  h2{
+  
+    color: rgb(206, 21, 7);
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-family: 'Alegreya', serif;
+  }
+  
+   ul{
+     text-align: center;
+    list-style-type: none;
+    color: rgb(214, 22, 48);
+    font-size: 13px;
+    font-family: 'Alegreya', serif;
+
+  }
+  li{
+    padding :.5vh 5vh .5vh 0vh
+    
+  }
+  .main-section-overlay{
+    text-align: ;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width:1000px) { 
 
 .grid-headings{
 
@@ -448,20 +544,8 @@ font-family: 'Alegreya', serif;
   
 }
 
-@media screen and (max-width: 1100px){
 
-  .both-grids{
-    flex-direction: column;
-  }
 
-  .computer-grid{
-    max-width: 600px;
-    max-height: 600px;
-  }
-  .player-grid{
-    max-width: 600px;
-    max-height: 600px;
-  }
-}
+  
 
 
