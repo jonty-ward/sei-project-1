@@ -9,6 +9,13 @@ function init(){
   const overlay = document.querySelector('.overlay-page1')
   const reMatchButton = document.querySelector('.Reload-page')
   const reMatchOverlay = document.querySelector('.overlay-win-screen')
+
+
+
+  const backgroundMusic = document.querySelector('.background-music')
+  const backgroundAudio = document.querySelector('#background-music')
+  
+  
   
 
   startButton.addEventListener('click', handleStartButton)
@@ -18,10 +25,10 @@ function init(){
 
   yAxis.classList.add('hidden')
   xAxis.classList.add('hidden')
-  
-
   reMatchOverlay.classList.add('hidden') 
 
+
+  
   function handleNewGameButton(){
     window.location.reload()
   }
@@ -40,6 +47,18 @@ function init(){
 
 
   }
+
+  const makeIt = document.querySelector('.make-it')
+  const makeItAudio = document.getElementById('make-it')
+
+  function playMakeItAudio() {
+    makeItAudio.src = './assets/background.wav'
+    makeItAudio.play()
+    document.getElementById('make-it').loop = true
+  }
+  makeIt.addEventListener('click', playMakeItAudio)
+
+  
   
   //consts for the game
   //**** creating the grids  */
