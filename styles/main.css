@@ -361,6 +361,10 @@ font-family: 'Alegreya', serif;
 /* ** can work on this tomorrow  */
 @media screen and (min-width: 300px) and (max-width: 350px) { 
 
+  header img{
+    max-width: 200px;
+  }
+
   .overlay-win-screen {
     position: fixed;
     top: 0%;
@@ -458,6 +462,9 @@ font-family: 'Alegreya', serif;
   }
   .header-overlay img{
     min-width: 200px;
+    max-width: 200px;
+  }
+  header img{
     max-width: 200px;
   }
 
