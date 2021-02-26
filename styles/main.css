@@ -37,6 +37,9 @@ body{
   font-weight: bold;
   font-family: 'Alegreya', serif;
 }
+.destroyed{
+  background-color: black;
+}
 
 h2{
   
@@ -521,9 +524,7 @@ font-family: 'Alegreya', serif;
    
     
   }
-  .main-section-overlay{
-    text-align: ;
-  }
+ 
   .add-submarine{
     background-image: url("../assets/submarine.png");
     /* background-size: contain; */
@@ -618,9 +619,7 @@ font-family: 'Alegreya', serif;
     padding :.5vh 5vh .5vh 0vh
     
   }
-  .main-section-overlay{
-    text-align: ;
-  }
+ 
   .add-submarine{
     background-image: url("../assets/submarine.png");
     /* background-size: contain; */
@@ -636,9 +635,6 @@ font-family: 'Alegreya', serif;
     max-width: 200px;
   }
 
-.grid-headings{
-
-}
   .both-grids{
     flex-direction: column;
     justify-content: center;

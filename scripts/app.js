@@ -11,13 +11,6 @@ function init(){
   const reMatchOverlay = document.querySelector('.overlay-win-screen')
 
 
-
-  const backgroundMusic = document.querySelector('.background-music')
-  const backgroundAudio = document.querySelector('#background-music')
-  
-  
-  
-
   startButton.addEventListener('click', handleStartButton)
   reMatchButton.addEventListener('click', handleNewGameButton)
 
@@ -32,9 +25,6 @@ function init(){
   function handleNewGameButton(){
     window.location.reload()
   }
-  
-  
-
   function handleStartButton(){
     
     bannerMessage.innerHTML = 'Place your pieces!'
@@ -155,8 +145,6 @@ function init(){
   function insertingPlayerBattleship (event){ //function to place the ships 
 
     if (event.target.classList.contains('mouse-hover-invalid')){ //*logic to prevent the ship being added if it is in the wrong place!
-
-      // console.log('CANT PUT A SHIP HERE!! ')
       return insertingPlayerBattleship()
     }
     const arrayStarrtingPoint = []
@@ -167,16 +155,11 @@ function init(){
     } else if (shipClassToAdd.direction === 'vert'){ //*** function to add ships on y
       vertOrHoriz = gridWidth
     }
-
     arrayStarrtingPoint.push(parseFloat(event.target.innerText))
     for ( let i = 0; i < shipClassToAdd.length; i ++){
       shipClassToAdd.array.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
       playerProjectedPosition.push([parseFloat(arrayStarrtingPoint) + i * vertOrHoriz] ) 
     }
-
-    // console.log('player projected position', playerProjectedPosition)
-    
-      
     shipClassToAdd.array.forEach( array => {       
       for (let i = 0; i < array.length; i++){
         addingPlayerPieces[array[i]].classList.add(addClassOfShip)
@@ -540,13 +523,13 @@ function init(){
     }
 
 
-    bannerMessage.innerHTML = ('Your opponent is thinking!')
+    // bannerMessage.innerHTML = ('Your opponent is thinking!')
     setTimeout(()=>{
       bannerMessage.innerHTML = ('Your opponent missed, your turn!')
 
       shootAtPlayer() 
       
-    }, 1000)
+    }, 1500)
     //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
 
 
@@ -577,6 +560,7 @@ function init(){
       console.log('PLAYER IS VICTORIOUS ')
       reMatchOverlay.classList.remove('hidden')
       winMessage.innerHTML = 'You are victorious! Do you want to try your luck again?'
+      
 
     }
   }
