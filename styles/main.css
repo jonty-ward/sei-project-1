@@ -131,6 +131,12 @@ border: transparent;
   
 }
 /* this is to help me remoember which is the computer grid whislt working */
+
+.grid-headings{
+  margin: 5px;
+  margin-bottom: 0px;
+  color: rgb(218, 217, 217);
+}
 .label-computer-grid{
   background-color: red;
   width: 100px;
@@ -233,18 +239,18 @@ border: transparent;
 /* these are the computers ships- can add color of none */
 
 .place-comp-carriership{
-  background-color: rgba(122, 45, 45, 0);
+  background-color: rgba(122, 45, 45, 1);
 }
 .place-comp-battleship{
-  background-color: rgba(132, 245, 160, 0);
+  background-color: rgba(132, 245, 160, 1);
 }
 .place-comp-destroyer{
-  background-color: rgba(88, 6, 240, 0);
+  background-color: rgba(88, 6, 240, 1);
 }.place-comp-submarine{
-  background-color: rgba(248, 188, 188, 0);
+  background-color: rgba(248, 188, 188, 1);
 }
 .place-comp-patrol{
-  background-color: rgba(32, 104, 3, 0);
+  background-color: rgba(32, 104, 3, 1);
 }
 
 .mouse-hover{
