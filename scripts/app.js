@@ -538,7 +538,16 @@ function init(){
       // console.log('you have already selected this square')
       return shootAtComputer() //this restarts the function 
     }
-    shootAtPlayer() //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
+
+
+    bannerMessage.innerHTML = ('Your opponent is thinking!')
+    setTimeout(()=>{
+      bannerMessage.innerHTML = ('Your opponent missed, your turn!')
+
+      shootAtPlayer() 
+      
+    }, 1000)
+    //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
 
 
 
@@ -663,7 +672,7 @@ function init(){
 
   function shootAtPlayer(){
     // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
-
+    
    
 
     if (possibleArrayPositions !== null){ 
