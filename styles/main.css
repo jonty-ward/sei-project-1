@@ -20,12 +20,14 @@ body{
 
  .header-overlay img{
   min-width: 450px;
+  max-width: 500px;
 }
  .header-overlay {
    display: block;
   padding-bottom: 5vh;
   padding-top: 5vh;
 }
+
 .start-game{
   width: 150px;
   height: 50px;
@@ -178,9 +180,6 @@ border: transparent;
 }
 
 
-
-
-
 .banner-message{
   
   background-color: red;
@@ -287,6 +286,9 @@ border: transparent;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
+   box-shadow: .5vh .5vh 1vh .2vh #020000;
+   
+
    
   
   
@@ -302,6 +304,7 @@ border: transparent;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
+   box-shadow: .5vh .5vh 1vh .2vh #020000;
    
   
 }
@@ -315,6 +318,7 @@ border: transparent;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
+   box-shadow: .5vh .5vh 1vh .2vh #020000;
    
   
 }
@@ -328,6 +332,7 @@ border: transparent;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
+   box-shadow: .5vh .5vh 1vh .2vh #020000;
    
   
 }
@@ -341,6 +346,9 @@ border: transparent;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
+   box-shadow: .5vh .5vh 1vh .2vh #020000;
+
+
    
   
 }
@@ -437,6 +445,8 @@ font-family: 'Alegreya', serif;
 
 
 @media screen and (min-width: 300px) and (max-width: 350px) { 
+
+
   .both-grids{
     flex-direction: column;
   }
@@ -464,6 +474,7 @@ font-family: 'Alegreya', serif;
 
   .header-overlay img{
     min-width: 200px;
+    max-width: 200px;
   }
 
   .main img{
@@ -523,6 +534,10 @@ font-family: 'Alegreya', serif;
 }
 
 @media screen and (min-width: 351px) and (max-width: 599px) { 
+  .header-overlay img{
+    min-width: 200px;
+    max-width: 200px;
+  }
 
   .banner-message{
     max-width: 50px;
@@ -562,6 +577,7 @@ font-family: 'Alegreya', serif;
 
   .main img{
     max-width: 150px;
+    max-height: 100vh;
   }
 
   .start-game{
@@ -615,6 +631,10 @@ font-family: 'Alegreya', serif;
 }
 
 @media screen and (min-width: 600px) and (max-width:1000px) { 
+  .header-overlay img{
+    min-width: 200px;
+    max-width: 200px;
+  }
 
 .grid-headings{
 
