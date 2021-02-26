@@ -367,15 +367,16 @@ font-family: 'Alegreya', serif;
 
   .overlay-win-screen {
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: -50%;
+    left: -50%;
     height: 50%;
     width: 50%;
     z-index: 9;
-    transform: translate(115%,100%);
+    transform: translate(150%,150%);
     background-color: rgba(255, 174, 212, 0.993);
     border-radius: 50px 10px 50px 10px;
   }
+
 
   
   .header-overlay img{
@@ -463,12 +464,12 @@ font-family: 'Alegreya', serif;
 
   .overlay-win-screen {
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: -50%;
+    left: -50%;
     height: 50%;
     width: 50%;
     z-index: 9;
-    transform: translate(115%,100%);
+    transform: translate(55%,40%);
     background-color: rgba(255, 174, 212, 0.993);
     border-radius: 50px 10px 50px 10px;
   }
