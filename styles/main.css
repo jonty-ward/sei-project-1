@@ -361,6 +361,10 @@ font-family: 'Alegreya', serif;
 /* ** can work on this tomorrow  */
 @media screen and (min-width: 300px) and (max-width: 350px) { 
 
+  .main img{
+    min-width: 200px;
+    max-width: 200px;
+  }
   .header-overlay img{
     min-width: 200px;
     max-width: 200px;
@@ -436,6 +440,10 @@ font-family: 'Alegreya', serif;
 }
 
 @media screen and (min-width: 351px) and (max-width: 599px) { 
+  .main img{
+    min-width: 200px;
+    max-width: 200px;
+  }
   .header-overlay img{
     min-width: 200px;
     max-width: 200px;
