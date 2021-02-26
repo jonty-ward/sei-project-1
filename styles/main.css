@@ -361,6 +361,18 @@ font-family: 'Alegreya', serif;
 /* ** can work on this tomorrow  */
 @media screen and (min-width: 300px) and (max-width: 350px) { 
 
+  .overlay-win-screen {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 50%;
+    width: 50%;
+    z-index: 9;
+    transform: translate(115%,100%);
+    background-color: rgba(255, 174, 212, 0.993);
+    border-radius: 50px 10px 50px 10px;
+  }
+
   .main img{
     min-width: 200px;
     max-width: 200px;
@@ -447,6 +459,18 @@ font-family: 'Alegreya', serif;
   .header-overlay img{
     min-width: 200px;
     max-width: 200px;
+  }
+
+  .overlay-win-screen {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 50%;
+    width: 50%;
+    z-index: 9;
+    transform: translate(115%,100%);
+    background-color: rgba(255, 174, 212, 0.993);
+    border-radius: 50px 10px 50px 10px;
   }
 
   .banner-message{
