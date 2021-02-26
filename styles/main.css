@@ -17,10 +17,12 @@ body{
   background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
 }
 
+
  .header-overlay img{
   min-width: 450px;
 }
  .header-overlay {
+   display: block;
   padding-bottom: 5vh;
   padding-top: 5vh;
 }
@@ -54,19 +56,32 @@ li{
 }
 
 
-
-
-
 /* *styling for the main body */
 
 body{
   background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
 }
 header {
+  display: flex;
+  justify-content: space-between;
   text-align: center;
   padding: 20px 0px
   
 }
+header:first-child{
+  justify-self: flex-start;
+  
+}
+.make-it{
+  background-color: red;
+}
+header:last-child{
+  justify-self: center;
+}
+.fudge{
+  border: none;
+background-color: rgba(214, 22, 48, 0);}
+
 header .main{
   color: aliceblue;
 }
@@ -103,12 +118,67 @@ border: transparent;
   margin-bottom: 15px;
   margin-right: 10px;
   padding: 10px;
-  color: rgb(218, 217, 217);
+  color: rgba(235, 227, 223, 0.705);
   font-family: 'Alegreya', serif;
   font-size: 15px;
   font-weight: bold;
   width: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.add-carriership{
+  background-image: url("../assets/carriership.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-color: rgb(102, 107, 24);
+}
+.add-battleship{
+  background-image: url("../assets/battleship.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-color: green;
+}
+.add-destroyer{
+  background-image: url("../assets/destroyer.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-color: rgb(133, 133, 133);
+  
+}
+.add-submarine{
+  background-image: url("../assets/submarine.png");
+  /* background-size: contain; */
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 15vh;
+  background-repeat: no-repeat;
+  background-color: rgb(240, 120, 120);
+}
+.add-patrol{
+  background-image: url("../assets/patrol.png");
+  background-size: 16vh;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-color: orange;
+}
+
+
+
 
 
 .banner-message{
@@ -209,11 +279,14 @@ border: transparent;
 
 .place-carriership{
   background-color: rgb(102, 107, 24);
-  /* background-image: url("../assets/kisspng-ship-type-26-frigate-navy-type-997-artisan-radar-ships-5ad04ccc71a6c2.6790923015236005884655.png");
+  background-image: url("../assets/carriership.png");
 
-   background-attachment:fixed;
-   background-size: 150px 100px;
-   background-position:center; */
+   /* background-attachment:fixed; */
+   background-size: contain;
+   background-position:center;
+   background-repeat: no-repeat;
+   background-position-x: center;
+   background-position-y: center;
    
   
   
@@ -221,15 +294,55 @@ border: transparent;
 }
 .place-battleship{
   background-color: green;
+  background-image: url("../assets/battleship.png");
+
+   /* background-attachment:fixed; */
+   background-size: contain;
+   background-position:center;
+   background-repeat: no-repeat;
+   background-position-x: center;
+   background-position-y: center;
+   
+  
 }
 .place-destroyer{
   background-color: rgb(133, 133, 133);
+  background-image: url("../assets/destroyer.png");
+
+   /* background-attachment:fixed; */
+   background-size: contain;
+   background-position:center;
+   background-repeat: no-repeat;
+   background-position-x: center;
+   background-position-y: center;
+   
+  
 }
 .place-submarine{
   background-color: rgb(240, 120, 120);
+  background-image: url("../assets/submarine.png");
+
+   /* background-attachment:fixed; */
+   background-size: contain;
+   background-position:center;
+   background-repeat: no-repeat;
+   background-position-x: center;
+   background-position-y: center;
+   
+  
 }
 .place-patrol{
   background-color: orange;
+  background-image: url("../assets/patrol.png");
+
+   /* background-attachment:fixed; */
+   background-size: contain;
+   background-position:center;
+   background-repeat: no-repeat;
+   background-position-x: center;
+   background-position-y: center;
+   
+  
 }
 
 /* styling for hovering over square  */
@@ -400,7 +513,13 @@ font-family: 'Alegreya', serif;
   .main-section-overlay{
     text-align: ;
   }
-  
+  .add-submarine{
+    background-image: url("../assets/submarine.png");
+    /* background-size: contain; */
+   
+    background-size: 12vh;
+   
+  }
 }
 
 @media screen and (min-width: 351px) and (max-width: 599px) { 
@@ -486,6 +605,13 @@ font-family: 'Alegreya', serif;
   .main-section-overlay{
     text-align: ;
   }
+  .add-submarine{
+    background-image: url("../assets/submarine.png");
+    /* background-size: contain; */
+    
+    background-size: 12vh;
+    
+  }
 }
 
 @media screen and (min-width: 600px) and (max-width:1000px) { 
@@ -539,6 +665,14 @@ font-family: 'Alegreya', serif;
   }
   li{
     padding :.5vh 5vh .5vh 0vh;   
+  }
+
+  .add-submarine{
+    background-image: url("../assets/submarine.png");
+    /* background-size: contain; */
+   
+    background-size: 12vh;
+    
   }
  
   
