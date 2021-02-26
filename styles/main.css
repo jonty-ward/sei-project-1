@@ -362,7 +362,7 @@ font-family: 'Alegreya', serif;
 @media screen and (min-width: 300px) and (max-width: 350px) { 
 
   header img{
-    max-width: 200px;
+    max-width: 100px;
   }
 
   .overlay-win-screen {
@@ -377,10 +377,7 @@ font-family: 'Alegreya', serif;
     border-radius: 50px 10px 50px 10px;
   }
 
-  .main img{
-    min-width: 200px;
-    max-width: 200px;
-  }
+  
   .header-overlay img{
     min-width: 200px;
     max-width: 200px;
@@ -412,9 +409,7 @@ font-family: 'Alegreya', serif;
     min-width: 200px;
     max-width: 200px;
   }
-  .main img{
-    max-width: 150px;
-  }
+  
   .start-game{
     width: 100px;
     height: 40px;
@@ -464,9 +459,7 @@ font-family: 'Alegreya', serif;
     min-width: 200px;
     max-width: 200px;
   }
-  header img{
-    max-width: 200px;
-  }
+  
 
   .overlay-win-screen {
     position: fixed;
@@ -516,10 +509,7 @@ font-family: 'Alegreya', serif;
     min-width: 200px;
   }
 
-  .main img{
-    max-width: 150px;
-    max-height: 100vh;
-  }
+  
 
   .start-game{
     width: 80px;
