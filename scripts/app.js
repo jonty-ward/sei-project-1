@@ -444,35 +444,45 @@ function init(){
     if (!chosenAlready){
 
       if (event.target.classList.contains('ship' ) ){   //if statement for if player hits hip to change colour 
-        console.log('hit a ship')
+        
         event.target.classList.add('shot-hit')
         playerShotAtID.push(parseFloat(event.target.innerHTML))
         
         if (event.target.classList.contains('place-comp-carriership')){  //*series of if statements to determine what ship has been hit 
           compCarriership--
+          bannerMessage.innerHTML = 'You have hit the computers carriership'
           //can add messags in here - you have hit the enemyss battleship etc. 
           if (compCarriership === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('carrier ship dead ')
+            bannerMessage.innerHTML = 'The computers carriership is desroyed!'
           }
         } else if (event.target.classList.contains('place-comp-battleship')){
           compBattleship--
+          bannerMessage.innerHTML = 'You have hit the computers battleship'
           if (compBattleship === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('BATTLESHIP dead ')
+            bannerMessage.innerHTML = 'The computers battleship is destroyed!'
           }
         } else if (event.target.classList.contains('place-comp-destroyer')){
           compDestroyer--
+          bannerMessage.innerHTML = 'You have hit the computers destroyer'
           if (compDestroyer === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('destroyer dead ')
+            bannerMessage.innerHTML = 'The computers destroyer is destroyed!!'
           }
         } else if (event.target.classList.contains('place-comp-submarine')){
           compSubmarine--
+          bannerMessage.innerHTML = 'You have hit the computers submarine'
           if (compSubmarine === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('carrier ship dead ')
+            bannerMessage.innerHTML = 'The computers submarine is destroyed '
           }
         } else if (event.target.classList.contains('place-comp-patrol')){
           compPatrol--
+          bannerMessage.innerHTML = 'You have hit the computers patrol boat'
           if (compPatrol === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('partol ship dead ')
+            bannerMessage.innerHTML = 'The computers patrol boat is destroyed '
           }
         }
       } else {
@@ -531,20 +541,46 @@ function init(){
 
     if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
       playerCarriershipLives--
+      bannerMessage.innerHTML = 'The computer has hit your carriership!'
       console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
+      if (playerCarriershipLives === 0){
+        bannerMessage.innerHTML = 'Watch out! The computer has sunk your carriership!'
+        possibleArrayPositions = null
+      }
     }  else if ( thisIsWhatINeedToTest.classList.contains('place-battleship')){
       playerBattleshipLives--
+      bannerMessage.innerHTML = 'The computer has hit your battleship!'
       console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerBattleshipLives)
+      if (playerBattleshipLives === 0){
+        bannerMessage.innerHTML = 'Watch out! The computer has sunk your battleship!'
+        possibleArrayPositions = null
+      }
     }  else if ( thisIsWhatINeedToTest.classList.contains('place-destroyer')){
       playerDestroyerLives--
+      bannerMessage.innerHTML = 'The computer has hit your destroyer!'
       console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerDestroyerLives)
+      if (playerDestroyerLives === 0){
+        bannerMessage.innerHTML = 'Watch out! The computer has sunk your destroyer!'
+        possibleArrayPositions = null
+      }
     }  else if ( thisIsWhatINeedToTest.classList.contains('place-submarine')){
       playerSubmarineLives--
+      bannerMessage.innerHTML = 'The computer has hit your submarine!'
       console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerSubmarineLives)
+      if (playerSubmarineLives === 0){
+        bannerMessage.innerHTML = 'Watch out! The computer has sunk your submarine!'
+        possibleArrayPositions = null
+      }
     }  else if ( thisIsWhatINeedToTest.classList.contains('place-patrol')){
       playerPatrolLives--
+      bannerMessage.innerHTML = 'The computer has hit your patrol boat!'
       console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
+      if(playerPatrolLives === 0){
+        bannerMessage.innerHTML = 'Watch out! The computer has sunk your patrol boat!'
+        possibleArrayPositions = null
+      }
     }  
+    checkForWinner()
   }
   
   
@@ -611,13 +647,14 @@ function init(){
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell)
       
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
-        keepinfTrackOfPlayerLives()
+        
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
 
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
 
+          keepinfTrackOfPlayerLives()
           
   
           //*********************************** checking for a vertical match works!  */
@@ -664,13 +701,14 @@ function init(){
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell3)
 
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
-        keepinfTrackOfPlayerLives()
+        
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
           // possibleArrayPositions.splice(targetLikelyRandomPlayerCell3, 1 )
 
+          keepinfTrackOfPlayerLives()
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
             
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
@@ -703,12 +741,13 @@ function init(){
         // console.log('the 2.LENGTH step of the computers logic is selected!') 
         // console.log('target likely random player cell',targetLikelyRandomPlayerCell2)
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
-        keepinfTrackOfPlayerLives()
+       
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
         
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
  
+          keepinfTrackOfPlayerLives()
           //******this checks if the ship is vertical or horizontal  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
 
@@ -738,11 +777,12 @@ function init(){
       } else if (possibleArrayPositions.length === 1){
 
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions]
-        keepinfTrackOfPlayerLives()
+       
         // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
         if (targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions].classList.add('shot-hit')
+          keepinfTrackOfPlayerLives()
           if (parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition >= 10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions].innerHTML) - originalArrayPosition <= -10 && targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
             
             
