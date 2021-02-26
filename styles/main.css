@@ -12,12 +12,9 @@ body{
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 10;
-  
+  z-index: 10;  
   background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
 }
-
-
  .header-overlay img{
   min-width: 450px;
   max-width: 500px;
@@ -27,7 +24,6 @@ body{
   padding-bottom: 5vh;
   padding-top: 5vh;
 }
-
 .start-game{
   width: 150px;
   height: 50px;
@@ -40,16 +36,13 @@ body{
 .destroyed{
   background-color: black;
 }
-
-h2{
-  
+h2{  
   color: rgb(206, 21, 7);
   font-size: 40px;
   margin-bottom: 0px;
   padding-bottom: 0px;
   font-family: 'Alegreya', serif;
 }
-
  ul{
   list-style-type: none;
   color: rgb(214, 22, 48);
@@ -59,10 +52,7 @@ h2{
 li{
   padding :3px
 }
-
-
 /* *styling for the main body */
-
 body{
   background-image: linear-gradient(to  right, rgb(1, 1, 66), rgb(0, 0, 110), rgb(0, 0, 110), rgb(1, 1, 66));
 }
@@ -70,12 +60,10 @@ header {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  padding: 20px 0px
-  
+  padding: 20px 0px  
 }
 header:first-child{
-  justify-self: flex-start;
-  
+  justify-self: flex-start;  
 }
 .make-it{
   background-color: red;
@@ -86,7 +74,6 @@ header:last-child{
 .fudge{
   border: none;
 background-color: rgba(214, 22, 48, 0);}
-
 header .main{
   color: aliceblue;
 }
@@ -96,9 +83,7 @@ header img{
 main{
   text-align: center;
 }
-
 /* Classes to hide the main screen/ hide the rules div class  */
-
 .y-axis, .x-axis {
   padding: 7px;
   margin: 0px 20px;
@@ -108,11 +93,9 @@ main{
   font-weight: bold;
   min-width: 100px;
 }
-
 button:hover{
 background-color: rgb(104, 173, 14);
 }
-
 .ship-buttons{
 background-color: red;
 color: transparent;
@@ -129,18 +112,6 @@ border: transparent;
   font-weight: bold;
   width: 150px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 .add-carriership{
   background-image: url("../assets/carriership.png");
   background-size: contain;
@@ -162,7 +133,6 @@ border: transparent;
   background-position-x: center;
   background-repeat: no-repeat;
   background-color: rgb(133, 133, 133);
-  
 }
 .add-submarine{
   background-image: url("../assets/submarine.png");
@@ -181,10 +151,7 @@ border: transparent;
   background-position-y: center;
   background-color: orange;
 }
-
-
-.banner-message{
-  
+.banner-message{  
   background-color: red;
   min-width: 300px;
   padding: 10px;
@@ -195,17 +162,13 @@ border: transparent;
   font-size: 17px;
   font-weight: bold;
 }
-
 .rules{
   color:rgb(218, 217, 217);
   margin-top: 25px;
 }
-
 .banner{
   display: flex;
-  justify-content: center;
-  
-  
+  justify-content: center;  
 }
 /* this is to help me remoember which is the computer grid whislt working */
 
@@ -250,12 +213,8 @@ border: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 0px;
-  
- 
+  padding-top: 0px; 
 }
-
-
 /* styling the computer grids  */
 .computer-grid {
   padding: 20px;
@@ -266,9 +225,7 @@ border: transparent;
   justify-content: center;
   height: 450px;
   width: 450px;
-  
 }
-
 .computer-grid div {
   border: 1px solid rgb(218, 217, 217);
   flex-grow: 1;
@@ -277,58 +234,42 @@ border: transparent;
   color: rgba(255, 255, 255, 0);
 }
 /* Creating the ship classes */
-
-
 .place-carriership{
   background-color: rgb(102, 107, 24);
   background-image: url("../assets/carriership.png");
-
    /* background-attachment:fixed; */
    background-size: contain;
    background-position:center;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
-   box-shadow: .5vh .5vh 1vh .2vh #020000;
-   
-
-   
-  
-  
-  
+   box-shadow: .5vh .5vh 1vh .2vh #020000; 
 }
 .place-battleship{
   background-color: green;
   background-image: url("../assets/battleship.png");
-
    /* background-attachment:fixed; */
    background-size: contain;
    background-position:center;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
-   box-shadow: .5vh .5vh 1vh .2vh #020000;
-   
-  
+   box-shadow: .5vh .5vh 1vh .2vh #020000;  
 }
 .place-destroyer{
   background-color: rgb(133, 133, 133);
   background-image: url("../assets/destroyer.png");
-
    /* background-attachment:fixed; */
    background-size: contain;
    background-position:center;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
-   box-shadow: .5vh .5vh 1vh .2vh #020000;
-   
-  
+   box-shadow: .5vh .5vh 1vh .2vh #020000;  
 }
 .place-submarine{
   background-color: rgb(240, 120, 120);
   background-image: url("../assets/submarine.png");
-
    /* background-attachment:fixed; */
    background-size: contain;
    background-position:center;
@@ -336,38 +277,27 @@ border: transparent;
    background-position-x: center;
    background-position-y: center;
    box-shadow: .5vh .5vh 1vh .2vh #020000;
-   
-  
 }
 .place-patrol{
   background-color: orange;
   background-image: url("../assets/patrol.png");
-
    /* background-attachment:fixed; */
    background-size: contain;
    background-position:center;
    background-repeat: no-repeat;
    background-position-x: center;
    background-position-y: center;
-   box-shadow: .5vh .5vh 1vh .2vh #020000;
-
-
-   
-  
+   box-shadow: .5vh .5vh 1vh .2vh #020000;  
 }
 
 /* styling for hovering over square  */
 .hover-ship:hover{
   background-color: red;
 }
-
 .hidden{
   display: none;
 }
-
-
 /* these are the computers ships- can add color of none */
-
 .place-comp-carriership{
   background-color: rgba(122, 45, 45, 0);
 }
@@ -382,21 +312,16 @@ border: transparent;
 .place-comp-patrol{
   background-color: rgba(32, 104, 3, 0);
 }
-
 .mouse-hover{
   background-color:rgb(12, 202, 12);
 }
-
 .ship-outline{
   background-color: rgba(125, 182, 248, 0.753);
 }
 .mouse-hover-invalid{
   background-color: rgb(255, 0, 0);
 }
-
-
 /* shooting at computer  */
-
 .shot-miss{
   background-color: rgb(82, 101, 207);
 }
@@ -406,8 +331,6 @@ border: transparent;
   background-size: contain;
   background-attachment:local;
 }
-
-
 .overlay-win-screen {
   position: fixed;
   top: 0%;
@@ -416,23 +339,17 @@ border: transparent;
   width: 30%;
   z-index: 9;
   transform: translate(115%,100%);
-
   background-color: rgba(255, 174, 212, 0.993);
   border-radius: 50px 10px 50px 10px;
-
 }
-
 .overlay-win-screen h3{
   font-size: 25px;
   font-family: 'Alegreya', serif;
 }
-
 .overlay-win-screen p{
   font-size: 20px;
-  font-family: 'Alegreya', serif;
-  
+  font-family: 'Alegreya', serif;  
 }
-
 .Reload-page{
 background-color: rgba(224, 0, 0, 0.911);
 padding: 10px;
@@ -441,15 +358,8 @@ font-weight: bold;
 color: rgb(218, 217, 217);
 font-family: 'Alegreya', serif;
 }
-
-
-
 /* ** can work on this tomorrow  */
-
-
 @media screen and (min-width: 300px) and (max-width: 350px) { 
-
-
   .both-grids{
     flex-direction: column;
   }
@@ -462,7 +372,6 @@ font-family: 'Alegreya', serif;
     font-size: 10px;
     padding:5px;
   }
-
   .computer-grid{
     max-width: 200px;
     max-height: 200px;
@@ -474,25 +383,20 @@ font-family: 'Alegreya', serif;
   .both-grids{
     padding-bottom: 15px;
   }
-
   .header-overlay img{
     min-width: 200px;
     max-width: 200px;
   }
-
   .main img{
     max-width: 150px;
   }
-
   .start-game{
     width: 80px;
     height: 30px;
     border-radius: 10px;
     font-size: 12px;
     font-weight: bold;
-    
   }
-
   .add-carriership, .add-battleship, .add-destroyer, .add-submarine, .add-patrol{
     font-size: 10px;
     max-width: 15vh;
@@ -500,37 +404,29 @@ font-family: 'Alegreya', serif;
     padding: 5px 0px;
     margin-bottom: 8px;
   }
-
-  h2{
-  
+  h2{  
     color: rgb(206, 21, 7);
     font-size: 20px;
     margin-bottom: 0px;
     padding-bottom: 0px;
     font-family: 'Alegreya', serif;
-  }
-  
+  }  
    ul{
      text-align: center;
     list-style-type: none;
     color: rgb(214, 22, 48);
     font-size: 13px;
     font-family: 'Alegreya', serif;
-
   }
   li{
-    padding :.5vh 5vh .5vh 0vh
-    
-   
+    padding :.5vh 5vh .5vh 0vh 
     
   }
  
   .add-submarine{
     background-image: url("../assets/submarine.png");
-    /* background-size: contain; */
-   
-    background-size: 12vh;
-   
+    /* background-size: contain; */   
+    background-size: 12vh;   
   }
 }
 
