@@ -469,7 +469,7 @@ font-family: 'Alegreya', serif;
     height: 50%;
     width: 50%;
     z-index: 9;
-    transform: translate(55%,40%);
+    transform: translate(155%,140%);
     background-color: rgba(255, 174, 212, 0.993);
     border-radius: 50px 10px 50px 10px;
   }
