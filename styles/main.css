@@ -86,6 +86,11 @@ main{
   color: rgb(218, 217, 217);
   font-family: 'Alegreya', serif;
   font-weight: bold;
+  min-width: 100px;
+}
+
+button:hover{
+background-color: rgb(104, 173, 14);
 }
 
 .ship-buttons{
@@ -162,7 +167,7 @@ border: transparent;
   flex-grow: 1;
   height: 9.5%;
   width: 9%;
-  color:rgb(255, 255, 255)
+  color:rgba(255, 255, 255, 0)
 }
 
 /* styling the layout of both grids */
@@ -196,7 +201,7 @@ border: transparent;
   flex-grow: 1;
   height: 9.5%;
   width: 9%;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0);
 }
 /* Creating the ship classes */
 
@@ -239,18 +244,18 @@ border: transparent;
 /* these are the computers ships- can add color of none */
 
 .place-comp-carriership{
-  background-color: rgba(122, 45, 45, 1);
+  background-color: rgba(122, 45, 45, 0);
 }
 .place-comp-battleship{
-  background-color: rgba(132, 245, 160, 1);
+  background-color: rgba(132, 245, 160, 0);
 }
 .place-comp-destroyer{
-  background-color: rgba(88, 6, 240, 1);
+  background-color: rgba(88, 6, 240, 0);
 }.place-comp-submarine{
-  background-color: rgba(248, 188, 188, 1);
+  background-color: rgba(248, 188, 188, 0);
 }
 .place-comp-patrol{
-  background-color: rgba(32, 104, 3, 1);
+  background-color: rgba(32, 104, 3, 0);
 }
 
 .mouse-hover{
@@ -319,18 +324,144 @@ font-family: 'Alegreya', serif;
 
 /* ** can work on this tomorrow  */
 
-@media screen and (max-width: 1000px) { 
+
+@media screen and (max-width: 300px) { 
   .both-grids{
     flex-direction: column;
   }
 
   .computer-grid{
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 200px;
+    max-height: 200px;
   }
   .player-grid{
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  .both-grids{
+    padding-bottom: 15px;
+  }
+
+  .header-overlay img{
+    min-width: 200px;
+  }
+
+  .start-game{
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    
+  }
+
+  .add-carriership, .add-battleship, .add-destroyer, .add-submarine, .add-patrol{
+    font-size: 10px;
+    max-width: 15vh;
+    min-width: 15vh;
+    padding: 5px 0px;
+    margin-bottom: 8px;
+  }
+
+  h2{
+  
+    color: rgb(206, 21, 7);
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-family: 'Alegreya', serif;
+  }
+  
+   ul{
+     text-align: center;
+    list-style-type: none;
+    color: rgb(214, 22, 48);
+    font-size: 13px;
+    font-family: 'Alegreya', serif;
+
+  }
+  li{
+    padding :.5vh 5vh .5vh 0vh
+    
+   
+    
+  }
+  .main-section-overlay{
+    text-align: ;
+  }
+  
+}
+
+@media screen and (max-width: 600px) { 
+
+.grid-headings{
+
+}
+  .both-grids{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .computer-grid{
+    max-width: 400px;
+    max-height: 400px;
+    padding: 5px;
+  }
+  .player-grid{
+    max-width: 400px;
+    max-height: 400px;
+    padding: 5px;
+  }
+
+  .header-overlay img{
+    min-width: 400px;
+  }
+
+  .start-game{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(224, 0, 0, 0.911);
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Alegreya', serif;
+  }
+  h2{
+    color: rgb(206, 21, 7);
+    font-size: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-family: 'Alegreya', serif;
+  }
+   ul{
+     text-align: center;
+    list-style-type: none;
+    color: rgb(214, 22, 48);
+    font-size: 17px;
+    font-family: 'Alegreya', serif;
+  }
+  li{
+    padding :.5vh 5vh .5vh 0vh;   
+  }
+ 
+  
+}
+
+@media screen and (max-width: 1100px){
+
+  .both-grids{
+    flex-direction: column;
+  }
+
+  .computer-grid{
+    max-width: 600px;
+    max-height: 600px;
+  }
+  .player-grid{
+    max-width: 600px;
+    max-height: 600px;
   }
 }
+
 

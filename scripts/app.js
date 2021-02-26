@@ -211,29 +211,23 @@ function init(){
       const fourthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 4)])
       const fifthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 5)])
 
+      console.log('target comupter cell ranfom ship start',targetComputerCell[randomShipStart])
+
       if (lastItemInArray > 99 || seccondLastItemInArray % gridWidth === 9 || thirdLastItemInArray % gridWidth === 9  || fourthLastItemInArray % gridWidth === 9 || fifthLastItemInArray % gridWidth === 9){    // stops the ships from going over the bottom edge
         return addComputerShips()
-      } 
-      else if (targetComputerCell[randomShipStart] < 99 && targetComputerCell[randomShipStart + 1].classList.contains('ship') || targetComputerCell[randomShipStart] > 0 && targetComputerCell[randomShipStart - 1].classList.contains('ship') || targetComputerCell[randomShipStart] < 90 && targetComputerCell[randomShipStart + 10].classList.contains('ship') ||  targetComputerCell[randomShipStart] > 9 && targetComputerCell[randomShipStart - 10].classList.contains('ship')){
-        console.log('the FIRST item is next to a ship')
+      } else if (targetComputerCell[randomShipStart] < 99 && targetComputerCell[(randomShipStart + 1)].classList.contains('ship') || targetComputerCell[randomShipStart] > 0 && targetComputerCell[(randomShipStart - 1)].classList.contains('ship') || targetComputerCell[randomShipStart] < 90 && targetComputerCell[randomShipStart + 10].classList.contains('ship') ||  targetComputerCell[randomShipStart] > 9 && targetComputerCell[randomShipStart - 10].classList.contains('ship')){
         return addComputerShips()
-      } else if (targetComputerCell[lastItemInArray] < 99 && targetComputerCell[lastItemInArray + 1].classList.contains('ship') || targetComputerCell[lastItemInArray] > 0 && targetComputerCell[lastItemInArray - 1].classList.contains('ship') || targetComputerCell[lastItemInArray] < 90 && targetComputerCell[lastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[lastItemInArray] > 9 && targetComputerCell[lastItemInArray - 10].classList.contains('ship')){
-        console.log('the FIRST item is next to a ship')
+      } else if (targetComputerCell[lastItemInArray] < 99 && targetComputerCell[(lastItemInArray + 1)].classList.contains('ship') || targetComputerCell[lastItemInArray] > 0 && targetComputerCell[(lastItemInArray - 1)].classList.contains('ship') || targetComputerCell[lastItemInArray] < 90 && targetComputerCell[(lastItemInArray + 10)].classList.contains('ship') ||  targetComputerCell[lastItemInArray] > 9 && targetComputerCell[(lastItemInArray - 10)].classList.contains('ship')){
         return addComputerShips()
-      } else if (targetComputerCell[seccondLastItemInArray] < 99 && targetComputerCell[seccondLastItemInArray + 1].classList.contains('ship') || targetComputerCell[seccondLastItemInArray] > 0 && targetComputerCell[seccondLastItemInArray - 1].classList.contains('ship') || targetComputerCell[seccondLastItemInArray] < 90 && targetComputerCell[seccondLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[seccondLastItemInArray] > 9 && targetComputerCell[seccondLastItemInArray - 10].classList.contains('ship')){
-        console.log('the FIRST item is next to a ship')
+      } else if (targetComputerCell[seccondLastItemInArray] < 99 && targetComputerCell[(seccondLastItemInArray + 1)].classList.contains('ship') || targetComputerCell[seccondLastItemInArray] > 0 && targetComputerCell[(seccondLastItemInArray - 1)].classList.contains('ship') || targetComputerCell[seccondLastItemInArray] < 90 && targetComputerCell[(seccondLastItemInArray + 10)].classList.contains('ship') ||  targetComputerCell[seccondLastItemInArray] > 9 && targetComputerCell[(seccondLastItemInArray - 10)].classList.contains('ship')){
         return addComputerShips()
-      } else if (targetComputerCell[thirdLastItemInArray] < 99 && targetComputerCell[thirdLastItemInArray + 1].classList.contains('ship') || targetComputerCell[thirdLastItemInArray] > 0 && targetComputerCell[thirdLastItemInArray - 1].classList.contains('ship') || targetComputerCell[thirdLastItemInArray] < 90 && targetComputerCell[thirdLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[thirdLastItemInArray] > 9 && targetComputerCell[thirdLastItemInArray - 10].classList.contains('ship')){
-        console.log('the FIRST item is next to a ship')
+      } else if (targetComputerCell[thirdLastItemInArray] < 99 && targetComputerCell[(thirdLastItemInArray + 1)].classList.contains('ship') || targetComputerCell[thirdLastItemInArray] > 0 && targetComputerCell[(thirdLastItemInArray - 1)].classList.contains('ship') || targetComputerCell[thirdLastItemInArray] < 90 && targetComputerCell[(thirdLastItemInArray + 10)].classList.contains('ship') ||  targetComputerCell[thirdLastItemInArray] > 9 && targetComputerCell[(thirdLastItemInArray - 10)].classList.contains('ship')){
         return addComputerShips()
-      } else if (targetComputerCell[fourthLastItemInArray] < 99 && targetComputerCell[fourthLastItemInArray + 1].classList.contains('ship') || targetComputerCell[fourthLastItemInArray] > 0 && targetComputerCell[fourthLastItemInArray - 1].classList.contains('ship') || targetComputerCell[fourthLastItemInArray] < 90 && targetComputerCell[fourthLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[fourthLastItemInArray] > 9 && targetComputerCell[fourthLastItemInArray - 10].classList.contains('ship')){
-        console.log('the FIRST item is next to a ship')
+      } else if (targetComputerCell[fourthLastItemInArray] < 99 && targetComputerCell[(fourthLastItemInArray + 1)].classList.contains('ship') || targetComputerCell[fourthLastItemInArray] > 0 && targetComputerCell[(fourthLastItemInArray - 1)].classList.contains('ship') || targetComputerCell[fourthLastItemInArray] < 90 && targetComputerCell[(fourthLastItemInArray + 10)].classList.contains('ship') ||  targetComputerCell[fourthLastItemInArray] > 9 && targetComputerCell[(fourthLastItemInArray - 10)].classList.contains('ship')){
         return addComputerShips()
-      } else if (targetComputerCell[fifthLastItemInArray] < 99 && targetComputerCell[fifthLastItemInArray + 1].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] > 0 && targetComputerCell[fifthLastItemInArray - 1].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] < 90 && targetComputerCell[fifthLastItemInArray + 10].classList.contains('ship') ||  targetComputerCell[fifthLastItemInArray] > 9 && targetComputerCell[fifthLastItemInArray - 10].classList.contains('ship')){
-        console.log('the FIRST item is next to a ship')
+      } else if (targetComputerCell[fifthLastItemInArray] < 99 && targetComputerCell[(fifthLastItemInArray + 1)].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] > 0 && targetComputerCell[(fifthLastItemInArray - 1)].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] < 90 && targetComputerCell[(fifthLastItemInArray + 10)].classList.contains('ship') ||  targetComputerCell[fifthLastItemInArray] > 9 && targetComputerCell[(fifthLastItemInArray - 10)].classList.contains('ship')){
         return addComputerShips()
-      } 
-       else {   //*** put the conditions in hers as an else-if */
+      } else {   //*** put the conditions in hers as an else-if */
         shipClassToAdd.array.forEach(array =>{
           for (let i = 0; i < array.length; i++){
             addingComputerPieces[array].classList.add(addClassOfShip) 
@@ -349,7 +343,9 @@ function init(){
           event.target.classList.add('mouse-hover-invalid')
         } else if ( targetPlayerCell[lastItem + 1].classList.contains('ship') || targetPlayerCell[lastItem - 1].classList.contains('ship') || targetPlayerCell[lastItem + 10].classList.contains('ship') || targetPlayerCell[lastItem - 10].classList.contains('ship')){
           event.target.classList.add('mouse-hover-invalid')
-        } else {
+        } else if ( targetPlayerCell[secondLastItem + 1].classList.contains('ship') || targetPlayerCell[secondLastItem - 1].classList.contains('ship') || targetPlayerCell[secondLastItem + 10].classList.contains('ship') || targetPlayerCell[secondLastItem - 10].classList.contains('ship')){
+          event.target.classList.add('mouse-hover-invalid')
+        }  else {
           event.target.classList.add('mouse-hover')
 
           for (let i = 0; i < shipClassToAdd.length; i++){
@@ -378,6 +374,8 @@ function init(){
         } else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){
           event.target.classList.add('mouse-hover-invalid')
         } else if ( targetPlayerCell[lastItemVert + 1].classList.contains('ship') || targetPlayerCell[lastItemVert - 1].classList.contains('ship') || targetPlayerCell[lastItemVert + 10].classList.contains('ship') || targetPlayerCell[lastItemVert - 10].classList.contains('ship')){
+          event.target.classList.add('mouse-hover-invalid')
+        } else if ( targetPlayerCell[secondLastItemVert + 1].classList.contains('ship') || targetPlayerCell[secondLastItemVert - 1].classList.contains('ship') || targetPlayerCell[secondLastItemVert + 10].classList.contains('ship') || targetPlayerCell[secondLastItemVert - 10].classList.contains('ship')){
           event.target.classList.add('mouse-hover-invalid')
         } else {
           event.target.classList.add('mouse-hover')
@@ -602,7 +600,7 @@ function init(){
       playerPatrolLives--
       bannerMessage.innerHTML = 'The computer has hit your patrol boat!'
       console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerPatrolLives)
-      if(playerPatrolLives === 0){
+      if (playerPatrolLives === 0){
         bannerMessage.innerHTML = 'Watch out! The computer has sunk your patrol boat!'
         possibleArrayPositions = null
       }
