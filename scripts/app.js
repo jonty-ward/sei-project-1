@@ -529,7 +529,7 @@ function init(){
 
       shootAtPlayer() 
       
-    }, 1500)
+    }, 800)
     //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
 
 
