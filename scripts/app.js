@@ -20,8 +20,6 @@ function init(){
   xAxis.classList.add('hidden')
   reMatchOverlay.classList.add('hidden') 
 
-
-  
   function handleNewGameButton(){
     window.location.reload()
   }
@@ -55,7 +53,6 @@ function init(){
   // consts for creating the grids
   const playerGrid = document.querySelector('.player-grid')
   const computerGrid = document.querySelector('.computer-grid')
-  // const playerGrid = document.querySelector('.computer-grid')
   //creating the size of the grid that is going to be used
   const playerCells = []
   const computerCells = []
@@ -89,12 +86,8 @@ function init(){
   createPlayerGrid() //calling the function to make the player grid 
   createComputerGrid() //calling the function to make the computergrid 
 
-  
-
  
-  //*** creating the ships  */
-
-
+ 
   // //*creating the ships
   class Ship {
     constructor(name, length, direction, array, board){
@@ -106,7 +99,6 @@ function init(){
     }
     
   }
-
   //******* players pieces 
   const playerCarriership = new Ship('carriership', 5, 'right', [], 'player')
   const playerBattleship = new Ship('battleship', 4, 'right', [], 'player')
@@ -114,20 +106,12 @@ function init(){
   const playerSubmarine = new Ship('submarine', 3, 'right', [], 'player')
   const playerPatrol = new Ship('patrol', 2, 'right', [], 'player')
   
-
-
   //*inserting the piece 
   let shipClassToAdd = [] // this can be changed based on the button clicked
   let shipStylingToAdd = ''
   let addClassOfShip = ''
   let compShipStylingToAdd = ''
   
-  
-
-  // let shipStylingToHover = '' // used this to try and get the styling to work on hover- populated the whole grid! 
-  
-
- 
 
   const addCarrierShip = document.querySelector('.add-carriership')
   const addBattleship = document.querySelector('.add-battleship')
@@ -139,8 +123,6 @@ function init(){
 
 
   //*Adding the players ships 
-
-
 
   function insertingPlayerBattleship (event){ //function to place the ships 
 
@@ -173,11 +155,8 @@ function init(){
   }
   //* ADDING COMPUTER SHIPS
   const computerShipPosition = [] //keeps track of the computers ships positions 
-  // console.log('all ships positions', computerShipPosition)
 
   function addComputerShips(){
-    //     const targetRandomPlayerCell = Math.floor(Math.random() * gridCellCount)
-    //     const chosenAlready = computerShotAtID.includes(targetRandomPlayerCell) //checks to see if the random 
     //consts for the function to work 
     
     const randomShipStart = Math.floor(Math.random() * gridCellCount)
@@ -207,7 +186,7 @@ function init(){
           // console.log('computer ship position ', computerShipPosition)
         }
       }
-      const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge //this could be a lot cleaner with a loop
+      const lastItemInArray =  shipsprojectedPosition[ (shipsprojectedPosition.length - 1) ]//***finding the last item in the array- used for stopping ships added over bottom edge 
       const seccondLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 2)])
       const thirdLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 3)])
       const fourthLastItemInArray = parseFloat(shipsprojectedPosition[(shipsprojectedPosition.length - 4)])
@@ -229,7 +208,7 @@ function init(){
         return addComputerShips()
       } else if (targetComputerCell[fifthLastItemInArray] < 99 && targetComputerCell[(fifthLastItemInArray + 1)].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] > 0 && targetComputerCell[(fifthLastItemInArray - 1)].classList.contains('ship') || targetComputerCell[fifthLastItemInArray] < 90 && targetComputerCell[(fifthLastItemInArray + 10)].classList.contains('ship') ||  targetComputerCell[fifthLastItemInArray] > 9 && targetComputerCell[(fifthLastItemInArray - 10)].classList.contains('ship')){
         return addComputerShips()
-      } else {   //*** put the conditions in hers as an else-if */
+      } else {   //*** put the conditions in here as an else-if */
         shipClassToAdd.array.forEach(array =>{
           for (let i = 0; i < array.length; i++){
             addingComputerPieces[array].classList.add(addClassOfShip) 
@@ -238,13 +217,6 @@ function init(){
         })        
       }
 
-      
-
-      // else if ( targetPlayerCell[parseFloat(event.target.innerText) + 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 1].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) + 10].classList.contains('ship') || targetPlayerCell[parseFloat(event.target.innerText) - 10].classList.contains('ship')){
-      //   event.target.classList.add('mouse-hover-invalid')
-      // } else if ( targetPlayerCell[lastItem + 1].classList.contains('ship') || targetPlayerCell[lastItem - 1].classList.contains('ship') || targetPlayerCell[lastItem + 10].classList.contains('ship') || targetPlayerCell[lastItem - 10].classList.contains('ship')){
-      //   event.target.classList.add('mouse-hover-invalid')
-      // }
 
     } else {
       // console.log('starting on square with ship') //*end of if statement stopping ships starting on a square containing another ship
@@ -301,21 +273,15 @@ function init(){
 
 
   //this is the function for hovering over the board- //****need to be able to add the whole ship ************* WORKING HERE ******
-
-  // const lastItemInArray =  shipClassToAdd.array[ (shipClassToAdd.array.length - 1) ]
-
-  
-
   
   
 
   function displayingPlayerBattleship(event){ //***** this contains the logic to prevent the players ships going over the bottom/side borders */ 
     event.target.classList.add('mouse-hover')
     
-    // console.log('this is working')
-    // const lastItemInArray =  playerProjectedPosition[ (playerProjectedPosition.length - 1) ]
+
     if (shipClassToAdd.length > 0){
-      // console.log('event.target',event.target)
+
 
       // ** consts needed to make sure that player can only add ships if sdhering to certain conditions 
       const lastItemVert = (parseFloat(event.target.innerText) + (gridWidth * (shipClassToAdd.length - 1))  )
@@ -470,7 +436,7 @@ function init(){
     // console.log(chosenAlready)
     if (!chosenAlready){
 
-      if (event.target.classList.contains('ship' ) ){   //if statement for if player hits hip to change colour 
+      if (event.target.classList.contains('ship' ) ){   //if statement for if player hits ship to change colour 
         
         event.target.classList.add('shot-hit')
         playerShotAtID.push(parseFloat(event.target.innerHTML))
@@ -478,7 +444,6 @@ function init(){
         if (event.target.classList.contains('place-comp-carriership')){  //*series of if statements to determine what ship has been hit 
           compCarriership--
           bannerMessage.innerHTML = 'You have hit the computers carriership'
-          //can add messags in here - you have hit the enemyss battleship etc. 
           if (compCarriership === 0){ //***********************THIS IFSTATEMNT WILL BE USEFUL LATER- ADDING MESSAGES TO THE MESSAGE BOARD ****************/
             console.log('carrier ship dead ')
             bannerMessage.innerHTML = 'The computers carriership is desroyed!'
@@ -530,7 +495,7 @@ function init(){
       shootAtPlayer() 
       
     }, 800)
-    //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* maybe put a timer on here
+    //once the function has run successfully (not had the same sqaure clicked on more than once), the funtion for the computer shooting runs //* 
 
 
 
@@ -579,7 +544,6 @@ function init(){
     if ( thisIsWhatINeedToTest.classList.contains('place-carriership')){
       playerCarriershipLives--
       bannerMessage.innerHTML = 'The computer has hit your carriership!'
-      console.log('THIS IS THE LIVES LEFT AT THE END OF THE FUNCTION RUNNING', playerCarriershipLives)
       if (playerCarriershipLives === 0){
         bannerMessage.innerHTML = 'Watch out! The computer has sunk your carriership!'
         possibleArrayPositions = null
@@ -619,13 +583,6 @@ function init(){
     }  
     checkForWinner()
   }
-  
-  
-  
-
-
-
-
 
   //*functions for non-rnadom computer shooting 
 
@@ -633,60 +590,22 @@ function init(){
     originalArrayPosition = targetRandomPlayerCellGlobal
 
     possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1), (targetRandomPlayerCellGlobal - 1), (targetRandomPlayerCellGlobal + gridWidth), (targetRandomPlayerCellGlobal - gridWidth) ] 
-
-    // if (!targetPlayerCell[targetRandomPlayerCellGlobal + 1].classList.contains('shot-miss')){
-    //   possibleArrayPositions = [(targetRandomPlayerCellGlobal + 1)]
-    // }
-    // if (!targetPlayerCell[targetRandomPlayerCellGlobal - 1 ].classList.contains('shot-miss')){
-    //   possibleArrayPositions.push((targetRandomPlayerCellGlobal - 1))
-    // }
-    // if (!targetPlayerCell[targetRandomPlayerCellGlobal + gridWidth].classList.contains('shot-miss')){
-    //   possibleArrayPositions.push((targetRandomPlayerCellGlobal + gridWidth))
-    // }
-    // if (!targetPlayerCell[targetRandomPlayerCellGlobal - gridWidth].classList.contains('shot-miss')){
-    //   possibleArrayPositions.push((targetRandomPlayerCellGlobal - gridWidth))
-    // }
-
     checkForWinner()
 
-  
     //Logic to create an array of possible options
-    // console.log('possible array postions', possibleArrayPositions)
   }
 
   function shootAtPlayer(){
-    // console.log('THIS IS WHAT I NEED TO TEST  ',thisIsWhatINeedToTest)
-    
    
-
     if (possibleArrayPositions !== null){ 
-
-      
-      
-      
-      
 
       //*************this lags by 1 life, and needs more conditions  */
       
-
-
-      //need togic to check if any of the adjacent squares already contain the SHOT-MISS class, and update the array accordingly 
-
-      //need to make sure it cannot randomly target the line above or bellow if ship is on the edge
-
-      // console.log('the possible array positions ',possibleArrayPositions)
       
       if (possibleArrayPositions.length === 4){ //logic for the first hit- only time that the array will contain 4 items 
         const targetLikelyRandomPlayerCell = Math.floor(Math.random() * 4)
 
-       
-        // console.log('the seccond step of the computers logic is selected!') 
-        // console.log('target likely random player cell',targetLikelyRandomPlayerCell)
-      
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]]
-        
-        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
-        
 
         if (targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.add('shot-hit')
@@ -697,10 +616,6 @@ function init(){
           //*********************************** checking for a vertical match works!  */
           if (parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === 10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship') || parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML) - originalArrayPosition === -10 && targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].classList.contains('ship')){
 
-            
-            //**************** create a function that i can add to this location in all the arguments that tracks lives *************/
-            
-            
             //* creting a new array if the next smart shot is a hit (vertical ) 
             if ( originalArrayPosition - parseFloat(targetPlayerCell[possibleArrayPositions[targetLikelyRandomPlayerCell]].innerHTML)  === 10){
               // console.log('this is the positive match === +10 ')
@@ -815,7 +730,6 @@ function init(){
 
         thisIsWhatINeedToTest = targetPlayerCell[possibleArrayPositions]
        
-        // console.log('IS THIS THE VALUE OF THE CELL, OR SOMETHING ELSE?',thisIsWhatINeedToTest)
 
         if (targetPlayerCell[possibleArrayPositions].classList.contains('ship')){
           targetPlayerCell[possibleArrayPositions].classList.add('shot-hit')
