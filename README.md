@@ -1,5 +1,5 @@
 # Project one ReadMe
-
+![creating ship code](Readme-assets/recording.gif)
 # Approach taken 
 ## Key Dates
 * Day 1: planning
@@ -12,7 +12,7 @@ I spent the first day of the project breaking down the game into small, manageab
 
 ## Day 2-5
 For the MVP, I wanted the player to be able to place their ships on the board, horizontally and vertically,  I wanted the computer to place their ships randomly, and I wanted the computer and player to be able to shoot at each other. With this in mind I created the grids, and started to try and add the ships. At the start I planned on creating the ships as separate pieces, and overlay them on top of the grid. This was a real challenge to achieve, so I decided to go back to the drawing board and start again with the ships.  I settled on making an object for each of the ships. The object contained the length of the name, length, default orientation (which enabled having a horizontal/vertical ship later), and the board that they were to be placed on. The cells that would contain the ship were then populated with the classes needed for gameplay and styling.
-![creating ship code](Readme-assets/creatinShips.png)
+
 
 In order to place player pieces the player would select a ship from the available options, and when they clicked a cell on the grid the ship data would be populated onto the relevant cells- vertical or horizontal. 
 ![inserting ships](Readme-assets/inserting-ships.png)
