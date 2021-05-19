@@ -48,7 +48,7 @@ My initial idea for the styling was far more complex than my final result- I had
 
 My first task in styling was to create a colour theme. I chose a nautical themed background gradient I created in CSS. This involved using a linear gradient as the background colour. I then changed the colour of the gridlines, and added some a strong red to compliment the background colour. 
 
-I then decided to try and add some ship images to the ships- I tried to add these in as a background image and have it overflow across all squares. This was very fiddly, but I eventually got this to work. The problem I had was when I rotated the ship, the background image stayed horizontal. This was a problem that had been scratching my head for a long time. I decided in the interest of saving time to have a different colour for each ship and added small images to each of the squares, and an image to the buttons instead. In order to add the images I had to make them on transparent backgrounds in Photoshop which was much more time consuming that i had thought. This small bit of styling took the best part of day 7. 
+I then decided to try and add some ship images to the ships- I tried to add these in as a background image and have it overflow across all squares. This was very fiddly, but I eventually got this to work. The problem I had was when I rotated the ship, the background image stayed horizontal. This was a problem that had been scratching my head for a long time. I decided in the interest of saving time to have a different colour for each ship and added small images to each of the squares, and an image to the buttons instead. In order to add the images I had to make them on transparent backgrounds in Photoshop which was much more time consuming that I had thought. This small bit of styling took the best part of day 7. 
 
 On day 8 I had a lot I wanted to cram into the project before the deadline. I wanted a landing page, a message to the user based on what was happening, audio, and a win screen. I also wanted some aspect of responsive design to the site. 
 
@@ -68,8 +68,11 @@ I finished off the project by adding some media queries to add a degree of respo
 
 * The biggest blocker for me was the placement of the ship images over the ship. This was something that I ended up leaving off the project in the end. This was something that wasn't essential to the game, but I feel would have elevated the games aesthetic and made it look more professional. 
 * There is one bug that I did not have time to fix, that would improve the play of the game. The computer ships can sometimes align themselves next to each other. This was a bug I only noticed last minute. Looking back on it, I could modify the condition that prevents the ships from stacking to prevent them being next to one another as I did for the placement of the players ships 
-* The thing i would improve on if i could go back and do the project again would be to write cleaner, clearer code. I think that refactoring could help eliminate some of the complexity, and help with issues that I encountered in the build. 
+* The thing I would improve on if I could go back and do the project again would be to write cleaner, clearer code. I think that refactoring could help eliminate some of the complexity, and help with issues that I encountered in the build. 
 * The biggest win for me was getting the intelligent shooting from the computer. This took a lot of thinking about and adjustment, but makes the game work much better than just random shooting from the computer. 
+
+# Key Learnings and conclusions
+
 
 # Future improvements 
 * Different difficulty levels- more intelligent shooting from computer
