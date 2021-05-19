@@ -1,4 +1,4 @@
-# Project one ReadMe [deployed project] (https://jonty-ward.github.io/sei-project-1/)
+# Project one ReadMe https://jonty-ward.github.io/sei-project-1/
 ![creating ship code](Readme-assets/recording.gif)
 # Approach taken 
 ## Key Dates
