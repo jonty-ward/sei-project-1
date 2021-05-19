@@ -1,7 +1,8 @@
 # Project one ReadMe 
+![creating ship code](Readme-assets/recording.gif)
 ## Deployed Link
 https://jonty-ward.github.io/sei-project-1/
-![creating ship code](Readme-assets/recording.gif)
+
 # Approach taken 
 ## Key Dates
 * Day 1: planning
