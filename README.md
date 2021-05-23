@@ -1,4 +1,4 @@
-# Project one ReadMe 
+# Project One 
 ![creating ship code](Readme-assets/recording.gif)
 ## Deployed Link
 https://jonty-ward.github.io/sei-project-1/
@@ -71,7 +71,9 @@ I finished off the project by adding some media queries to add a degree of respo
 * The thing I would improve on if I could go back and do the project again would be to write cleaner, clearer code. I think that refactoring could help eliminate some of the complexity, and help with issues that I encountered in the build. 
 * The biggest win for me was getting the intelligent shooting from the computer. This took a lot of thinking about and adjustment, but makes the game work much better than just random shooting from the computer. 
 
-# Key Learnings and conclusions
+# Key Learnings
+* My biggest takeaway from this project was taking the individual elements we had learnt through the course, and figuiring out how to applly these concepts into a single project. Working by myself gave me the chance to consolidate what I had been taught, and become much more comfortable with JavaScript. 
+
 
 
 # Future improvements 
