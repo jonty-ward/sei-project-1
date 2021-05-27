@@ -41,7 +41,7 @@ To complete the very basic MVP I added random shooting for the computer. This me
 ## Day 5-6
 
 ### Placing player ships error handling  
-Now that I had this error handling working, I decided I would implement the same thing so the player could only place their pieces in positions that would make logical sense. I added some visual displays so that when a ship there was visual feedback to the user, and they could not add the ship in that location. Ships could not be stacked on top of each other, or all connecting to eachother. 
+Now that I had this error handling working, I decided I would implement the same thing so the player could only place their pieces in positions that would make logical sense. I added some visual displays so that when a ship there was visual feedback to the user, and they could not add the ship in that location. Ships could not be stacked on top of each other, or all connecting to each other. 
 ![shoot ](Readme-assets/ship-placement.gif)
 
 ### Computer intelligent shooting
