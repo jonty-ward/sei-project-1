@@ -1,4 +1,4 @@
-# Project One 
+# Project One - Battleships
 ![creating ship code](Readme-assets/recording.gif)
 ## Deployed Link
 https://jonty-ward.github.io/sei-project-1/
